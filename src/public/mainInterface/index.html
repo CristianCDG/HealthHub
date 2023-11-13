@@ -33,9 +33,9 @@
         <h1>Registrate</h1>
           <input type="text" name="name" id="Firstname" placeholder="Nombre" />
           <input type="text" name="lastName" id="LastName" placeholder="Apellido" />
-          <input type="text" name="email" id="email" placeholder="Correo" />
-          <input type="text" name="password" id="password" placeholder="Contraseña" />
-          <input type="text" name="confirmPassword" placeholder="Confirmar contraseña" />
+          <input type="email" name="email" id="email" placeholder="Correo" required/>
+          <input type="password" name="password" id="password" placeholder="Contraseña" />
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña" />
           <input type="submit" class="submit-reg" id="submit-regs" value="Registrarse" />
       </div>
       <div class="home-content-login" id="home-content-log">
@@ -43,6 +43,30 @@
           <input type="text" name="userName" placeholder="Usuario" />
           <input type="text" name="password" placeholder="Contraseña" />
           <input type="submit" class="submit-reg" value="Ingresar" />
+      </div>
+      <div class="emptyFieldsReg" id="regEmptyFields">
+        <h1>Ha ocurrido un error</h1>
+        <p>Ninguno de los campos del registro puede estar vacio</p>
+      </div>
+      <div class="emptyFieldsLog" id="logEmptyFields">
+        <h1>Ha ocurrido un error</h1>
+        <p>Ninguno de los campos del log-in puede estar vacio</p>
+      </div>
+      <div class="notMatchPasswordsReg" id="notMatchPasswordsReg">
+        <h1>Ha ocurrido un error</h1>
+        <p>Verifique las contraseñas ingresadas ya que no coinciden</p>
+      </div>
+      <div class="notMatchPasswordLog" id="notMatchPasswordLog">
+        <h1>Ha ocurrido un error</h1>
+        <p>La contraseña ingresada es incorrecta</p>
+      </div>
+      <div class="notMatchUserLog" id="notMatchUserLog">
+        <h1>Ha ocurrido un error</h1>
+        <p>El username ingresado es incorrecto, verifiquelo en su correo</p>
+      </div>
+      <div class="existingMail" id="existingMail">
+        <h1>Ha ocurrido un error</h1>
+        <p>El correo ingresado ya se encuentra registrado</p>
       </div>
     </section>
     <script type="module" src="../mainInterface/scripts/PopUps.js"></script>

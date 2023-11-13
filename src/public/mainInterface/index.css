@@ -174,3 +174,109 @@ body {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
+
+.emptyFieldsReg{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.emptyFieldsLog{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.notMatchPasswordsReg{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.notMatchPasswordLog{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.notMatchUserLog{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.existingMail{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.show {
+    left: 0; /* Desplazamiento hacia la posición inicial (0) */
+  }

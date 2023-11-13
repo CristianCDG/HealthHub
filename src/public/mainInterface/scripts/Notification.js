@@ -1,22 +1,86 @@
 document.getElementById('submit-regs').addEventListener('click', function(event) {
   event.preventDefault();
 
+
   var nombre = document.getElementById('Firstname').value;
   var apellido = document.getElementById('LastName').value;
   var correo = document.getElementById('email').value;
   var contrasena = document.getElementById('password').value;
-  console.log({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena });
+  var contrasenaConf = document.getElementById('confirmPassword').value;
 
-  fetch('/send-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena }),
+  // Check if any of the fields is empty
+  if (!nombre || !apellido || !correo || !contrasena || !contrasenaConf) {
+    console.log('Todos los campos deben estar llenos');
+    showErrorMessage();
+    return;
+  }
+
+  if (contrasenaConf != contrasena) {
+    console.log('Las contraseñas no coinciden');
+    showErrorMessageCoin()
+    return;
+  }
+
+  // Check if email already exists
+  fetch('/api/v1/usercreation/' + encodeURIComponent(correo))
+  .then(response => response.json())
+  .then(data => {
+    if (data.Correo) {
+      console.log('El correo ya existe');
+      showErrorMessageExistingMail()
+      return;
+    }
+
+    console.log({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena });
+
+    fetch('/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena }),
+    })
+    .then(response => response.text())  
+    .then(data => console.log(data))
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   })
-  .then(response => response.text())  
-  .then(data => console.log(data))
   .catch((error) => {
     console.error('Error:', error);
   });
 });
+
+
+//Campos de registro vacios
+function showErrorMessage() {
+  var errorMessage = document.getElementById("regEmptyFields");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function() {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+//La contraseñas no coinciden en el registro
+function showErrorMessageCoin() {
+  var errorMessage = document.getElementById("notMatchPasswordsReg");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function() {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+//Correo existente
+function showErrorMessageExistingMail() {
+  var errorMessage = document.getElementById("existingMail");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function() {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}

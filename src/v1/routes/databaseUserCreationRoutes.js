@@ -5,4 +5,7 @@ const dataBaseUserController = require('../../controllers/databaseUserCreationCo
 // Agregar un usuario
 router.post('/', dataBaseUserController.createOneUser);
 
+// Obtener un solo correo
+router.get('/:Correo', dataBaseUserController.getOneUserMail);
+
 module.exports = router;

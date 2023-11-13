@@ -30,6 +30,24 @@ const createOneUser = async (req, res) => {
   });
 };
 
+const getOneUserMail = (req, res) => {
+  const { Correo } = req.params;
+
+  db.query('SELECT * FROM Usuario WHERE Correo = ?', [Correo], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      if (results.length > 0) {
+        res.json(results[0]);
+      } else {
+        res.status(404).json({ error: 'Paciente no encontrado' });
+      }
+    }
+  });
+};
+
 module.exports = {
   createOneUser,
+  getOneUserMail,
 };

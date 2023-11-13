@@ -16,3 +16,6 @@ LogBtn.addEventListener("click", () => {
     registrationMenu.style.visibility = "hidden";
 });
 
+
+
+
