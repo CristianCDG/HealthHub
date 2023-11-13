@@ -10,7 +10,12 @@ const v1PacienteRouter = require("./v1/routes/pacienteRoutes");
 const v1GrupoRouter = require("./v1/routes/grupoAlimenticioRoutes");
 const v1PediatraRouter = require("./v1/routes/pediatraRoutes");
 const v1MainRouter = require("./v1/routes/mainRoute");
-const sendEmail = require("./services/notificationService"); // Requiere la función sendEmail
+const v1DatabaseUser = require("./v1/routes/databaseUserCreationRoutes")
+
+//const sendEmail = require("./services/notificationService"); // Requiere la función sendEmail
+const { sendEmail } = require("./services/notificationService");
+// Importa createOneUser
+const { createOneUser } = require("./controllers/databaseUserCreationController");
 
 //Enlace para el CRUD de plan alimentario (Solo postman, sin interfaz)
 const v1PlanRouter = require("./v1/routes/planAlimentarioRoutes");
@@ -26,15 +31,13 @@ app.use("/api/v1/grupo", v1GrupoRouter);
 app.use("/api/v1/planes", v1PlanRouter);
 app.use("/api/v1/pediatra", v1PediatraRouter);
 app.use("/main", v1MainRouter);
+app.use("/api/v1/usercreation", v1DatabaseUser)
 
 app.listen(PORT, () => {
   console.log(`API and Server started on port ${PORT}`);
 });
 
-app.post("/send-email", (req, res) => {
-  const { toEmail } = req.body;
-  sendEmail(toEmail);
-  res.send("Correo enviado");
-});
+// Reemplaza el endpoint /send-email con createOneUser
+app.post("/send-email", createOneUser);
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";

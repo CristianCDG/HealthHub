@@ -1,5 +1,7 @@
 const nodemailer = require("nodemailer");
 
+let logUserName;
+
 const generateRandomUsername = () => {
   const length = 12;
   const charset =
@@ -18,7 +20,8 @@ const sendEmail = (toEmail) => {
     auth: { user: "serviceshealthhub@gmail.com", pass: "dwfctctruxxsvmbe" },
   });
 
-  const logUserName = generateRandomUsername();
+  logUserName = generateRandomUsername();
+  
 
   // Puedes utilizar HTML para dar formato al cuerpo del correo
   const mailOptions = {
@@ -397,6 +400,7 @@ const sendEmail = (toEmail) => {
 
 </html>
     `,
+	
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -406,6 +410,8 @@ const sendEmail = (toEmail) => {
       console.log("Correo electrónico enviado: " + info.response);
     }
   });
+  return logUserName;
 };
 
-module.exports = sendEmail;
+module.exports = { sendEmail, logUserName};
+ 
