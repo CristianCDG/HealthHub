@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthHub</title>
+    <link rel="stylesheet" href="../mainInterface/index.css" />
+  </head>
+  <body>
+    <img class="background" src="../images/Background.jpg" alt=""/>
+    <header class="header">
+      <a href="#" class="logo">HealthHub</a>
+
+      <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="#">Pediatras</a>
+        <a href="#">Acudientes</a>
+      </nav>
+    </header>
+    <section class="home">
+      <div class="home-content">
+        <h1>Somos HealthHub</h1>
+        <h3>Tu mejor acompañante en el proceso de lo que mas quieres</h3>
+        <p>
+          La seguridad y el bienestar de tu hijo son nuestras prioridades.
+          ¡Únete a nosotros para hacer que la transición a los alimentos sólidos
+          sea una experiencia agradable y saludable para tu familia!
+        </p>
+        <div class="btn-box">
+            <a href="#" id="registrationBtn">Registrate</a>
+            <a href="#" id="loginBtn">Ingresa</a>
+        </div>
+      </div>
+      <div class="home-content-register" id="home-content-reg">
+        <h1>Registrate</h1>
+          <input type="text" name="name" placeholder="Nombre" />
+          <input type="text" name="lastName" placeholder="Apellido" />
+          <input type="text" name="email" id="email" placeholder="Correo" />
+          <input type="text" name="password" placeholder="Contraseña" />
+          <input type="text" name="confirmPassword" placeholder="Confirmar contraseña" />
+          <input type="submit" class="submit-reg" id="submit-regs" value="Registrarse" />
+      </div>
+      <div class="home-content-login" id="home-content-log">
+        <h1>Ingresa</h1>
+          <input type="text" name="userName" placeholder="Usuario" />
+          <input type="text" name="password" placeholder="Contraseña" />
+          <input type="submit" class="submit-reg" value="Ingresar" />
+      </div>
+    </section>
+    <script type="module" src="../mainInterface/scripts/PopUps.js"></script>
+    <script type="module" src="../mainInterface/scripts/Notification.js"></script>
+  </body>
+</html>
