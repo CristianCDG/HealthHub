@@ -16,7 +16,7 @@ const createOneUser = async (req, res) => {
     ID_ += charset[randomIndex];
   }
 
-  // Llama a sendEmail y usa el valor devuelto para Username
+
   console.log(Correo);
   const userName = await sendEmail(Correo);
 
@@ -41,11 +41,13 @@ const getOneUserMail = (req, res) => {
       if (results.length > 0) {
         res.json(results[0]);
       } else {
-        res.status(404).json({ error: 'Paciente no encontrado' });
+        res.status(404).json({ error: 'Correo no encontrado' });
       }
     }
   });
 };
+
+
 
 module.exports = {
   createOneUser,

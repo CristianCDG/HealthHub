@@ -11,6 +11,7 @@ const v1GrupoRouter = require("./v1/routes/grupoAlimenticioRoutes");
 const v1PediatraRouter = require("./v1/routes/pediatraRoutes");
 const v1MainRouter = require("./v1/routes/mainRoute");
 const v1DatabaseUser = require("./v1/routes/databaseUserCreationRoutes")
+const v1DatabaseUserLog = require("./v1/routes/databaseUserLoginRoutes")
 
 //const sendEmail = require("./services/notificationService"); // Requiere la función sendEmail
 const { sendEmail } = require("./services/notificationService");
@@ -32,6 +33,7 @@ app.use("/api/v1/planes", v1PlanRouter);
 app.use("/api/v1/pediatra", v1PediatraRouter);
 app.use("/main", v1MainRouter);
 app.use("/api/v1/usercreation", v1DatabaseUser)
+app.use("/api/v1/userlogin", v1DatabaseUserLog)
 
 app.listen(PORT, () => {
   console.log(`API and Server started on port ${PORT}`);

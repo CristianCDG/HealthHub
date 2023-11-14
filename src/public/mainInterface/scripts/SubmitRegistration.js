@@ -30,8 +30,13 @@ document.getElementById('submit-regs').addEventListener('click', function(event)
       showErrorMessageExistingMail()
       return;
     }
+    showGoodRegistration();
 
-    console.log({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena });
+    document.getElementById('Firstname').value = '';
+    document.getElementById('LastName').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('confirmPassword').value = '';
 
     fetch('/send-email', {
       method: 'POST',
@@ -51,6 +56,7 @@ document.getElementById('submit-regs').addEventListener('click', function(event)
   });
 });
 
+//MENSAJES DE ERROR
 
 //Campos de registro vacios
 function showErrorMessage() {
@@ -82,5 +88,16 @@ function showErrorMessageExistingMail() {
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
   setTimeout(function() {
     errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+//MENSAJES DE EXITO
+function showGoodRegistration() {
+  var Message = document.getElementById("goodRegistration");
+  Message.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function() {
+    Message.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }
