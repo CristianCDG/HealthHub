@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ====== CSS ====== -->
+    <link rel="stylesheet" href="./pacientes.css" />
+
+    <!-- ====== BOXICONS ====== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Registrar Paciente</title>
+  </head>
+  <body>
+    <section class="home" id="home">
+      <div class="home-options">
+        <button id="registrar" type="button">Registrar Paciente</button>
+        <button id="actualizar" type="button">Actualizar Paciente</button>
+        <button id="buscar" type="button">Buscar Paciente</button>
+        <button id="eliminar" type="button">Eliminar Paciente</button>
+      </div>
+    </section>
+    <div class="container">
+        <!-- Formulario Registrar -->
+        <form class="form-register"
+        action="/api/v1/paciente"
+        method="post"
+        enctype="application/x-www-form-urlencoded">
+          <header>Registrar Paciente</header>
+          <div class="details personal">
+            <span class="title"> Detalles Personales </span>
+
+            <div class="fields">
+              <!-- ====== Identificacion ====== -->
+              <div class="input-field">
+                <label>Identificacion</label>
+                <input
+                  type="number"
+                  placeholder="Ingresa la identificacion"
+                  name="Id"
+                  id="Id"
+                />
+              </div>
+              <!-- ====== Nombre Completo ====== -->
+              <div class="input-field">
+                <label>Nombre Completo</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el nombre completo"
+                  name="Nombre_completo"
+                  id="Nombre_completo"
+                />
+              </div>
+              <!-- ====== Fecha Nacimiento ====== -->
+              <div class="input-field">
+                <label>Fecha Nacimiento</label>
+                <input
+                  type="date"
+                  placeholder="Ingresa la fecha de nacimiento"
+                  name="Fecha_nacimiento"
+                  id="Fecha_nacimiento"
+                />
+              </div>
+              <!-- ====== Direccion ====== -->
+              <div class="input-field">
+                <label>Direccion</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa la direccion"
+                  name="Direccion"
+                  id="Direccion"
+                />
+              </div>
+              <!-- ====== Genero ====== -->
+              <div class="input-field">
+                <label>Genero</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el genero"
+                  name="Genero"
+                  id="Genero"
+                />
+              </div>
+              <!-- ====== Peso ====== -->
+              <div class="input-field">
+                <label>Peso</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el peso"
+                  name="Peso"
+                  id="Peso"
+                />
+              </div>
+              <!-- ====== Altura ====== -->
+              <div class="input-field">
+                <label>Altura</label>
+                <input
+                  type="number"
+                  placeholder="Ingresa la altura"
+                  name="Altura"
+                  id="Altura"
+                />
+              </div>
+              <!-- ====== Estado ====== -->
+              <div class="input-field">
+                <label>Estado</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el estado"
+                  name="Estado"
+                  id="Estado"
+                />
+              </div>
+              <!-- ====== Id_Pediatra ====== -->
+              <div class="input-field">
+                <label>Id del Pediatra</label>
+                <input
+                  type="number"
+                  placeholder="Ingresa la id del Pediatra"
+                  name="Id_pediatra"
+                  id="Id_pediatra"
+                />
+              </div>
+            </div>
+
+            <button id="btnRegistrar">
+              <span class="btnText">Registrar</span>
+              <i class="bx bx-send"></i>
+            </button>
+
+            <span id="registroExitoso" class="hidden-message">
+              Paciente registrado exitosamente.
+            </span>
+          </div>
+        </form>
+        
+        <!-- Formulario Actualizar -->
+        <form class="form-update"
+        action="/api/v1/paciente"
+        method="path"
+        enctype="application/x-www-form-urlencoded">
+          <header>Actualizar Paciente</header>
+          <div class="details personal">
+            <span class="title"> Actualizar Datos Personales </span>
+
+            <div class="fields">
+              <!-- ====== Identificacion ====== -->
+              <div class="input-field">
+                <label>Identificacion</label>
+                <input
+                  type="number"
+                  placeholder="Ingresa la identificacion"
+                  name="id_actualizar"
+                  id="id_actualizar"
+                />
+              </div>
+              <!-- ====== Nombre Completo ====== -->
+              <div class="input-field">
+                <label>Nombre Completo</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el nombre completo"
+                  name="nombre_actualizar"
+                  id="nombre_actualizar"
+                />
+              </div>
+              <!-- ====== Fecha Nacimiento ====== -->
+              <div class="input-field">
+                <label>Fecha Nacimiento</label>
+                <input
+                  type="date"
+                  placeholder="Ingresa la fecha de nacimiento"
+                  name="fechaNacimiento"
+                  id="fechaNacimiento"
+                />
+              </div>
+              <!-- ====== Direccion ====== -->
+              <div class="input-field">
+                <label>Direccion</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa la direccion"
+                  name="direccion"
+                  id="direccion"
+                />
+              </div>
+              <!-- ====== Genero ====== -->
+              <div class="input-field">
+                <label>Genero</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el genero"
+                  name="genero"
+                  id="genero"
+                />
+              </div>
+              <!-- ====== Peso ====== -->
+              <div class="input-field">
+                <label>Peso</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el peso"
+                  name="peso"
+                  id="peso"
+                />
+              </div>
+              <!-- ====== Altura ====== -->
+              <div class="input-field">
+                <label>Altura</label>
+                <input
+                  type="number"
+                  placeholder="Ingresa la altura"
+                  name="direccion"
+                  id="direccion"
+                />
+              </div>
+              <!-- ====== Estado ====== -->
+              <div class="input-field">
+                <label>Estado</label>
+                <input
+                  type="text"
+                  placeholder="Ingresa el estado"
+                  name="estado"
+                  id="estado"
+                />
+              </div>
+              <!-- ====== Id_Pediatra ====== -->
+              <div class="input-field">
+                <label>Id del Pediatra</label>
+                <input
+                  type="number"
+                  placeholder="Ingresa la id del Pediatra"
+                  name="id"
+                  id="id"
+                />
+              </div>
+            </div>
+
+            <button id="btnActualizar">
+              <span class="btnText">Actualizar</span>
+              <i class="bx bx-send"></i>
+            </button>
+            
+            <span id="actualizadoExitoso" class="hidden-message">
+              Paciente actualizado exitosamente.
+            </span>
+          </div>
+        </form>
+
+        <!-- Formulario Buscar Paciente -->
+        <form class="form-search"
+        action="/api/v1/paciente"
+        method="get"
+        enctype="application/x-www-form-urlencoded">
+          <header>Buscar Paciente</header>
+          <div class="details personal">
+            <span class="title"> Detalles del Paciente </span>
+
+            <div class="fields-2">
+              <!-- ====== Identificacion ====== -->
+              <div class="input-button-container">
+                <div class="input-field">
+                  <label>Identificacion</label>
+                  <input
+                    type="number"
+                    placeholder="Ingresa la identificacion"
+                    name="idBuscar"
+                    id="idBuscar"
+                  />
+                </div>
+                <button id="btnBuscar">
+                  <span class="btnText">Buscar</span>
+                  <i class="bx bx-send"></i>
+                </button>
+              </div>
+              <!-- ====== Text Area ====== -->
+              <div class="textarea" id="textArea">
+                <label>Información Encontrada</label>
+                <textarea
+                  placeholder="Ingresa las observaciones"
+                  name="observaciones"
+                  id="observaciones"
+                  ,
+                  readonly
+                ></textarea>
+              </div>
+              <span id="buscadoExitoso" class="hidden-message">
+                Paciente encontrado exitosamente.
+              </span>
+            </div>
+          </div>
+        </form>
+        
+        <form class="form-delete">
+          <header>Eliminar Paciente</header>
+          <div class="details personal">
+            <span class="title"> Eliminar el Paciente </span>
+
+            <div class="fields-2">
+              <!-- ====== Identificacion ====== -->
+              <div class="input-button-container">
+                <div class="input-field">
+                  <label>Identificacion</label>
+                  <input
+                    type="number"
+                    placeholder="Ingresa la identificacion"
+                    name="id"
+                    id="id"
+                  />
+                </div>
+                <button id="btnEliminar">
+                  <span class="btnText">Buscar</span>
+                  <i class="bx bx-send"></i>
+                </button>
+                <span id="eliminadoExitoso" class="hidden-message">
+                  Paciente Eliminado exitosamente.
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    <script type="module" src="/script/script.js"></script>
+    <script>
+      document
+        .getElementById('actualizar')
+        .addEventListener('click', function () {
+          document.querySelector('.form-register').style.display = 'none';
+          document.querySelector('.form-update').style.display = 'block';
+          document.querySelector('.form-search').style.display = 'none';
+          document.querySelector('.form-delete').style.display = 'none';
+        });
+      document
+        .getElementById('registrar')
+        .addEventListener('click', function () {
+          document.querySelector('.form-register').style.display = 'block';
+          document.querySelector('.form-update').style.display = 'none';
+          document.querySelector('.form-search').style.display = 'none';
+          document.querySelector('.form-delete').style.display = 'none';
+        });
+      document.getElementById('buscar').addEventListener('click', function () {
+        document.querySelector('.form-register').style.display = 'none';
+        document.querySelector('.form-update').style.display = 'none';
+        document.querySelector('.form-search').style.display = 'block';
+        document.querySelector('.form-delete').style.display = 'none';
+      });
+      document
+        .getElementById('eliminar')
+        .addEventListener('click', function () {
+          document.querySelector('.form-register').style.display = 'none';
+          document.querySelector('.form-update').style.display = 'none';
+          document.querySelector('.form-search').style.display = 'none';
+          document.querySelector('.form-delete').style.display = 'block';
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4070f4;
+}
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+}
+
+.home .home-options {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 30px;
+  margin: 0 15px;
+  background-color: #fff;
+  min-height: 570px;
+}
+
+.home-options {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.home-options button {
+  padding: 20px;
+  margin: 10px 0;
+  font-size: 20px;
+  background-color: #4070f4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.home-options button:hover {
+  background-color: #265df2;
+}
+
+.container {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 30px;
+  margin: 0 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.container header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 27px;
+  border-radius: 8px;
+  background-color: #4070f4;
+}
+
+.container form {
+  position: relative;
+  margin-top: 16px;
+  min-height: 490px;
+  background-color: #fff;
+}
+
+.container form .details {
+  margin-top: 30px;
+}
+
+.container form .title {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px 0;
+  color: #333;
+}
+
+.container form .fields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+form .fields .input-field {
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin: 4px 0;
+}
+
+.input-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2e2e2e;
+}
+
+.input-field input {
+  padding: 0 15px;
+  margin: 8px 0;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  height: 42px;
+}
+
+.input-field input:is(:focus, valid) {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+.input-field input[type='date'] {
+  color: #707070;
+}
+
+.input-field input[type='date']:valid {
+  color: #333;
+}
+
+.container form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  color: #fff;
+  border-radius: 5px;
+  margin: 25px 0;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #265df2;
+}
+
+form button i {
+  margin: 0 6px;
+}
+
+.form-update {
+  display: none;
+}
+
+.form-search {
+  display: none;
+}
+
+.form-delete {
+  display: none;
+}
+
+.hidden-message {
+  display: none;
+}
+
+.fields-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+}
+
+.input-button-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 423px;
+}
+
+.textarea textarea {
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 20px;
+  width: 800px;
+  height: 200px;
+}
