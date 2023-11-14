@@ -1,4 +1,4 @@
-const db = require('../database/database');
+const db = require('../database/config');
 
 const mostrarPagina = (req, res) => {
   console.log('en get/api/v1/paciente');
