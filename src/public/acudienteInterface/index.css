@@ -15,8 +15,8 @@ body {
 .header{
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: 25%;
+    width: 50vw;
     padding: 2vw 10vw;
     display: flex;
     justify-content: space-between;
@@ -54,4 +54,14 @@ body {
     width: 100%;
     position: absolute;
     height: 100%;
+}
+
+.sideBar{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 20vw;
+    background-color: rgba(2, 89, 151, 0.8);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
