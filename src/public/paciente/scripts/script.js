@@ -50,7 +50,10 @@ function crearPaciente() {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        return response.text().then((text) => {
+          // Lanza un error con el mensaje de error del servidor, si está disponible
+          throw new Error(text || `HTTP error! status: ${response.status}`);
+        });
       }
       return response.json();
     })
@@ -58,13 +61,7 @@ function crearPaciente() {
       console.log('El paciente se ha creado con éxito')
     })
     .catch((error) => {
-      // Manejar errores de la solicitud HTTP
-      console.error('Error al enviar la solicitud POST:', error);
-    })
-    .catch((error) => {
-      // Manejar errores de la conversión de JSON
-      console.error('Error al convertir la respuesta en JSON:', error);
-      output.value =
-        'Ocurrió un error mientras se añadía el alimento, por favor verifique los datos ingresados';
+      // Manejar errores de la solicitud HTTP y de la conversión de JSON
+      console.error('Error:', error);
     });
 }

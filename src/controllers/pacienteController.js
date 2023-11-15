@@ -24,11 +24,11 @@ const getOnePaciente = (req, res) => {
 };
 
 const createOnePaciente = (req, res) => {
-  const { ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra } = req.body;
+  const { id, nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado, id_pediatra } = req.body;
 
-  const sql = 'INSERT INTO Paciente (Id, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO Paciente (id, nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado, id_pediatra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
-  db.query(sql, [ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra], (err, result) => {
+  db.query(sql, [id, nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado, id_pediatra], (err, result) => {
     if (err) {
       console.error('Error al agregar el paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
