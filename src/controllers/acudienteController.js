@@ -30,13 +30,20 @@ const getOneAcudiente = (req, res) => {
 
 const createOneAcudiente = (req, res) => {
   const {
-    ID,
     Nombre,
     Apellido,
-    PacienteID,
+    E_mail,
+    Contrasena,
+    Telefono,
+    Direccion,
+    Fecha_nacimiento,
   } = req.body;
+
+  // Genera un ID aleatorio
+  const ID = Math.floor(Math.random() * 1000000);
+
   const sql =
-    'INSERT INTO Acudiente (ID, Nombre, Apellido, PacienteID) VALUES (?, ?, ?, ?)';
+    'INSERT INTO Acudiente (ID, Nombre, Apellido, E_mail, Contrasena, Telefono, Direccion, Fecha_nacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
   db.query(
     sql,
@@ -44,14 +51,18 @@ const createOneAcudiente = (req, res) => {
         ID,
         Nombre,
         Apellido,
-        PacienteID,
+        E_mail,
+        Contrasena,
+        Telefono,
+        Direccion,
+        Fecha_nacimiento,
     ],
     (err, result) => {
       if (err) {
         console.error('Error al agregar el Acudiente:', err);
         res.status(500).json({ error: 'Error en la base de datos' });
       } else {
-        res.json({ message: 'Acudiente agregado con éxito' });
+        res.json({ message: 'Acudiente agregado con éxito', ID });
       }
     }
   );

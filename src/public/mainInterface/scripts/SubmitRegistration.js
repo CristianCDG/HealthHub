@@ -50,6 +50,29 @@ document.getElementById('submit-regs').addEventListener('click', function (event
         .catch((error) => {
           console.error('Error:', error);
         });
+
+        if (rol == 'Acudiente') {
+          fetch('/api/v1/acudiente', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              Nombre: nombre,
+              Apellido: apellido,
+              E_mail: correo,
+              Contrasena: contrasena,
+              Telefono: 0,
+              Direccion: 'Uncompleted registration',
+              Fecha_nacimiento: '2000-01-01'
+            }),
+          })
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        }
     }) 
     .catch((error) => {
       console.error('Error:', error);
