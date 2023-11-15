@@ -1,7 +1,10 @@
 const db = require('../database/config');
 const path = require('path');
 
-// const loadSiteStructure = (req, res) => {};
+const loadSiteStructure = (req, res) => {
+  const indexPath = path.join(__dirname, '../public/paciente/paciente.html')
+  res.sendFile(indexPath);
+};
 
 const getOnePaciente = (req, res) => {
   const { id } = req.params;
@@ -75,6 +78,7 @@ const deleteOnePaciente = (req, res) => {
 };
 
 module.exports = {
+  loadSiteStructure,
   getOnePaciente,
   createOnePaciente,
   updateOnePaciente,
