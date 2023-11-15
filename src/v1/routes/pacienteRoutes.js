@@ -5,7 +5,7 @@ const pacienteController = require('../../controllers/pacienteController');
 
 router.get('/', pacienteController.loadSiteStructure);
 
-router.get('/', pacienteController.getOnePaciente);
+router.get('/:id', pacienteController.getOnePaciente);
 
 router.post('/', pacienteController.createOnePaciente);
 

@@ -9,7 +9,7 @@ const loadSiteStructure = (req, res) => {
 const getOnePaciente = (req, res) => {
   const { id } = req.params;
 
-  db.query('SELECT * FROM Alimentos WHERE ID = ?', [id], (err, results) => {
+  db.query('SELECT * FROM Paciente WHERE ID = ?', [id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
