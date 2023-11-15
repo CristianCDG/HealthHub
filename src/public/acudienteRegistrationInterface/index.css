@@ -44,7 +44,7 @@ body {
 
 .completeRegistration{
     position: absolute;
-    top: 15vw;
+    top: 12vw;
     left: 35vw;
     height: 30vw;
     width: 30vw;
@@ -72,4 +72,62 @@ body {
     margin-top: 1vw;
 }
 
+.emptyFieldsReg{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
 
+.successfulUpdate{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(30, 179, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.notFoundMail{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.show {
+    left: 0; /* Desplazamiento hacia la posición inicial (0) */
+  }
+
+  .completeRegistration .submit-reg:hover{
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}

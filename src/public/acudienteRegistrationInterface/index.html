@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Completar registro</title>
-    <link rel="stylesheet" href="/acudienteRegistrationInterface/index.css">
-</head>
-<body>
-    <img class="background" src="/images/Background.jpg" alt=""/>
+    <link rel="stylesheet" href="/acudienteRegistrationInterface/index.css" />
+  </head>
+  <body>
+    <img class="background" src="/images/Background.jpg" alt="" />
     <header class="header">
       <a href="#" class="logo">HealthHub</a>
     </header>
     <div class="completeRegistration">
-        <h1>Completa tu registro</h1>
-        <input type="text" name="correo" id="correo" placeholder="E-mail del registro" />
-        <input type="text" name="direccion" id="Direccion" placeholder="Direccion" />
-        <input type="text" name="telefono" id="Telefono" placeholder="Telefono" />
-        <label for="fnacimiento">Fecha de nacimiento</label>
-        <input type="date" name="fnacimiento" id="fnacimiento" placeholder="Fecha de nacimiento" />
-        <input type="submit" class="submit-reg" id="submit-regs" value="Completar registro" />
+      <h1>Completa tu registro</h1>
+      <input
+        type="text"
+        name="correo"
+        id="correo"
+        placeholder="E-mail del registro"
+      />
+      <input
+        type="text"
+        name="direccion"
+        id="Direccion"
+        placeholder="Direccion"
+      />
+      <input type="text" name="telefono" id="Telefono" placeholder="Telefono" />
+      <label for="fnacimiento">Fecha de nacimiento</label>
+      <input
+        type="date"
+        name="fnacimiento"
+        id="fnacimiento"
+        placeholder="Fecha de nacimiento"
+      />
+      <input
+        type="submit"
+        class="submit-reg"
+        id="submit-regs"
+        value="Completar registro"
+      />
     </div>
-</body>
+    <script
+      type="module"
+      src="/acudienteRegistrationInterface/scripts/completeRegistration.js"
+    ></script>
+
+    <div class="emptyFieldsReg" id="regEmptyFields">
+      <h1>Ha ocurrido un error</h1>
+      <p>Ninguno de los campos del registro puede estar vacio</p>
+    </div>
+    <div class="notFoundMail" id="notFoundMail">
+      <h1>Ha ocurrido un error</h1>
+      <p>El correo ingresado no existe, verifiquelo e intente nuevamente</p>
+    </div>
+
+    <div class="successfulUpdate" id="successfulUpdate">
+        <h1>Todo en orden</h1>
+        <p>Su registro ha finalizado, verifique su correo</p>
+      </div>
+  </body>
 </html>

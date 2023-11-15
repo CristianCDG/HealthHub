@@ -122,10 +122,63 @@ const deleteOneAcudiente = (req, res) => {
   });
 };
 
+const getAcudienteByEmail = (req, res) => {
+  const { email } = req.params;
+
+  db.query('SELECT * FROM Acudiente WHERE E_mail = ?', [email], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      if (results.length > 0) {
+        res.json(results[0]);
+      } else {
+        res.status(404).json({ error: 'Acudiente no encontrado' });
+      }
+    }
+  });
+};
+
+const updateAcudienteByEmail = (req, res) => {
+  const { email } = req.params;
+  const {
+    Direccion,
+    Telefono,
+    Fecha_nacimiento,
+  } = req.body;
+
+  const sql =
+    'UPDATE Acudiente SET Direccion = ?, Telefono = ?, Fecha_nacimiento = ? WHERE E_mail = ?';
+
+  db.query(
+    sql,
+    [
+        Direccion,
+        Telefono,
+        Fecha_nacimiento,
+        email,
+    ],
+    (err, result) => {
+      if (err) {
+        console.error('Error al actualizar el Acudiente:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+      } else {
+        if (result.affectedRows > 0) {
+          res.json({ message: 'Acudiente actualizado con éxito' });
+        } else {
+          res.status(404).json({ error: 'Acudiente no encontrado' });
+        }
+      }
+    }
+  );
+};
+
 module.exports = {
   getAllAcudientes,
   getOneAcudiente,
   createOneAcudiente,
   updateOneAcudiente,
   deleteOneAcudiente,
+  getAcudienteByEmail,
+  updateAcudienteByEmail, 
 };
