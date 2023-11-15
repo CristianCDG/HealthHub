@@ -50,7 +50,7 @@ document.getElementById('submit-regs').addEventListener('click', function (event
         .catch((error) => {
           console.error('Error:', error);
         });
-    })
+    }) 
     .catch((error) => {
       console.error('Error:', error);
     });
