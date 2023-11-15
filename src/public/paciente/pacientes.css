@@ -6,8 +6,8 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  /* border: none;
-  outline: none; */
+  border: none;
+  outline: none;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
@@ -18,4 +18,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 25%;
+  width: 50vw;
+  padding: 2vw 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: rgba(8, 27, 41, 0.8);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
