@@ -21,7 +21,6 @@ app.use(express.static(path.join(__dirname, "public", "addPatient")));
 app.use(express.static(path.join(__dirname, "public", "mainInterface")));
 
 app.use("/api/v1/paciente", v1PacienteRouter);
-
 app.use("/api/v1/alimento", v1AlimentoRouter);
 app.use("/api/v1/acudiente", v1AcudienteRouter);
 app.use("/api/v1/grupo", v1GrupoRouter);
