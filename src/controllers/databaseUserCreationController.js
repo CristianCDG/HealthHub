@@ -23,7 +23,9 @@ const createOneUser = async (req, res) => {
   db.query(sql, [ID_, Nombre, Apellido, Correo, Contrasena, userName, Rol], (err, result) => {
     if (err) {
       console.error("Error al agregar el usuario en la base de datos:", err);
+      console.error(err);
       res.status(500).json({ error: "Error en la base de datos" });
+
     } else {
       res.json({ message: "Usuario agregado con éxito" });
     }

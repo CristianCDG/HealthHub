@@ -16,7 +16,7 @@ const generateRandomUsername = () => {
 };
 
 const sendEmail = (toEmail, role) => {
-  return new Promise((resolve, reject) => {
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: { user: "serviceshealthhub@gmail.com", pass: "dwfctctruxxsvmbe" },
@@ -1853,9 +1853,8 @@ const sendEmail = (toEmail, role) => {
           }
         }
       );
-
-      return;
-    }
+		return;
+}
 
     // Puedes utilizar HTML para dar formato al cuerpo del correo
     const mailOptions = {
@@ -1873,7 +1872,6 @@ const sendEmail = (toEmail, role) => {
       }
     });
     return logUserName;
-  });
-};
+  };
 
 module.exports = { sendEmail, logUserName };
