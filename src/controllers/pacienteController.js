@@ -3,10 +3,6 @@ const path = require('path');
 
 // const loadSiteStructure = (req, res) => {};
 
-// const loadSiteStyles = (req, res) => {
-//   pass;
-// };
-
 const getOnePaciente = (req, res) => {
   const { id } = req.params;
 
@@ -24,6 +20,63 @@ const getOnePaciente = (req, res) => {
   });
 };
 
+const createOnePaciente = (req, res) => {
+  const { ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra } = req.body;
+
+  const sql = 'INSERT INTO Paciente (Id, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+
+  db.query(sql, [ID, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra], (err, result) => {
+    if (err) {
+      console.error('Error al agregar el paciente:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      res.json({ message: 'Paciente agregado con éxito' });
+    }
+  });
+};
+
+const updateOnePaciente = (req, res) => {
+  const { id } = req.params;
+  const { Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado } = req.body;
+
+  const sql = 'UPDATE Paciente SET Nombre = ?, Apellido = ?, Fecha_nacimiento = ?, Direccion = ?, Genero = ?, Peso = ?, Altura = ?, Estado = ? WHERE Id = ?';
+
+  db.query(sql, [Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado], (err, result) => {
+    if (err) {
+      console.error('Error al actualizar el alimento:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      if (result.affectedRows > 0) {
+        res.json({ message: 'Alimento actualizado con éxito' });
+      } else {
+        res.status(404).json({ error: 'Alimento no encontrado' });
+      }
+    }
+  });
+};
+
+const deleteOnePaciente = (req, res) => {
+  const { id } = req.params;
+
+  const sql = 'DELETE FROM Paciente WHERE Id = ?'
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error('Error al eliminar el alimento:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      if (result.affectedRows > 0) {
+        res.json({ message: 'Alimento eliminado con éxito' });
+      } else {
+        res.status(404).json({ error: 'Alimento no encontrado' });
+      }
+    }
+  });
+};
+
 module.exports = {
   getOnePaciente,
+  createOnePaciente,
+  updateOnePaciente,
+  deleteOnePaciente,
 };
