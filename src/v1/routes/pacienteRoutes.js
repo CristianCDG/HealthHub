@@ -7,4 +7,6 @@ router.get('/', pacienteController.loadSiteStructure);
 
 router.get('/', pacienteController.getOnePaciente);
 
+router.post('/', pacienteController.createOnePaciente);
+
 module.exports = router;

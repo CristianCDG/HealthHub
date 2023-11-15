@@ -1,6 +1,5 @@
-document.getElementById('submit-regs').addEventListener('click', function(event) {
+document.getElementById('submit-regs').addEventListener('click', function (event) {
   event.preventDefault();
-
 
   var nombre = document.getElementById('Firstname').value;
   var apellido = document.getElementById('LastName').value;
@@ -24,37 +23,37 @@ document.getElementById('submit-regs').addEventListener('click', function(event)
 
   // Check if email already exists
   fetch('/api/v1/usercreation/' + encodeURIComponent(correo))
-  .then(response => response.json())
-  .then(data => {
-    if (data.Correo) {
-      console.log('El correo ya existe');
-      showErrorMessageExistingMail()
-      return;
-    }
-    showGoodRegistration();
+    .then(response => response.json())
+    .then(data => {
+      if (data.Correo) {
+        console.log('El correo ya existe');
+        showErrorMessageExistingMail()
+        return;
+      }
+      showGoodRegistration();
 
-    document.getElementById('Firstname').value = '';
-    document.getElementById('LastName').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-    document.getElementById('confirmPassword').value = '';
+      document.getElementById('Firstname').value = '';
+      document.getElementById('LastName').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('confirmPassword').value = '';
 
-    fetch('/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena, Rol: rol }),
+      fetch('/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena, Rol: rol }),
+      })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Error:', error);
+        });
     })
-    .then(response => response.text())  
-    .then(data => console.log(data))
     .catch((error) => {
       console.error('Error:', error);
     });
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
 });
 
 //MENSAJES DE ERROR
@@ -65,7 +64,7 @@ function showErrorMessage() {
   errorMessage.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
-  setTimeout(function() {
+  setTimeout(function () {
     errorMessage.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }
@@ -76,7 +75,7 @@ function showErrorMessageCoin() {
   errorMessage.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
-  setTimeout(function() {
+  setTimeout(function () {
     errorMessage.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }
@@ -87,7 +86,7 @@ function showErrorMessageExistingMail() {
   errorMessage.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
-  setTimeout(function() {
+  setTimeout(function () {
     errorMessage.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }
@@ -98,7 +97,7 @@ function showGoodRegistration() {
   Message.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
-  setTimeout(function() {
+  setTimeout(function () {
     Message.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }

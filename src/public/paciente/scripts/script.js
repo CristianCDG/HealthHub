@@ -1,8 +1,12 @@
 const btnCrearPaciente = document.getElementById("btnCrear");
 
-btnCrearPaciente.addEventListener("click", crearPaciente);
+btnCrearPaciente.addEventListener("click", () => {
+  event.preventDefault();
+  crearPaciente();
+});
 
 function crearPaciente() {
+
   const id = document.getElementById("id").value;
   const nombre = document.getElementById("nombre").value;
   const apellido = document.getElementById("apellido").value;
@@ -13,6 +17,12 @@ function crearPaciente() {
   const altura = document.getElementById("altura").value;
   const estado = document.getElementById("estado").value;
   const id_pediatra = document.getElementById("id_pediatra").value;
+
+  if (!id || !nombre || !apellido || !fecha_nacimiento || !direccion || !genero
+    || !peso || !altura || !estado || !id_pediatra) {
+    console.log('Todos los campos deben estar llenos');
+    return;
+  }
 
   let paciente = {
     id: id,
@@ -45,7 +55,7 @@ function crearPaciente() {
       return response.json();
     })
     .then((data) => {
-      // Nada
+      console.log('El paciente se ha creado con éxito')
     })
     .catch((error) => {
       // Manejar errores de la solicitud HTTP
