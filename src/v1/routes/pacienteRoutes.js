@@ -9,4 +9,6 @@ router.get('/:id', pacienteController.getOnePaciente);
 
 router.post('/', pacienteController.createOnePaciente);
 
+router.patch('/:id', pacienteController.updateOnePaciente);
+
 module.exports = router;

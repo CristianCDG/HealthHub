@@ -40,19 +40,19 @@ const createOnePaciente = (req, res) => {
 
 const updateOnePaciente = (req, res) => {
   const { id } = req.params;
-  const { Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado } = req.body;
+  const { nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado } = req.body;
 
-  const sql = 'UPDATE Paciente SET Nombre = ?, Apellido = ?, Fecha_nacimiento = ?, Direccion = ?, Genero = ?, Peso = ?, Altura = ?, Estado = ? WHERE Id = ?';
+  const sql = `UPDATE Paciente SET nombre = ?, apellido = ?, fecha_nacimiento = ?, direccion = ?, genero = ?, peso = ?, altura = ?, estado = ? WHERE Id = ${id}`;
 
-  db.query(sql, [Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado], (err, result) => {
+  db.query(sql, [nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado], (err, result) => {
     if (err) {
-      console.error('Error al actualizar el alimento:', err);
+      console.error('Error al actualizar el Paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
     } else {
       if (result.affectedRows > 0) {
-        res.json({ message: 'Alimento actualizado con éxito' });
+        res.json({ message: 'Paciente actualizado con éxito' });
       } else {
-        res.status(404).json({ error: 'Alimento no encontrado' });
+        res.status(404).json({ error: 'Paciente no encontrado' });
       }
     }
   });

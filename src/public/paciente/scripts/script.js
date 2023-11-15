@@ -1,4 +1,5 @@
 const btnCrearPaciente = document.getElementById("btnCrear");
+const btnActualizar = document.getElementById('btnActualizar')
 
 btnCrearPaciente.addEventListener("click", () => {
   event.preventDefault();
@@ -74,6 +75,7 @@ function crearPaciente() {
     });
 }
 
+//Funciones Extras
 function validarID(id) {
   return fetch(`/api/v1/paciente/${id}`, {
     method: 'GET',
@@ -94,8 +96,6 @@ function validarID(id) {
     .then((data) => {
       // Si se encuentra un paciente con el ID, retornar true
       if (data === false) {
-        // Aquí puedes proceder con la creación del usuario
-        // ...
         return;
       }
       return data ? true : false;
@@ -103,6 +103,6 @@ function validarID(id) {
     .catch((error) => {
       // Manejar errores de la solicitud HTTP y de la conversión de JSON
       console.error('Error:', error);
-      output.value = 'Ocurrió un error mientras se añadía el alimento, por favor verifique los datos ingresados';
+      output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
     });
 }
