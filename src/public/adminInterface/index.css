@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', 'sans-serif';  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #081b29;
+    color: #ededed;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 25%;
+    width: 50vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(8, 27, 41, 0.8);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.logo{
+    font-size: 2vw;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar a{
+    font-size: 1vw;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.92vw;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #f00000;
+}
+
+.background{
+    object-fit: cover;
+    opacity: 0.3;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+}
+
+.sideBar{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 20vw;
+    background-color: rgba(2, 89, 151, 0.8);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1vw;
+}
+
+.sideBarTitle{
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vw;
+}
+
+.sideBarOptions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.sideBarOptions a{
+    margin-bottom: 1vw;
+    text-decoration: none;
+    font-size: 1.2vw;
+    color: rgba(32, 32, 32, 0.8);
+    transition: .5s;
+}
+
+.sideBarOptions a:hover{
+    color: rgba(0, 0, 0, 0.8);
+}
+

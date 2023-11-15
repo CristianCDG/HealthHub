@@ -1,7 +1,7 @@
 const db = require('../database/config');
 
 const getAllAcudientes = (req, res) => {
-  db.query('SELECT * FROM Acudientes', (err, results) => {
+  db.query('SELECT * FROM Acudiente', (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -14,7 +14,7 @@ const getAllAcudientes = (req, res) => {
 const getOneAcudiente = (req, res) => {
   const { id } = req.params;
 
-  db.query('SELECT * FROM Acudientes WHERE ID = ?', [id], (err, results) => {
+  db.query('SELECT * FROM Acudiente WHERE ID = ?', [id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -36,7 +36,7 @@ const createOneAcudiente = (req, res) => {
     PacienteID,
   } = req.body;
   const sql =
-    'INSERT INTO Acudientes (ID, Nombre, Apellido, PacienteID) VALUES (?, ?, ?, ?)';
+    'INSERT INTO Acudiente (ID, Nombre, Apellido, PacienteID) VALUES (?, ?, ?, ?)';
 
   db.query(
     sql,
@@ -67,7 +67,7 @@ const updateOneAcudiente = (req, res) => {
   } = req.body;
 
   const sql =
-    'UPDATE Acudientes SET Nombre = ?, Apellido = ? WHERE ID = ?';
+    'UPDATE Acudiente SET Nombre = ?, Apellido = ? WHERE ID = ?';
 
   db.query(
     sql,
@@ -95,7 +95,7 @@ const updateOneAcudiente = (req, res) => {
 const deleteOneAcudiente = (req, res) => {
   const { id } = req.params;
 
-  const sql = 'DELETE FROM Acudientes WHERE ID = ?';
+  const sql = 'DELETE FROM Acudiente WHERE ID = ?';
 
   db.query(sql, [id], (err, result) => {
     if (err) {

@@ -7,6 +7,7 @@ document.getElementById('submit-regs').addEventListener('click', function(event)
   var correo = document.getElementById('email').value;
   var contrasena = document.getElementById('password').value;
   var contrasenaConf = document.getElementById('confirmPassword').value;
+  var rol = document.getElementById('roleSelector').value;
 
   // Check if any of the fields is empty
   if (!nombre || !apellido || !correo || !contrasena || !contrasenaConf) {
@@ -43,7 +44,7 @@ document.getElementById('submit-regs').addEventListener('click', function(event)
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena }),
+      body: JSON.stringify({ Nombre: nombre, Apellido: apellido, Correo: correo, Contrasena: contrasena, Rol: rol }),
     })
     .then(response => response.text())  
     .then(data => console.log(data))
