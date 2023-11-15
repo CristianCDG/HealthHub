@@ -15,10 +15,12 @@ const v1DatabaseUserLog = require("./v1/routes/databaseUserLoginRoutes")
 const v1DatabaseUserReg = require("./v1/routes/databaseUserCreationRoutes");
 const v1PlanRouter = require("./v1/routes/planAlimentarioRoutes");
 const v1AcudienteReg = require("./v1/routes/acudienteRegistrationRoutes");
+const v1SendEmailRouter = require("./v1/routes/sendEmailRoutes");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public", "addPatient")));
 app.use(express.static(path.join(__dirname, "public", "mainInterface")));
+app.use(express.static(path.join(__dirname, "public", "acudienteRegistrationInterface")));
 
 app.use("/api/v1/paciente", v1PacienteRouter);
 app.use("/api/v1/alimento", v1AlimentoRouter);
@@ -31,6 +33,7 @@ app.use("/api/v1/usercreation", v1DatabaseUser)
 app.use("/api/v1/userlogin", v1DatabaseUserLog)
 app.use("/api/v1/send-email", v1DatabaseUserReg)
 app.use("/api/v1/finishAcudienteReg", v1AcudienteReg);
+app.use("/api/v1/send-email-reg", v1SendEmailRouter);
 
 app.listen(PORT, () => {
   console.log(`API and Server started on port ${PORT}`);
