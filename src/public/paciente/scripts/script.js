@@ -1,9 +1,45 @@
 const btnCrearPaciente = document.getElementById("btnCrear");
 const btnActualizar = document.getElementById('btnActualizar')
+const btnEliminar = document.getElementById('btnEliminar')
 
-btnCrearPaciente.addEventListener("click", () => {
+// Ids unicos
+const idActualizar = document.getElementById("id_actualizar");
+const idEliminar = document.getElementById("id_eliminar");
+
+btnCrearPaciente.addEventListener("click", (event) => {
   event.preventDefault();
   crearPaciente();
+});
+
+btnActualizar.addEventListener("click", (event) => {
+  event.preventDefault();
+  const nombre = document.getElementById("nombre_actualizar").value;
+  const apellido = document.getElementById("apellido_actualizar").value;
+  const fecha_nacimiento = document.getElementById("fecha_nacimiento_actualizar").value;
+  const direccion = document.getElementById("direccion_actualizar").value;
+  const genero = document.getElementById("genero_actualizar").value;
+  const peso = document.getElementById("peso_actualizar").value;
+  const altura = document.getElementById("altura_actualizar").value;
+  const estado = document.getElementById("estado_actualizar").value;
+
+  const nuevosDatos = {
+    nombre: nombre,
+    apellido: apellido,
+    fecha_nacimiento: fecha_nacimiento,
+    direccion: direccion,
+    genero: genero,
+    peso: peso,
+    altura: altura,
+    estado: estado,
+  };
+
+  actualizarPaciente(idActualizar.value, nuevosDatos);
+});
+
+btnEliminar.addEventListener('click', (event) => {
+  event.preventDefault();
+  const id = idEliminar.value;
+  eliminarPaciente(id);
 });
 
 function crearPaciente() {
@@ -75,9 +111,56 @@ function crearPaciente() {
     });
 }
 
+function actualizarPaciente(id, nuevosDatos) {
+  fetch(`/api/v1/paciente/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(nuevosDatos),
+  }).then((response) => {
+    if (response.ok) {
+      // La actualización fue exitosa, puedes mostrar un mensaje de éxito.
+      console.log("Paciente actualizado con éxito");
+    } else {
+      // La actualización no fue exitosa, manejar el error.
+      console.error("Error al actualizar el Paciente");
+    }
+  })
+    .then((data) => {
+      console.log('El paciente se ha actualizado con éxito')
+    })
+    .catch((error) => {
+      // Manejar errores, como mostrar un mensaje de error.
+      console.error("Error al enviar la solicitud de actualización:", error);
+    });
+}
+
+function eliminarPaciente(id) {
+  fetch(`/api/v1/paciente/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then((response) => {
+      if (response.ok) {
+        // La eliminación fue exitosa, puedes mostrar un mensaje de éxito.
+        console.log("Paciente eliminado con éxito");
+      } else {
+        // La eliminación no fue exitosa, manejar el error.
+        console.error("Error al eliminar el Paciente");
+      }
+    })
+    .catch((error) => {
+      // Manejar errores, como mostrar un mensaje de error.
+      console.error("Error al enviar la solicitud DELETE:", error);
+    });
+};
+
 //Funciones Extras
 function validarID(id) {
-  return fetch(`/api/v1/paciente/${id}`, {
+  return fetch(`/ api / v1 / paciente / ${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

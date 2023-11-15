@@ -61,17 +61,17 @@ const updateOnePaciente = (req, res) => {
 const deleteOnePaciente = (req, res) => {
   const { id } = req.params;
 
-  const sql = 'DELETE FROM Paciente WHERE Id = ?'
+  const sql = 'DELETE FROM Paciente WHERE id = ?'
 
   db.query(sql, [id], (err, result) => {
     if (err) {
-      console.error('Error al eliminar el alimento:', err);
+      console.error('Error al eliminar el paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
     } else {
       if (result.affectedRows > 0) {
-        res.json({ message: 'Alimento eliminado con éxito' });
+        res.json({ message: 'Paciente eliminado con éxito' });
       } else {
-        res.status(404).json({ error: 'Alimento no encontrado' });
+        res.status(404).json({ error: 'Paciente no encontrado' });
       }
     }
   });

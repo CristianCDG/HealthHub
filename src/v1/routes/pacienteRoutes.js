@@ -11,4 +11,6 @@ router.post('/', pacienteController.createOnePaciente);
 
 router.patch('/:id', pacienteController.updateOnePaciente);
 
+router.delete('/:id', pacienteController.deleteOnePaciente);
+
 module.exports = router;
