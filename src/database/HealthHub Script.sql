@@ -10,11 +10,6 @@ CREATE TABLE Pediatra (
     Contrasena VARCHAR(30) NOT NULL
 );
 
-INSERT INTO Pediatra (Id, Nombre, Apellido, E_mail, Contrasena)
-VALUES (1, 'NombrePediatra', 'ApellidoPediatra', 'pediatra@example.com', 'contrasena123');
-
-SELECT * FROM Pediatra;
-
 CREATE TABLE Paciente (
 	id INT PRIMARY KEY NOT NULL,
 	nombre VARCHAR(40) NOT NULL,
@@ -57,7 +52,6 @@ CREATE TABLE Usuario (
     Username VARCHAR(40) NOT NULL,
     Rol VARCHAR(40) NULL
 );
-
 
 CREATE TABLE Notificacion (
 	Id INT PRIMARY KEY NOT NULL,
