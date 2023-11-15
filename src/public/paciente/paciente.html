@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/paciente/pacientes.css">
   <title>HealthHub</title>
 </head>
+
 <body>
-  <body>
-    <img class="background" src="../../images/Background.jpg" alt=""/>
-    <header class="header">
-        <a href="#" class="logo">HealthHub</a>
+  <img class="background" src="../../images/Background.jpg" alt="" />
+  <header class="header">
+    <a href="#" class="logo">HealthHub</a>
 
-        <nav class="navbar">
-          <a href="#" class="active">Modificar roles</a>
-          <a href="#" id="logOut">Log-out</a>
-        </nav>
-    </header>
-</body>
-
+    <nav class="navbar">
+      <a href="#" id="logOut">Log-out</a>
+    </nav>
+  </header>
+  <div class="crearPaciente">
+    <h1>Registrar</h1>
+    <div class="input-group">
+      <input type="text" id="id" name="id" placeholder="Identificacion">
+    </div>
+    <div class="input-group">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+    </div>
+    <div class="input-group">
+      <input type="text" id="apellido" name="apellido" placeholder="Apellido">
+    </div>
+    <div class="input-group">
+      <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Fecha de Nacimiento">
+    </div>
+    <div class="input-group">
+      <input type="text" id="direccion" name="direccion" placeholder="Direccion">
+    </div>
+    <div class="input-group">
+      <input type="text" id="genero" name="genero" placeholder="Genero">
+    </div>
+    <div class="input-group">
+      <input type="text" id="peso" name="peso" placeholder="Peso">
+    </div>
+    <div class="input-group">
+      <input type="text" id="altura" name="altura" placeholder="Altura">
+    </div>
+    <div class="input-group">
+      <input type="text" id="estado" name="estado" placeholder="Estado">
+    </div>
+    <div class="input-group">
+      <input type="text" id="id_pediatra" name="id_pediatra" placeholder="ID del Pediatra">
+    </div>
+    <button type="submit" id="btnCrear">Crear Paciente</button>
+  </div>
   <script type="module" src="/paciente/scripts/script.js"></script>
 
 </body>
+
 </html>

@@ -86,3 +86,5 @@ CREATE TABLE PlanAlimentario (
     FOREIGN KEY (ID_Pediatra) REFERENCES Pediatra(Id),
     FOREIGN KEY (ID_Alimento) REFERENCES Alimento(Id)
 );
+
+SELECT * FROM Paciente;
