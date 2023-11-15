@@ -38,7 +38,7 @@ document.getElementById('submit-regs').addEventListener('click', function (event
       document.getElementById('password').value = '';
       document.getElementById('confirmPassword').value = '';
 
-      fetch('/send-email', {
+      fetch('/api/v1/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
