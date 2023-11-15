@@ -1,47 +1,35 @@
-// Botones
-const btnRegistrar = document.getElementById('btnRegistrar');
-const btnActualizar = document.getElementById('btnActualizar');
-const btnBuscar = document.getElementById('btnBuscar');
-const btnEliminar = document.getElementById('btnEliminar');
+const btnCrearPaciente = document.getElementById("btnCrear");
 
-const idBuscar = document.getElementById('idBuscar');
+btnCrearPaciente.addEventListener("click", crearPaciente);
 
-btnRegistrar.addEventListener('click', registrarPaciente);
-btnActualizar.addEventListener('click', actualizarPaciente);
-btnBuscar.addEventListener('click', () => {
-  const id = idBuscar.value;
-  buscarPaciente(id);
-});
-btnEliminar.addEventListener('click', eliminarPaciente);
-
-function registrarPaciente() {
-  let Id = document.getElementById('Id');
-  let Nombre_completo = document.getElementById('Nombre_completo');
-  let Fecha_nacimiento = document.getElementById('Fecha_nacimiento');
-  let Direccion = document.getElementById('Direccion');
-  let Genero = document.getElementById('Genero');
-  let Peso = document.getElementById('Peso');
-  let Altura = document.getElementById('Altura');
-  let Estado = document.getElementById('Estado');
-  let Id_pediatra = document.getElementById('Id_pediatra');
+function crearPaciente() {
+  const id = document.getElementById("id").value;
+  const nombre = document.getElementById("nombre").value;
+  const apellido = document.getElementById("apellido").value;
+  const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+  const direccion = document.getElementById("direccion").value;
+  const genero = document.getElementById("genero").value;
+  const peso = document.getElementById("peso").value;
+  const altura = document.getElementById("altura").value;
+  const estado = document.getElementById("estado").value;
+  const id_pediatra = document.getElementById("id_pediatra").value;
 
   let paciente = {
-    Id: Id.value,
-    Nombre_completo: Nombre_completo.value,
-    Fecha_nacimiento: Fecha_nacimiento.value,
-    Direccion: Direccion.value,
-    Genero: Genero.value,
-    Peso: Peso.value,
-    Altura: Altura.value,
-    Estado: Estado.value,
-    Id_pediatra: Id_pediatra.value,
+    id: id,
+    nombre: nombre,
+    apellido: apellido,
+    fecha_nacimiento: fecha_nacimiento,
+    direccion: direccion,
+    genero: genero,
+    peso: peso,
+    altura: altura,
+    estado: estado,
+    id_pediatra: id_pediatra,
   };
 
   let pacienteJSON = JSON.stringify(paciente);
 
   console.log(pacienteJSON);
-
-  output.value = 'El paciente se ha añadido con exito a la base de datos';
 
   fetch('http://localhost:3000/api/v1/paciente', {
     method: 'POST',
@@ -57,24 +45,7 @@ function registrarPaciente() {
       return response.json();
     })
     .then((data) => {
-      // Aquí puedes mostrar el mensaje de éxito
-      const registroExitoso = document.getElementById('registroExitoso');
-      registroExitoso.classList.remove('hidden-message');
-      registroExitoso.textContent = 'Paciente registrado exitosamente.';
-
-      // También puedes reiniciar el formulario o realizar otras acciones si es necesario
-      const formulario = document.querySelector('form');
-      formulario.reset();
-
-      Id.value = '';
-      Nombre_completo.value = '';
-      Fecha_nacimiento.value = '';
-      Direccion.value = '';
-      Genero.value = '';
-      Peso.value = '';
-      Altura.value = '';
-      Estado.value = '';
-      Id_pediatra.value = '';
+      // Nada
     })
     .catch((error) => {
       // Manejar errores de la solicitud HTTP
@@ -87,36 +58,3 @@ function registrarPaciente() {
         'Ocurrió un error mientras se añadía el alimento, por favor verifique los datos ingresados';
     });
 }
-
-// function actualizarPaciente() {}
-
-function buscarPaciente(id) {
-  fetch(`http://localhost:3000/api/v1/paciente/${id}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Aquí puedes mostrar los datos del paciente encontrado
-      const observaciones = document.getElementById('observaciones');
-      observaciones.value = JSON.stringify(data);
-
-      // También puedes mostrar un mensaje de éxito
-      const buscadoExitoso = document.getElementById('buscadoExitoso');
-      buscadoExitoso.classList.remove('hidden-message');
-      buscadoExitoso.textContent = 'Paciente encontrado exitosamente.';
-    })
-    .catch((error) => {
-      // Manejar errores de la solicitud HTTP
-      console.error('Error al consultar el paciente por ID:', error);
-    });
-}
-
-// function eliminarPaciente() {}
