@@ -24,12 +24,14 @@ document.getElementById('submit-regs').addEventListener('click', function (event
   // Check if email already exists
   fetch('/api/v1/usercreation/' + encodeURIComponent(correo))
     .then(response => response.json())
+    
     .then(data => {
       if (data.Correo) {
         console.log('El correo ya existe');
         showErrorMessageExistingMail()
         return;
       }
+
       showGoodRegistration();
 
       document.getElementById('Firstname').value = '';
