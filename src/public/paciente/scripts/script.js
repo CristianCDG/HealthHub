@@ -99,7 +99,7 @@ function crearPaciente() {
           return response.json();
         })
         .then((data) => {
-          console.log('El paciente se ha creado con éxito')
+          console.log('El registro se ha creado con éxito')
         })
         .catch((error) => {
           console.error('Error:', error);
