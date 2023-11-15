@@ -33,3 +33,11 @@ body {
     text-decoration: none;
     font-weight: 600;
 }
+
+.completeRegistration{
+    position: absolute;
+    top: 30vw;
+    left: 25%;
+    height: 25vw;
+    background-color: white;
+}
