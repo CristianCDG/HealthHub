@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     while (alimentosPlanContainer.firstChild) {
       alimentosPlanContainer.removeChild(alimentosPlanContainer.firstChild);
     }
-  
 
     if (selectedValue === "Semanal") {
       alimentosPlanContainer.className = "alimentosPlanContainer semanal";
@@ -80,7 +79,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         var diaContainer = document.createElement("div");
         diaContainer.style.display = "block";
         diaContainer.style.position = "relative"; // Añade esta línea
-      
+
         var diaTitle = document.createElement("h3");
         diaTitle.classList.add("day-title");
         diaTitle.textContent = dia;
@@ -88,47 +87,68 @@ document.addEventListener("DOMContentLoaded", (event) => {
         diaTitle.style.top = ".3vw"; // Añade esta línea
         diaTitle.style.left = "1vw"; // Añade esta línea
         diaContainer.appendChild(diaTitle);
-      
+
         var diaElement = document.createElement("div");
         diaElement.className = "dia";
         diaElement.dataset.dia = dia;
-      
-        var alimentosContainer = document.createElement("div");
-        alimentosContainer.style.display = "block";
-        diaElement.appendChild(alimentosContainer);
-      
+
+        var diaAlimentosContainer = document.createElement("div");
+        diaAlimentosContainer.style.display = "block";
+        diaElement.appendChild(diaAlimentosContainer);
+
+        diaAlimentosContainer.addEventListener("drop", function (event) {
+          event.preventDefault();
+
+          var nombreAlimento = event.dataTransfer.getData("text/plain");
+
+          var alimentoElements = Array.from(
+            planAlimentarioContainer.querySelectorAll("p")
+          );
+          var alimentoElement = alimentoElements.find(
+            (element) => element.textContent === nombreAlimento
+          );
+          if (alimentoElement) {
+            alimentoElement.parentNode.removeChild(alimentoElement);
+          }
+        });
+
         diaContainer.appendChild(diaElement);
         alimentosPlanContainer.appendChild(diaContainer);
 
-      
         diaElement.addEventListener("dragover", function (event) {
           event.preventDefault();
         });
-      
+
+        
+
         diaElement.addEventListener("drop", function (event) {
           event.preventDefault();
-      
+        
           var nombreAlimento = event.dataTransfer.getData("text/plain");
-      
+        
           var alimentoElement = document.createElement("p");
           alimentoElement.textContent = nombreAlimento;
           alimentoElement.draggable = true;
-      
+        
           alimentoElement.addEventListener("dragstart", function (event) {
             event.dataTransfer.setData("text/plain", nombreAlimento);
           });
-
+        
           alimentoElement.addEventListener("dragend", function (event) {
             var diaElement = event.target.closest(".dia");
             if (!diaElement) {
               event.target.remove();
             }
           });
-          
-      
-          alimentosContainer.appendChild(alimentoElement);
+        
+          // Añadir evento de clic para eliminar el alimento
+          alimentoElement.addEventListener("click", function () {
+            alimentoElement.remove();
+          });
+        
+          diaAlimentosContainer.appendChild(alimentoElement);
         });
-      
+        
         alimentosPlanContainer.appendChild(diaElement);
       });
     } else if (selectedValue === "Mensual") {
