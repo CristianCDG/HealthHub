@@ -99,3 +99,64 @@ body {
     color: rgba(0, 0, 0, 0.8);
 }
 
+.PlanAlimentarioContainer{
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 50vw;
+    height: 70vh;
+    background-color: rgba(46, 46, 46, 0.8);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#timeSelector{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    position: absolute;
+    top: 2vw;
+    overflow: hidden;
+}
+
+.AlimentosContainer{
+    position: absolute;
+    top: 20%;
+    left: 80%;
+    width: 18vw;
+    height: 70vh;
+    background-color: rgba(46, 46, 46, 0.8);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    padding-top: 1vw;
+}
+
+.AlimentosContainer p{
+    font-size: .8vw;
+    margin-bottom: 1vw;
+    width: 10vw;
+    height: 2vw;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.alergenico {
+    background-color: rgba(131, 20, 20, 0.671);
+  }
+  
+  .no-alergenico {
+    background-color: rgba(110, 110, 110, 0.671);
+  }

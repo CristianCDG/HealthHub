@@ -6,7 +6,7 @@ const alimentoController = require('../../controllers/alimentoController');
 router.get('/', alimentoController.loadSiteStructure)
 
 // Obtener todos los Pacientes
-router.get('/', alimentoController.getAllAlimentos);
+router.get('/all', alimentoController.getAllAlimentos);
 
 // Obtener un solo Paciente por su ID
 router.get('/:id', alimentoController.getOneAlimento);

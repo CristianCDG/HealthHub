@@ -12,7 +12,7 @@ const loadSiteStyles = (req, res) => {
 };
 
 const getAllAlimentos = (req, res) => {
-  db.query('SELECT * FROM Alimentos', (err, results) => {
+  db.query('SELECT * FROM Alimento', (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -25,7 +25,7 @@ const getAllAlimentos = (req, res) => {
 const getOneAlimento = (req, res) => {
   const { id } = req.params;
 
-  db.query('SELECT * FROM Alimentos WHERE ID = ?', [id], (err, results) => {
+  db.query('SELECT * FROM Alimento WHERE ID = ?', [id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -40,14 +40,14 @@ const getOneAlimento = (req, res) => {
 };
 
 const createOneAlimento = (req, res) => {
-  const { ID, Nombre, Descripcion, GrupoAlimenticioID } = req.body;
+  const { Id, Nombre, Alergenico, Id_GrupoAlimentario } = req.body;
 
   const sql =
-    'INSERT INTO Alimentos (ID, Nombre, Descripcion, Id_GrupoAlimentario) VALUES (?, ?, ?, ?)';
+    'INSERT INTO Alimento (Id, Nombre, Alergenico, Id_GrupoAlimentario) VALUES (?, ?, ?, ?)';
 
   db.query(
     sql,
-    [ID, Nombre, Descripcion, GrupoAlimenticioID],
+    [Id, Nombre, Alergenico, Id_GrupoAlimentario],
     (err, result) => {
       if (err) {
         console.error('Error al agregar el alimento:', err);
@@ -63,7 +63,7 @@ const updateOneAlimento = (req, res) => {
   const { id } = req.params;
   const { Nombre, Descripcion } = req.body;
 
-  const sql = 'UPDATE Alimentos SET Nombre = ?, Descripcion = ? WHERE ID = ?';
+  const sql = 'UPDATE Alimento SET Nombre = ?, Descripcion = ? WHERE ID = ?';
 
   db.query(sql, [Nombre, Descripcion, id], (err, result) => {
     if (err) {
@@ -82,7 +82,7 @@ const updateOneAlimento = (req, res) => {
 const deleteOneAlimento = (req, res) => {
   const { id } = req.params;
 
-  const sql = 'DELETE FROM Alimentos WHERE ID = ?';
+  const sql = 'DELETE FROM Alimento WHERE ID = ?';
 
   db.query(sql, [id], (err, result) => {
     if (err) {

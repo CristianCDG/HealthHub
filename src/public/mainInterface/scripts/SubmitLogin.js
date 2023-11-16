@@ -34,15 +34,16 @@ document
           localStorage.setItem("usuarioAutenticado", "true");
 
           // Si el rol es null, establece un valor por defecto (por ejemplo, 'guest')
-          var rol = data.user.Rol || "acudiente"; // Cambia 'data.rol' a 'data.user.rol'
+          var rol = data.user.Rol; // Cambia 'data.rol' a 'data.user.rol'
 
           // Guarda el rol del usuario en el localStorage
           localStorage.setItem("rolUsuario", rol);
+          console.log(rol); // Añade esta línea
 
           // Redirige al usuario a la página correspondiente según su rol
           if (rol === "admin") {
             window.location.href = "../../adminInterface/index.html";
-          } else if (rol === "acudiente") {
+          } else if (rol === "Acudiente") {
             window.location.href = "../../acudienteInterface/index.html";
           } else {
             // Redirige a la página por defecto si el rol no es reconocido
