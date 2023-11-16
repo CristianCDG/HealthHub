@@ -124,6 +124,7 @@ body {
     position: absolute;
     top: 2vw;
     overflow: hidden;
+    left: 2vw;
 }
 
 .AlimentosContainer{
@@ -210,3 +211,17 @@ body {
     font-size: .8vw;
     font-weight: bold;
   }
+
+  #pacienteSelector{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    position: absolute;
+    top: 2vw;
+    overflow: hidden;
+    left: 28vw;
+}
