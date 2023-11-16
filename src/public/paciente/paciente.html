@@ -52,6 +52,27 @@
     </div>
     <button type="submit" id="btnCrear">Crear Paciente</button>
   </div>
+
+  <!--Error messages block-->
+  <div class="v-campo-vacio" id="v-campo-vacio">
+    <h1>Ha ocurrido un error</h1>
+    <p>Ninguno de los campos del Registro puede estar vacio</p>
+  </div>
+  <div class="v-id-existe-paciente" id="v-id-existe-paciente">
+    <h1>Ha ocurrido un error</h1>
+    <p>El ID del paciente ya existe, verifique nuevamente</p>
+  </div>
+  <div class="v-id-no-existe-pediatra" id="v-id-no-existe-pediatra">
+    <h1>Ha ocurrido un error</h1>
+    <p>El ID del pediatra no existe, verifique nuevamente</p>
+  </div>
+
+  <!--Successful messages block-->
+  <div class="goodRegistration" id="goodRegistration">
+    <h1>Todo en orden</h1>
+    <p>La cuenta del Paciente ha sido creada correctamente</p>
+  </div>
+
   <script type="module" src="/paciente/scripts/script.js"></script>
 
 </body>

@@ -56,6 +56,7 @@ function crearPaciente() {
 
   if (!id || !nombre || !apellido || !fecha_nacimiento || !direccion || !genero || !peso || !altura || !estado || !id_pediatra) {
     console.log('Todos los campos deben estar llenos');
+    mostrarErrorCampoVacio();
     return;
   }
 
@@ -64,6 +65,7 @@ function crearPaciente() {
     .then((existe) => {
       if (existe) {
         console.log(`El ID ${id} ya existe en la base de datos`);
+        mostrarErrorIdPaciente();
         return;
       }
 
@@ -71,7 +73,8 @@ function crearPaciente() {
       validarPediatraID(id_pediatra)
         .then((existe) => {
           if (!existe) {
-            console.log('El pediatra al que se quiere registrar no existe');
+            console.log(`El pediatra al que se quiere registrar con ID ${id_pediatra} no existe`);
+            mostrarErrorIdPediatra();
             return;
           }
 
@@ -107,6 +110,7 @@ function crearPaciente() {
             })
             .then((data) => {
               console.log('El registro se ha creado con éxito')
+              mostrarRegistroExitoso();
               document.getElementById('id').value = '';
               document.getElementById('nombre').value = '';
               document.getElementById('apellido').value = '';
@@ -237,4 +241,49 @@ function validarPediatraID(id) {
       console.error('Error:', error);
       output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
     });
+}
+
+// Validaciones interfaces
+
+// Campo vacio
+function mostrarErrorCampoVacio() {
+  var errorMessage = document.getElementById("v-campo-vacio");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+// ID del paciente ya existe
+function mostrarErrorIdPaciente() {
+  var errorMessage = document.getElementById("v-id-existe-paciente");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+// ID del pediatra no existe
+function mostrarErrorIdPediatra() {
+  var errorMessage = document.getElementById("v-id-no-existe-pediatra");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function mostrarRegistroExitoso() {
+  var goodMessage = document.getElementById("goodRegistration");
+  goodMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    goodMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
 }

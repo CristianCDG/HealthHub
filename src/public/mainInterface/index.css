@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
-    font-family: 'Poppins', 'sans-serif';  
+    font-family: 'Poppins', 'sans-serif';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,7 +12,7 @@ body {
     color: #ededed;
 }
 
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -27,14 +27,14 @@ body {
     border-bottom-right-radius: 40px;
 }
 
-.logo{
+.logo {
     font-size: 2vw;
     color: #ededed;
     text-decoration: none;
     font-weight: 600;
 }
 
-.navbar a{
+.navbar a {
     font-size: 1vw;
     color: #ededed;
     text-decoration: none;
@@ -61,31 +61,31 @@ body {
     max-width: 50vw;
 }
 
-.home-content h1{
+.home-content h1 {
     font-size: 3vw;
     font-weight: 700;
     line-height: 1.2;
 }
 
-.home-content h3{
+.home-content h3 {
     font-size: 1.3vw;
     font-weight: 700;
     color: #00abf0;
 }
 
-.home-content p{
+.home-content p {
     font-size: 1vw;
     margin: 1.67vw 0 3.33vw;
 }
 
-.home-content .btn-box{
+.home-content .btn-box {
     display: flex;
     width: 28.8vw;
     height: 4.17vw;
     justify-content: space-between;
 }
 
-.btn-box a{
+.btn-box a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -102,7 +102,7 @@ body {
     transition: .5s;
 }
 
-.background{
+.background {
     object-fit: cover;
     opacity: 0.3;
     width: 100%;
@@ -110,12 +110,12 @@ body {
     height: 100%;
 }
 
-.btn-box a:hover{
+.btn-box a:hover {
     background-color: #00acf0d0;
     border: 0.17vw #00acf0d0;
 }
 
-.home-content-register{
+.home-content-register {
     background-color: #00acf09a;
     margin-left: 52vw;
     margin-top: 5vw;
@@ -124,14 +124,14 @@ body {
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     visibility: hidden;
     position: absolute;
     font-size: .9vw;
 }
 
-.home-content-register input{
+.home-content-register input {
     width: 20vw;
     text-align: center;
     height: 2vw;
@@ -141,12 +141,12 @@ body {
     transition: .5s;
 }
 
-.home-content-register .submit-reg:hover{
+.home-content-register .submit-reg:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
 
-.home-content-login{
+.home-content-login {
     background-color: #00acf09a;
     margin-left: 52vw;
     margin-top: 5vw;
@@ -155,14 +155,14 @@ body {
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     visibility: hidden;
     position: absolute;
     font-size: .9vw;
 }
 
-.home-content-login input{
+.home-content-login input {
     width: 20vw;
     text-align: center;
     height: 2vw;
@@ -172,7 +172,7 @@ body {
     transition: .5s;
 }
 
-#roleSelector{
+#roleSelector {
     width: 20vw;
     text-align: center;
     height: 2vw;
@@ -182,12 +182,12 @@ body {
     transition: .5s;
 }
 
-.home-content-login .submit-reg:hover{
+.home-content-login .submit-reg:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
 
-.emptyFieldsReg{
+.emptyFieldsReg {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -204,7 +204,7 @@ body {
     font-size: .9vw;
 }
 
-.emptyFieldsLog{
+.emptyFieldsLog {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -221,7 +221,7 @@ body {
     font-size: .9vw;
 }
 
-.notMatchPasswordsReg{
+.notMatchPasswordsReg {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -239,7 +239,7 @@ body {
 }
 
 
-.notMatchUserLog{
+.notMatchUserLog {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -256,7 +256,7 @@ body {
     font-size: .9vw;
 }
 
-.existingMail{
+.existingMail {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -273,7 +273,7 @@ body {
     font-size: .9vw;
 }
 
-.goodRegistration{
+.goodRegistration {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -290,7 +290,8 @@ body {
     font-size: .9vw;
 }
 
-.goodLogin{
+
+.goodLogin {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -308,5 +309,6 @@ body {
 }
 
 .show {
-    left: 0; /* Desplazamiento hacia la posición inicial (0) */
-  }
+    left: 0;
+    /* Desplazamiento hacia la posición inicial (0) */
+}
