@@ -11,36 +11,36 @@ btnCrearPaciente.addEventListener("click", (event) => {
   crearPaciente();
 });
 
-btnActualizar.addEventListener("click", (event) => {
-  event.preventDefault();
-  const nombre = document.getElementById("nombre_actualizar").value;
-  const apellido = document.getElementById("apellido_actualizar").value;
-  const fecha_nacimiento = document.getElementById("fecha_nacimiento_actualizar").value;
-  const direccion = document.getElementById("direccion_actualizar").value;
-  const genero = document.getElementById("genero_actualizar").value;
-  const peso = document.getElementById("peso_actualizar").value;
-  const altura = document.getElementById("altura_actualizar").value;
-  const estado = document.getElementById("estado_actualizar").value;
+// btnActualizar.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   const nombre = document.getElementById("nombre_actualizar").value;
+//   const apellido = document.getElementById("apellido_actualizar").value;
+//   const fecha_nacimiento = document.getElementById("fecha_nacimiento_actualizar").value;
+//   const direccion = document.getElementById("direccion_actualizar").value;
+//   const genero = document.getElementById("genero_actualizar").value;
+//   const peso = document.getElementById("peso_actualizar").value;
+//   const altura = document.getElementById("altura_actualizar").value;
+//   const estado = document.getElementById("estado_actualizar").value;
 
-  const nuevosDatos = {
-    nombre: nombre,
-    apellido: apellido,
-    fecha_nacimiento: fecha_nacimiento,
-    direccion: direccion,
-    genero: genero,
-    peso: peso,
-    altura: altura,
-    estado: estado,
-  };
+//   const nuevosDatos = {
+//     nombre: nombre,
+//     apellido: apellido,
+//     fecha_nacimiento: fecha_nacimiento,
+//     direccion: direccion,
+//     genero: genero,
+//     peso: peso,
+//     altura: altura,
+//     estado: estado,
+//   };
 
-  actualizarPaciente(idActualizar.value, nuevosDatos);
-});
+//   actualizarPaciente(idActualizar.value, nuevosDatos);
+// });
 
-btnEliminar.addEventListener('click', (event) => {
-  event.preventDefault();
-  const id = idEliminar.value;
-  eliminarPaciente(id);
-});
+// btnEliminar.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   const id = idEliminar.value;
+//   eliminarPaciente(id);
+// });
 
 function crearPaciente() {
   const id = document.getElementById("id").value;
@@ -100,6 +100,16 @@ function crearPaciente() {
         })
         .then((data) => {
           console.log('El registro se ha creado con éxito')
+          document.getElementById('id').value = '';
+          document.getElementById('nombre').value = '';
+          document.getElementById('apellido').value = '';
+          document.getElementById('fecha_nacimiento').value = '';
+          document.getElementById('direccion').value = '';
+          document.getElementById('genero').value = '';
+          document.getElementById('peso').value = '';
+          document.getElementById('altura').value = '';
+          document.getElementById('estado').value = '';
+          document.getElementById('id_pediatra').value = '';
         })
         .catch((error) => {
           console.error('Error:', error);
