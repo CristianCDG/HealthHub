@@ -204,3 +204,9 @@ body {
     border-radius: 20px;
     background-color: rgba(2, 89, 151, 0.8);
   }
+
+  .day-title {
+    color: #b8b8b8;
+    font-size: .8vw;
+    font-weight: bold;
+  }

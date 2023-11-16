@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         diaContainer.style.position = "relative"; // Añade esta línea
       
         var diaTitle = document.createElement("h3");
+        diaTitle.classList.add("day-title");
         diaTitle.textContent = dia;
         diaTitle.style.position = "absolute"; // Añade esta línea
         diaTitle.style.top = ".3vw"; // Añade esta línea
