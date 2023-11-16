@@ -63,58 +63,66 @@ function crearPaciente() {
   validarID(id)
     .then((existe) => {
       if (existe) {
-        console.log('El ID ya existe en la base de datos');
+        console.log(`El ID ${id} ya existe en la base de datos`);
         return;
       }
 
-      // Continuar con la creación del paciente si el ID no existe
-      let paciente = {
-        id: id,
-        nombre: nombre,
-        apellido: apellido,
-        fecha_nacimiento: fecha_nacimiento,
-        direccion: direccion,
-        genero: genero,
-        peso: peso,
-        altura: altura,
-        estado: estado,
-        id_pediatra: id_pediatra,
-      };
-
-      let pacienteJSON = JSON.stringify(paciente);
-
-      console.log(pacienteJSON);
-
-      fetch('/api/v1/paciente', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: pacienteJSON,
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+      // Validar si el ID del pediatra existe
+      validarPediatraID(id_pediatra)
+        .then((existe) => {
+          if (!existe) {
+            console.log('El pediatra al que se quiere registrar no existe');
+            return;
           }
-          return response.json();
+
+          let paciente = {
+            id: id,
+            nombre: nombre,
+            apellido: apellido,
+            fecha_nacimiento: fecha_nacimiento,
+            direccion: direccion,
+            genero: genero,
+            peso: peso,
+            altura: altura,
+            estado: estado,
+            id_pediatra: id_pediatra,
+          };
+
+          let pacienteJSON = JSON.stringify(paciente);
+
+          console.log(pacienteJSON);
+
+          fetch('/api/v1/paciente', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: pacienteJSON,
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log('El registro se ha creado con éxito')
+              document.getElementById('id').value = '';
+              document.getElementById('nombre').value = '';
+              document.getElementById('apellido').value = '';
+              document.getElementById('fecha_nacimiento').value = '';
+              document.getElementById('direccion').value = '';
+              document.getElementById('genero').value = '';
+              document.getElementById('peso').value = '';
+              document.getElementById('altura').value = '';
+              document.getElementById('estado').value = '';
+              document.getElementById('id_pediatra').value = '';
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
+            });
         })
-        .then((data) => {
-          console.log('El registro se ha creado con éxito')
-          document.getElementById('id').value = '';
-          document.getElementById('nombre').value = '';
-          document.getElementById('apellido').value = '';
-          document.getElementById('fecha_nacimiento').value = '';
-          document.getElementById('direccion').value = '';
-          document.getElementById('genero').value = '';
-          document.getElementById('peso').value = '';
-          document.getElementById('altura').value = '';
-          document.getElementById('estado').value = '';
-          document.getElementById('id_pediatra').value = '';
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
-        });
     })
     .catch((error) => {
       console.error('Error al validar el ID:', error);
@@ -170,7 +178,7 @@ function eliminarPaciente(id) {
 
 //Funciones Extras
 function validarID(id) {
-  return fetch(`/ api / v1 / paciente / ${id}`, {
+  return fetch(`/api/v1/paciente/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -188,6 +196,37 @@ function validarID(id) {
     })
     .then((data) => {
       // Si se encuentra un paciente con el ID, retornar true
+      if (data === false) {
+        return;
+      }
+      return data ? true : false;
+    })
+    .catch((error) => {
+      // Manejar errores de la solicitud HTTP y de la conversión de JSON
+      console.error('Error:', error);
+      output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
+    });
+}
+
+function validarPediatraID(id) {
+  return fetch(`/api/v1/pediatra/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (response.status === 404) {
+        // El pediatra no existe, retornar false
+        return false;
+      }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return true; // El pediatra existe, retornar true 
+    })
+    .then((data) => {
+      // Si se encuentra un pediatra con el ID, retornar true
       if (data === false) {
         return;
       }
