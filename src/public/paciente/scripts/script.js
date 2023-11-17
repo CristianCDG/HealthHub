@@ -6,35 +6,48 @@ const btnEliminar = document.getElementById('btnEliminar')
 const idActualizar = document.getElementById("id_actualizar");
 const idEliminar = document.getElementById("id_eliminar");
 
+// Botones sidebar
+document.querySelector(".btnRegisterShow").addEventListener("click", function () {
+  document.querySelector(".crearPaciente").style.left = "32%";
+  document.querySelector(".actualizarPaciente").style.left = "-100%";
+});
+
+document.querySelector(".btnActualizarShow").addEventListener("click", function () {
+  document.querySelector(".actualizarPaciente").style.left = "32%";
+  document.querySelector(".crearPaciente").style.left = "-100%";
+});
+
+document.getElementById("btnConsultarShow");
+
 btnCrearPaciente.addEventListener("click", (event) => {
   event.preventDefault();
   crearPaciente();
 });
 
-// btnActualizar.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   const nombre = document.getElementById("nombre_actualizar").value;
-//   const apellido = document.getElementById("apellido_actualizar").value;
-//   const fecha_nacimiento = document.getElementById("fecha_nacimiento_actualizar").value;
-//   const direccion = document.getElementById("direccion_actualizar").value;
-//   const genero = document.getElementById("genero_actualizar").value;
-//   const peso = document.getElementById("peso_actualizar").value;
-//   const altura = document.getElementById("altura_actualizar").value;
-//   const estado = document.getElementById("estado_actualizar").value;
+btnActualizar.addEventListener("click", (event) => {
+  event.preventDefault();
+  const nombre = document.getElementById("nombre_a").value;
+  const apellido = document.getElementById("apellido_a").value;
+  const fecha_nacimiento = document.getElementById("fecha_nacimiento_a").value;
+  const direccion = document.getElementById("direccion_a").value;
+  const genero = document.getElementById("genero_a").value;
+  const peso = document.getElementById("peso_a").value;
+  const altura = document.getElementById("altura_a").value;
+  const estado = document.getElementById("estado_a").value;
 
-//   const nuevosDatos = {
-//     nombre: nombre,
-//     apellido: apellido,
-//     fecha_nacimiento: fecha_nacimiento,
-//     direccion: direccion,
-//     genero: genero,
-//     peso: peso,
-//     altura: altura,
-//     estado: estado,
-//   };
+  const nuevosDatos = {
+    nombre: nombre,
+    apellido: apellido,
+    fecha_nacimiento: fecha_nacimiento,
+    direccion: direccion,
+    genero: genero,
+    peso: peso,
+    altura: altura,
+    estado: estado,
+  };
 
-//   actualizarPaciente(idActualizar.value, nuevosDatos);
-// });
+  actualizarPaciente(idActualizar.value, nuevosDatos);
+});
 
 // btnEliminar.addEventListener('click', (event) => {
 //   event.preventDefault();
@@ -59,6 +72,14 @@ function crearPaciente() {
     mostrarErrorCampoVacio();
     return;
   }
+
+  if (id.length > 12) {
+    console.log('El ID no puede exceder los 12 caracteres');
+    mostrarErrorLongitudId();
+    return;
+  }
+
+
 
   // Validar si el ID ya existe
   validarID(id)
@@ -248,6 +269,16 @@ function validarPediatraID(id) {
 // Campo vacio
 function mostrarErrorCampoVacio() {
   var errorMessage = document.getElementById("v-campo-vacio");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function mostrarErrorLongitudId() {
+  var errorMessage = document.getElementById("v-id-caracteres");
   errorMessage.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje

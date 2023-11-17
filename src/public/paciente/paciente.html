@@ -17,61 +17,119 @@
       <a href="#" id="logOut">Log-out</a>
     </nav>
   </header>
-  <div class="crearPaciente">
-    <h1>Registrar</h1>
-    <div class="input-group">
-      <input type="text" id="id" name="id" placeholder="Identificacion">
-    </div>
-    <div class="input-group">
-      <input type="text" id="nombre" name="nombre" value="Juan" placeholder="Nombre">
-    </div>
-    <div class="input-group">
-      <input type="text" id="apellido" name="apellido" value="Leon" placeholder="Apellido">
-    </div>
-    <div class="input-group">
-      <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="2004-03-31"
-        placeholder="Fecha de Nacimiento">
-    </div>
-    <div class="input-group">
-      <input type="text" id="direccion" name="direccion" value="Calle 49" placeholder="Direccion">
-    </div>
-    <div class="input-group">
-      <input type="text" id="genero" name="genero" value="M" placeholder="Genero" va>
-    </div>
-    <div class="input-group">
-      <input type="text" id="peso" name="peso" value="65" placeholder="Peso">
-    </div>
-    <div class="input-group">
-      <input type="text" id="altura" name="altura" value="180" placeholder="Altura">
-    </div>
-    <div class="input-group">
-      <input type="text" id="estado" name="estado" value="Bien" placeholder="Estado">
-    </div>
-    <div class="input-group">
-      <input type="text" id="id_pediatra" name="id_pediatra" value="1" placeholder="ID del Pediatra">
-    </div>
-    <button type="submit" id="btnCrear">Crear Paciente</button>
-  </div>
+  <section class="home">
 
-  <!--Error messages block-->
-  <div class="v-campo-vacio" id="v-campo-vacio">
-    <h1>Ha ocurrido un error</h1>
-    <p>Ninguno de los campos del Registro puede estar vacio</p>
-  </div>
-  <div class="v-id-existe-paciente" id="v-id-existe-paciente">
-    <h1>Ha ocurrido un error</h1>
-    <p>El ID del paciente ya existe, verifique nuevamente</p>
-  </div>
-  <div class="v-id-no-existe-pediatra" id="v-id-no-existe-pediatra">
-    <h1>Ha ocurrido un error</h1>
-    <p>El ID del pediatra no existe, verifique nuevamente</p>
-  </div>
+    <div class="sidebar">
+      <div class="text-box">
+        <h1>Panel</h1>
+        <p>En esta seccion podras registrar, actualizar y consultar los datos de los pacientes</p>
+      </div>
+      <div class="btn-container">
+        <button class="btnRegisterShow">Registrar Paciente</button>
+      </div>
+      <div class="btn-container">
+        <button class="btnActualizarShow">Actualizar Paciente</button>
+      </div>
+      <div class="btn-container">
+        <button class="btnConsultarShow">Consultar Pacientes</button>
+      </div>
+    </div>
 
-  <!--Successful messages block-->
-  <div class="goodRegistration" id="goodRegistration">
-    <h1>Todo en orden</h1>
-    <p>La cuenta del Paciente ha sido creada correctamente</p>
-  </div>
+    <div class="crearPaciente">
+      <h1>Registrar</h1>
+
+      <div class="input-group">
+        <input type="text" id="id" name="id" placeholder="Identificacion">
+      </div>
+      <div class="input-group">
+        <input type="text" id="nombre" name="nombre" value="Juan" placeholder="Nombre">
+      </div>
+      <div class="input-group">
+        <input type="text" id="apellido" name="apellido" value="Leon" placeholder="Apellido">
+      </div>
+      <div class="input-group">
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="2004-03-31"
+          placeholder="Fecha de Nacimiento">
+      </div>
+      <div class="input-group">
+        <input type="text" id="direccion" name="direccion" value="Calle 49" placeholder="Direccion">
+      </div>
+      <div class="input-group">
+        <input type="text" id="genero" name="genero" value="M" placeholder="Genero" va>
+      </div>
+      <div class="input-group">
+        <input type="text" id="peso" name="peso" value="65" placeholder="Peso">
+      </div>
+      <div class="input-group">
+        <input type="text" id="altura" name="altura" value="180" placeholder="Altura">
+      </div>
+      <div class="input-group">
+        <input type="text" id="estado" name="estado" value="Bien" placeholder="Estado">
+      </div>
+      <div class="input-group">
+        <input type="text" id="id_pediatra" name="id_pediatra" value="1" placeholder="ID del Pediatra">
+      </div>
+      <button type="submit" id="btnCrear">Crear Paciente</button>
+    </div>
+
+    <div class="actualizarPaciente">
+      <h1>Actualizar</h1>
+      <div class="input-group">
+        <input type="text" id="idActualizar" name="idActualizar" placeholder="Identificacion">
+      </div>
+      <div class="input-group">
+        <input type="text" id="nombre_a" name="nombre_a" value="Cristian" placeholder="Nombre">
+      </div>
+      <div class="input-group">
+        <input type="text" id="apellido_a" name="apellido_a" value="Camilo" placeholder="Apellido">
+      </div>
+      <div class="input-group">
+        <input type="date" id="fecha_nacimiento_a" name="fecha_nacimiento_a" value="2006-03-20"
+          placeholder="Fecha de Nacimiento">
+      </div>
+      <div class="input-group">
+        <input type="text" id="direccion_a" name="direccion_a" value="Calle 12" placeholder="Direccion">
+      </div>
+      <div class="input-group">
+        <input type="text" id="genero_a" name="genero_a" value="F" placeholder="Genero" va>
+      </div>
+      <div class="input-group">
+        <input type="text" id="peso_a" name="peso_a" value="60" placeholder="Peso">
+      </div>
+      <div class="input-group">
+        <input type="text" id="altura_a" name="altura_a" value="150" placeholder="Altura">
+      </div>
+      <div class="input-group">
+        <input type="text" id="estado_a" name="estado_a" value="Mal" placeholder="Estado">
+      </div>
+
+      <button type="submit" id="btnActualizar">Crear Paciente</button>
+    </div>
+
+    <!--Error messages block-->
+    <div class="v-campo-vacio" id="v-campo-vacio">
+      <h1>Ha ocurrido un error</h1>
+      <p>Ninguno de los campos del Registro puede estar vacio</p>
+    </div>
+    <div class="v-id-existe-paciente" id="v-id-existe-paciente">
+      <h1>Ha ocurrido un error</h1>
+      <p>El ID del paciente ya existe, verifique nuevamente</p>
+    </div>
+    <div class="v-id-no-existe-pediatra" id="v-id-no-existe-pediatra">
+      <h1>Ha ocurrido un error</h1>
+      <p>El ID del pediatra no existe, verifique nuevamente</p>
+    </div>
+    <div class="v-id-caracteres" id="v-id-caracteres">
+      <h1>Ha ocurrido un error</h1>
+      <p>El ID es demasiado extenso, verifique nuevamente</p>
+    </div>
+
+    <!--Successful messages block-->
+    <div class="goodRegistration" id="goodRegistration">
+      <h1>Todo en orden</h1>
+      <p>La cuenta del Paciente ha sido creada correctamente</p>
+    </div>
+  </section>
 
   <script type="module" src="/paciente/scripts/script.js"></script>
 
