@@ -99,3 +99,110 @@ body {
     color: rgba(0, 0, 0, 0.8);
 }
 
+.insertarAlimentoContainer{
+    position: absolute;
+    top: 10vw;
+    left: -100%;
+    width: 50vw;
+    height: 35vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 68, 117, 0.8);
+    border-radius: 20px;
+    transition: left 0.5s ease-in-out;
+}
+
+.deleteAlimentoContainer{
+    position: absolute;
+    top: 10vw;
+    left: -100%;
+    width: 50vw;
+    height: 35vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 68, 117, 0.8);
+    border-radius: 20px;
+    transition: left 0.5s ease-in-out;
+}
+
+.showAlimentoContainer{
+    left: 25%;
+}
+
+
+.insertarAlimentoContainer input {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.deleteAlimentoContainer input {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.insertarAlimentoContainer #Submitfood:hover {
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
+.deleteAlimentoContainer #SubmitfoodDeletion:hover {
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
+.emptyFieldsFoodReg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.goodFoodReg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(30, 179, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.show {
+    left: 0;
+    /* Desplazamiento hacia la posición inicial (0) */
+}

@@ -41,7 +41,7 @@ document
           console.log(rol); // Añade esta línea
 
           // Redirige al usuario a la página correspondiente según su rol
-          if (rol === "admin") {
+          if (rol === "Admin") {
             window.location.href = "../../adminInterface/index.html";
           } else if (rol === "Acudiente") {
             window.location.href = "../../acudienteInterface/index.html";

@@ -40,14 +40,14 @@ const getOneAlimento = (req, res) => {
 };
 
 const createOneAlimento = (req, res) => {
-  const { Id, Nombre, Alergenico, Id_GrupoAlimentario } = req.body;
+  const { Nombre, Alergenico, Id_GrupoAlimentario } = req.body;
 
   const sql =
-    'INSERT INTO Alimento (Id, Nombre, Alergenico, Id_GrupoAlimentario) VALUES (?, ?, ?, ?)';
+    'INSERT INTO Alimento (Nombre, Alergenico, Id_GrupoAlimentario) VALUES (?, ?, ?)';
 
   db.query(
     sql,
-    [Id, Nombre, Alergenico, Id_GrupoAlimentario],
+    [Nombre, Alergenico, Id_GrupoAlimentario],
     (err, result) => {
       if (err) {
         console.error('Error al agregar el alimento:', err);
