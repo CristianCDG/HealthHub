@@ -65,8 +65,81 @@ body {
   height: 100%;
 }
 
+.home {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.sidebar {
+  background-color: rgba(2, 89, 151, 0.8);
+  width: 20vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+  box-sizing: border-box;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.sidebar .text-box {
+  margin-bottom: 3vw;
+  text-align: center;
+}
+
+.sidebar .text-box h1 {
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+  position: relative;
+}
+
+.sidebar .text-box h1::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  bottom: -0.5vw;
+  width: 95%;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #ededed;
+}
+
+.sidebar .text-box p {
+  font-size: 1.1vw;
+  text-align: center;
+}
+
+.sidebar .btn-container {
+  width: 100%;
+  margin-bottom: 1vw;
+}
+
+.sidebar .btn-container button {
+  width: 100%;
+  padding: 1vw;
+  font-size: 1vw;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .btn-container button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
 .crearPaciente {
+  position: absolute;
   max-width: 50vw;
+  transition: left 0.5s ease-out;
 }
 
 .crearPaciente h1 {
@@ -77,8 +150,8 @@ body {
 
 .crearPaciente {
   background-color: #00acf09a;
-  margin-top: 5vw;
-  height: 30vw;
+  margin-top: 7vw;
+  height: 35vw;
   width: 35vw;
   border-radius: 20px;
   display: flex;
@@ -88,6 +161,27 @@ body {
   position: absolute;
   font-size: .9vw;
   padding-bottom: 1vw;
+}
+
+.actualizarPaciente {
+  left: -100%;
+  background-color: #00acf09a;
+  margin-top: 7vw;
+  height: 35vw;
+  width: 35vw;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  font-size: .9vw;
+  padding-bottom: 1vw;
+  transition: left 0.5s ease-out;
+}
+
+.input-group {
+  margin-bottom: 10px;
 }
 
 .input-group input {
@@ -165,6 +259,24 @@ body {
   border-bottom-right-radius: 20px;
   transition: left 0.5s ease-in-out;
   font-size: .9vw;
+}
+
+.v-id-caracteres {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(179, 0, 0, 0.8);
+  bottom: 1.5vw;
+  left: -100%;
+  width: 35vw;
+  height: 6vw;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: left 0.5s ease-in-out;
+  font-size: .9vw;
+
 }
 
 .goodRegistration {
