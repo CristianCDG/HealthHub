@@ -193,6 +193,22 @@ body {
     justify-content: center;
   }
 
+  .alimentosPlanContainer.mensual {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-gap: 10px;
+  }
+
+  .alimentosPlanContainer.mensual .dia {
+    border: 1px solid #2b2b2b7a;
+    padding: .2vw;
+    height: 3vw;
+    overflow: auto;
+    margin-bottom: 2vw;
+    display: flex;
+    justify-content: center;
+  }
+
   .alimentosPlanContainer p {
     font-size: .8vw;
     margin-bottom: 1vw;

@@ -30,7 +30,7 @@ const getOnePlan = (req, res) => {
   };
 
   const createOnePlan = (req, res) => {
-    const { nombreBebe, apellidoBebe, planAlimentario } = req.body;
+    const { nombreBebe, apellidoBebe, planAlimentario, tipo } = req.body;
   
     // Primero, obtenemos el ID del bebé basado en su nombre y apellido
     const sqlGetId = 'SELECT ID FROM Paciente WHERE Nombre = ? AND Apellido = ?';
@@ -48,8 +48,8 @@ const getOnePlan = (req, res) => {
   
       // Ahora que tenemos el ID del bebé, podemos insertar el nuevo plan alimentario
       const bebeId = results[0].ID;
-      const sqlInsert = 'INSERT INTO PlanAlimentario (Fecha_creacion, Observaciones, ID_Paciente) VALUES (CURDATE(), ?, ?)';
-      db.query(sqlInsert, ['', bebeId], (err, result) => {
+      const sqlInsert = 'INSERT INTO PlanAlimentario (Fecha_creacion, Observaciones, ID_Paciente, Tipo) VALUES (CURDATE(), ?, ?, ?)';
+      db.query(sqlInsert, ['', bebeId, tipo], (err, result) => {
         if (err) {
           console.error('Error al agregar el plan alimentario:', err);
           res.status(500).json({ error: 'Error en la base de datos' });
@@ -89,6 +89,37 @@ const getOnePlan = (req, res) => {
           .catch((error) => {
             res.status(500).json({ error });
           });
+      });
+    });
+  };
+
+
+  const getPlanesForPaciente = (req, res) => {
+    const { nombreBebe, apellidoBebe } = req.params;
+  
+    const sqlGetId = 'SELECT ID FROM Paciente WHERE Nombre = ? AND Apellido = ?';
+    db.query(sqlGetId, [nombreBebe, apellidoBebe], (err, results) => {
+      if (err) {
+        console.error('Error al obtener el ID del bebé:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+        return;
+      }
+  
+      if (results.length === 0) {
+        res.status(404).json({ error: 'Bebé no encontrado' });
+        return;
+      }
+  
+      const bebeId = results[0].ID;
+      const sqlGetPlanes = 'SELECT * FROM PlanAlimentario WHERE ID_Paciente = ?';
+      db.query(sqlGetPlanes, [bebeId], (err, results) => {
+        if (err) {
+          console.error('Error al obtener los planes alimentarios:', err);
+          res.status(500).json({ error: 'Error en la base de datos' });
+          return;
+        }
+  
+        res.json(results);
       });
     });
   };
@@ -165,4 +196,5 @@ module.exports = {
     createOnePlan,
     updateOnePlan,
     deleteOnePlan,
+    getPlanesForPaciente
   };

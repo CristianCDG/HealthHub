@@ -18,4 +18,7 @@ router.patch('/:id', PlanAlimentarioController.updateOnePlan);
 // Eliminar un Paciente
 router.delete('/:id', PlanAlimentarioController.deleteOnePlan);
 
+// Obtener todos los planes alimentarios para un paciente específico
+router.get('/:nombreBebe/:apellidoBebe', PlanAlimentarioController.getPlanesForPaciente);
+
 module.exports = router;
