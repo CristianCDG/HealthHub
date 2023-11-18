@@ -69,16 +69,6 @@ const updateOnePaciente = (req, res) => {
   });
 };
 
-const getAllPacientes = (req, res) => {
-  db.query('SELECT * FROM Paciente', (err, results) => {
-    if (err) {
-      console.error('Error al consultar la base de datos:', err);
-      res.status(500).json({ error: 'Error en la base de datos' });
-    } else {
-      res.json(results);
-    }
-  });
-};
 
 const deleteOnePaciente = (req, res) => {
   const { id } = req.params;
