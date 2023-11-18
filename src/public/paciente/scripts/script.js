@@ -11,6 +11,7 @@ const idActualizar = document.getElementById("id_actualizar");
 const idConsultar = document.getElementById("id_consultar");
 const idEliminar = document.getElementById("id_eliminar");
 
+
 // Botones sidebar
 document.querySelector(".btnRegisterShow").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "32%";
@@ -28,6 +29,14 @@ document.querySelector(".btnConsultarShow").addEventListener("click", function (
   document.querySelector(".crearPaciente").style.left = "-100%";
   document.querySelector(".actualizarPaciente").style.left = "-100%";
   document.querySelector(".consultarPacientes").style.left = "22%";
+});
+
+document.getElementById('borrar').addEventListener('click', function () {
+  // Selecciona el cuerpo de la tabla
+  var tbody = document.querySelector('.table-container table tbody');
+
+  // Borra todas las filas existentes
+  tbody.innerHTML = '';
 });
 
 btnCrearPaciente.addEventListener("click", (event) => {
@@ -67,7 +76,8 @@ btnConsultarUno.addEventListener('click', (event) => {
 });
 
 btnConsultarTodos.addEventListener('click', (event) => {
-
+  event.preventDefault();
+  consultarTodosPacientes();
 });
 
 // btnEliminar.addEventListener('click', (event) => {
@@ -270,6 +280,51 @@ function consultarUnPaciente(id) {
       // Manejar errores de la solicitud HTTP y de la conversión de JSON
       console.error('Error:', error);
       output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
+    });
+}
+
+function consultarTodosPacientes() {
+  fetch(`/api/v1/paciente/all`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(pacientes => {
+      // Selecciona el cuerpo de la tabla
+      var tbody = document.querySelector('.table-container table tbody');
+
+      // Borra todas las filas existentes
+      tbody.innerHTML = '';
+
+      // Crea una nueva fila para cada paciente
+      pacientes.forEach(paciente => {
+        var tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${paciente.id}</td>
+        <td>${paciente.nombre}</td>
+        <td>${paciente.apellido}</td>
+        <td>${new Date(paciente.fecha_nacimiento).toISOString().slice(0, 10)}</td>
+        <td>${paciente.direccion}</td>
+        <td>${paciente.genero}</td>
+        <td>${paciente.peso}</td>
+        <td>${paciente.altura}</td>
+        <td>${paciente.estado}</td>
+        <td>${paciente.id_pediatra}</td>
+      `;
+
+        // Añade la fila al cuerpo de la tabla
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
 }
 
