@@ -202,7 +202,7 @@ body {
   .alimentosPlanContainer.mensual .dia {
     border: 1px solid #2b2b2b7a;
     padding: .2vw;
-    height: 3vw;
+    height: 5vw;
     overflow: auto;
     margin-bottom: 2vw;
     display: flex;
