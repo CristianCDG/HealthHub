@@ -87,4 +87,5 @@ CREATE TABLE PlanAlimentario (
     FOREIGN KEY (ID_Alimento) REFERENCES Alimento(Id)
 );
 
+USE healthhub;
 SELECT * FROM Paciente;
