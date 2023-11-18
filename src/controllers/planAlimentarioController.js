@@ -29,38 +29,68 @@ const getOnePlan = (req, res) => {
     });
   };
 
-const createOnePlan = (req, res) => {
-    const {
-      ID,
-      Fecha_creacion,
-      Observaciones,
-      ID_paciente,
-      ID_pediatra,
-      ID_alimento,
-    } = req.body;
-    
-    const sql =
-      'INSERT INTO PlanAlimentario (ID, Fecha_creacion, Observaciones, ID_paciente, ID_pediatra, ID_alimento) VALUES (?, ?, ?, ?, ?, ?)';
+  const createOnePlan = (req, res) => {
+    const { nombreBebe, apellidoBebe, planAlimentario } = req.body;
   
-    db.query(
-      sql,
-      [
-        ID,
-        Fecha_creacion,
-        Observaciones,
-        ID_paciente,
-        ID_pediatra,
-        ID_alimento,
-      ],
-      (err, result) => {
+    // Primero, obtenemos el ID del bebé basado en su nombre y apellido
+    const sqlGetId = 'SELECT ID FROM Paciente WHERE Nombre = ? AND Apellido = ?';
+    db.query(sqlGetId, [nombreBebe, apellidoBebe], (err, results) => {
+      if (err) {
+        console.error('Error al obtener el ID del bebé:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+        return;
+      }
+  
+      if (results.length === 0) {
+        res.status(404).json({ error: 'Bebé no encontrado' });
+        return;
+      }
+  
+      // Ahora que tenemos el ID del bebé, podemos insertar el nuevo plan alimentario
+      const bebeId = results[0].ID;
+      const sqlInsert = 'INSERT INTO PlanAlimentario (Fecha_creacion, Observaciones, ID_Paciente) VALUES (CURDATE(), ?, ?)';
+      db.query(sqlInsert, ['', bebeId], (err, result) => {
         if (err) {
           console.error('Error al agregar el plan alimentario:', err);
           res.status(500).json({ error: 'Error en la base de datos' });
-        } else {
-          res.json({ message: 'Plan alimentario agregado con éxito' });
+          return;
         }
-      }
-    );
+  
+        const ID_PlanAlimentario = result.insertId;
+  
+        // Creamos un array de promesas para cada alimento en el plan alimentario
+        const promises = planAlimentario.flatMap((dia) => {
+          return dia.alimentos.map((alimento) => {
+            return new Promise((resolve, reject) => {
+              getAlimentoId(alimento, (err, ID_Alimento) => {
+                if (err) {
+                  console.error('Error al obtener el ID del alimento:', err);
+                  reject('Error en la base de datos');
+                } else {
+                  insertIntoPlanAlimento(ID_PlanAlimentario, ID_Alimento, dia.dia, (err) => {
+                    if (err) {
+                      console.error('Error al insertar el alimento en el plan alimentario:', err);
+                      reject('Error en la base de datos');
+                    } else {
+                      resolve();
+                    }
+                  });
+                }
+              });
+            });
+          });
+        });
+  
+        // Esperamos a que todas las promesas se resuelvan antes de enviar la respuesta
+        Promise.all(promises)
+          .then(() => {
+            res.json({ message: 'Plan alimentario agregado con éxito' });
+          })
+          .catch((error) => {
+            res.status(500).json({ error });
+          });
+      });
+    });
   };
 
   const updateOnePlan = (req, res) => {
@@ -84,7 +114,6 @@ const createOnePlan = (req, res) => {
   };
   
 
-
 const deleteOnePlan = (req, res) => {
     const { id } = req.params;
   
@@ -103,6 +132,32 @@ const deleteOnePlan = (req, res) => {
       }
     });
   };
+
+  const getAlimentoId = (alimento, callback) => {
+    const sql = 'SELECT Id FROM Alimento WHERE Nombre = ?';
+    db.query(sql, [alimento], (err, result) => {
+      if (err) {
+        console.error('Error al buscar el ID del alimento:', err);
+        callback(err);
+      } else {
+        const ID_Alimento = result[0].Id; // Cambia 'ID_Alimento' a 'Id'
+        callback(null, ID_Alimento);
+      }
+    });
+  };
+
+  const insertIntoPlanAlimento = (ID_PlanAlimentario, ID_Alimento, dia, callback) => {
+    const sql = 'INSERT INTO PlanAlimentario_Alimento (ID_PlanAlimentario, ID_Alimento, Dia) VALUES (?, ?, ?)';
+    db.query(sql, [ID_PlanAlimentario, ID_Alimento, String(dia)], (err, result) => {
+      if (err) {
+        console.error('Error al insertar el alimento en el plan alimentario:', err);
+        callback(err);
+      } else {
+        callback(null);
+      }
+    });
+  };
+  
 
 module.exports = {
     getAllPlanes,

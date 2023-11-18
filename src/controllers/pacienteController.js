@@ -69,6 +69,7 @@ const updateOnePaciente = (req, res) => {
   });
 };
 
+
 const deleteOnePaciente = (req, res) => {
   const { id } = req.params;
 
@@ -95,4 +96,5 @@ module.exports = {
   createOnePaciente,
   updateOnePaciente,
   deleteOnePaciente,
+  getAllPacientes
 };

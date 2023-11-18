@@ -104,7 +104,7 @@ body {
     top: 20%;
     left: 25%;
     width: 50vw;
-    height: 70vh;
+    height: 75vh;
     background-color: rgba(46, 46, 46, 0.8);
     border-radius: 20px;
     display: flex;
@@ -224,4 +224,21 @@ body {
     top: 2vw;
     overflow: hidden;
     left: 28vw;
+}
+
+#regPlanBtn{
+    position: absolute;
+    bottom: 1vw;
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+}
+
+#regPlanBtn:hover {
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
 }
