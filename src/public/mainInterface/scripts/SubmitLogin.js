@@ -45,6 +45,8 @@ document
             window.location.href = "../../adminInterface/index.html";
           } else if (rol === "Acudiente") {
             window.location.href = "../../acudienteInterface/index.html";
+          }else if (rol === "Pediatra"){
+            window.location.href = "../../paciente/paciente.html";
           } else {
             // Redirige a la página por defecto si el rol no es reconocido
             window.location.href = "../../mainInterface/index.html";
