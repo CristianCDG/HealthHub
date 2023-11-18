@@ -285,12 +285,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
             (lastPlan.Tipo === "Semanal" && now - planDate < 6 * 24 * 60 * 60 * 1000) ||
             (lastPlan.Tipo === "Mensual" && now - planDate < 30 * 24 * 60 * 60 * 1000)
           ) {
-            alert("Ya existe un plan reciente para este paciente.");
+            showErrorAlreadyPlan();
             return;
           }
         }
   
-        // If there's no recent plan, proceed to create a new one
+        
         var dias = document.querySelectorAll(".dia");
         var planAlimentario = Array.from(dias).map((dia) => {
           var alimentos = Array.from(dia.querySelectorAll("p")).map(
@@ -315,11 +315,35 @@ document.addEventListener("DOMContentLoaded", (event) => {
             apellidoBebe: apellidoBebe,
             planAlimentario: planAlimentario,
             tipo: tipoPlan
-          }),
+          }), 
         })
-          .then((response) => response.json())
-          .then((data) => console.log(data))
-          .catch((error) => console.error("Error:", error));
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          showNicePlan();
+        })
+        .catch((error) => console.error("Error:", error));
       });
   });
 });
+
+function showErrorAlreadyPlan() {
+  var errorMessage = document.getElementById("existingPlan");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function showNicePlan() {
+  var errorMessage = document.getElementById("nicePlanCreation");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
