@@ -7,9 +7,9 @@ const loadSiteStructure = (req, res) => {
 };
 
 const getOnePaciente = (req, res) => {
-  const { Id } = req.params;
+  const { id } = req.params;
 
-  db.query('SELECT * FROM Paciente WHERE ID = ?', [Id], (err, results) => {
+  db.query('SELECT * FROM Paciente WHERE ID = ?', [id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -71,11 +71,11 @@ const updateOnePaciente = (req, res) => {
 
 
 const deleteOnePaciente = (req, res) => {
-  const { Id } = req.params;
+  const { id } = req.params;
 
   const sql = 'DELETE FROM Paciente WHERE Id = ?'
 
-  db.query(sql, [Id], (err, result) => {
+  db.query(sql, [id], (err, result) => {
     if (err) {
       console.error('Error al eliminar el paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
