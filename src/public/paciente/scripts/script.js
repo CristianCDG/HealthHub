@@ -37,6 +37,8 @@ document.getElementById('borrar').addEventListener('click', function () {
 
   // Borra todas las filas existentes
   tbody.innerHTML = '';
+
+  idConsultar.value = '';
 });
 
 btnCrearPaciente.addEventListener("click", (event) => {
