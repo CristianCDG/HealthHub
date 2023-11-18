@@ -48,24 +48,24 @@ btnCrearPaciente.addEventListener("click", (event) => {
 
 btnActualizar.addEventListener("click", (event) => {
   event.preventDefault();
-  const nombre = document.getElementById("nombre_a").value;
-  const apellido = document.getElementById("apellido_a").value;
-  const fecha_nacimiento = document.getElementById("fecha_nacimiento_a").value;
-  const direccion = document.getElementById("direccion_a").value;
-  const genero = document.getElementById("genero_a").value;
-  const peso = document.getElementById("peso_a").value;
-  const altura = document.getElementById("altura_a").value;
-  const estado = document.getElementById("estado_a").value;
+  const Nombre = document.getElementById("nombre_a").value;
+  const Apellido = document.getElementById("apellido_a").value;
+  const Fecha_nacimiento = document.getElementById("fecha_nacimiento_a").value;
+  const Direccion = document.getElementById("direccion_a").value;
+  const Genero = document.getElementById("genero_a").value;
+  const Peso = document.getElementById("peso_a").value;
+  const Altura = document.getElementById("altura_a").value;
+  const Estado = document.getElementById("estado_a").value;
 
   const nuevosDatos = {
-    nombre: nombre,
-    apellido: apellido,
-    fecha_nacimiento: fecha_nacimiento,
-    direccion: direccion,
-    genero: genero,
-    peso: peso,
-    altura: altura,
-    estado: estado,
+    Nombre: Nombre,
+    Apellido: Apellido,
+    Fecha_nacimiento: Fecha_nacimiento,
+    Direccion: Direccion,
+    Genero: Genero,
+    Peso: Peso,
+    Altura: Altura,
+    Estado: Estado,
   };
 
   actualizarPaciente(idActualizar.value, nuevosDatos);
@@ -89,58 +89,58 @@ btnConsultarTodos.addEventListener('click', (event) => {
 // });
 
 function crearPaciente() {
-  const id = document.getElementById("id").value;
-  const nombre = document.getElementById("nombre").value;
-  const apellido = document.getElementById("apellido").value;
-  const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
-  const direccion = document.getElementById("direccion").value;
-  const genero = document.getElementById("genero").value;
-  const peso = document.getElementById("peso").value;
-  const altura = document.getElementById("altura").value;
-  const estado = document.getElementById("estado").value;
-  const id_pediatra = document.getElementById("id_pediatra").value;
+  const Id = document.getElementById("id").value;
+  const Nombre = document.getElementById("nombre").value;
+  const Apellido = document.getElementById("apellido").value;
+  const Fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+  const Direccion = document.getElementById("direccion").value;
+  const Genero = document.getElementById("genero").value;
+  const Peso = document.getElementById("peso").value;
+  const Altura = document.getElementById("altura").value;
+  const Estado = document.getElementById("estado").value;
+  const Id_pediatra = document.getElementById("id_pediatra").value;
 
-  if (!id || !nombre || !apellido || !fecha_nacimiento || !direccion || !genero || !peso || !altura || !estado || !id_pediatra) {
+  if (!Id || !Nombre || !Apellido || !Fecha_nacimiento || !Direccion || !Genero || !Peso || !Altura || !Estado || !Id_pediatra) {
     console.log('Todos los campos deben estar llenos');
     mostrarErrorCampoVacio();
     return;
   }
 
-  if (id.length > 12) {
+  if (Id.length > 12) {
     console.log('El ID no puede exceder los 12 caracteres');
     mostrarErrorLongitudId();
     return;
   }
 
   // Validar si el ID ya existe
-  validarID(id)
+  validarID(Id)
     .then((existe) => {
       if (existe) {
-        console.log(`El ID ${id} ya existe en la base de datos`);
+        console.log(`El ID ${Id} ya existe en la base de datos`);
         mostrarErrorIdPaciente();
         return;
       }
 
       // Validar si el ID del pediatra existe
-      validarPediatraID(id_pediatra)
+      validarPediatraID(Id_pediatra)
         .then((existe) => {
           if (!existe) {
-            console.log(`El pediatra al que se quiere registrar con ID ${id_pediatra} no existe`);
+            console.log(`El pediatra al que se quiere registrar con ID ${Id_pediatra} no existe`);
             mostrarErrorIdPediatra();
             return;
           }
 
           let paciente = {
-            id: id,
-            nombre: nombre,
-            apellido: apellido,
-            fecha_nacimiento: fecha_nacimiento,
-            direccion: direccion,
-            genero: genero,
-            peso: peso,
-            altura: altura,
-            estado: estado,
-            id_pediatra: id_pediatra,
+            Id: Id,
+            Nombre: Nombre,
+            Apellido: Apellido,
+            Fecha_nacimiento: Fecha_nacimiento,
+            Direccion: Direccion,
+            Genero: Genero,
+            Peso: Peso,
+            Altura: Altura,
+            Estado: Estado,
+            Id_pediatra: Id_pediatra
           };
 
           let pacienteJSON = JSON.stringify(paciente);
@@ -185,23 +185,23 @@ function crearPaciente() {
     });
 }
 
-function actualizarPaciente(id, nuevosDatos) {
-  if (!id || !nombre || !apellido || !fecha_nacimiento || !direccion || !genero || !peso || !altura || !estado) {
+function actualizarPaciente(Id, nuevosDatos) {
+  if (!Id || !nuevosDatos.Nombre || !nuevosDatos.Apellido || !nuevosDatos.Fecha_nacimiento || !nuevosDatos.Direccion || !nuevosDatos.Genero || !nuevosDatos.Peso || !nuevosDatos.Altura || !nuevosDatos.Estado) {
     console.log('Todos los campos deben estar llenos');
     mostrarErrorCampoVacio();
     return;
   }
   // Validar si el ID ya existe
-  validarID(id)
+  validarID(Id)
     .then((existe) => {
       if (!existe) {
-        console.log(`El ID ${id} no existe en la base de datos`);
+        console.log(`El ID ${Id} no existe en la base de datos`);
         mostrarErrorNoIdPaciente();
         return;
       }
     })
 
-  fetch(`/api/v1/paciente/${id}`, {
+  fetch(`/api/v1/paciente/${Id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -223,14 +223,14 @@ function actualizarPaciente(id, nuevosDatos) {
     });
 }
 
-function consultarUnPaciente(id) {
-  if (!id) {
+function consultarUnPaciente(Id) {
+  if (!Id) {
     console.log('Todos los campos deben estar llenos');
     mostrarErrorCampoVacioConsultar();
     return;
   }
 
-  fetch(`/api/v1/paciente/${id}`, {
+  fetch(`/api/v1/paciente/${Id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -245,7 +245,7 @@ function consultarUnPaciente(id) {
         // Borra todas las filas
         tbody.innerHTML = '';
 
-        throw new Error(`Paciente no encontrado: ID ${id}`);
+        throw new Error(`Paciente no encontrado: ID ${Id}`);
       }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -263,16 +263,16 @@ function consultarUnPaciente(id) {
 
       // Crea y añade las celdas a la fila
       tr.innerHTML = `
-        <td>${paciente.id}</td>
-        <td>${paciente.nombre}</td>
-        <td>${paciente.apellido}</td>
-        <td>${new Date(paciente.fecha_nacimiento).toISOString().slice(0, 10)}</td>
-        <td>${paciente.direccion}</td>
-        <td>${paciente.genero}</td>
-        <td>${paciente.peso}</td>
-        <td>${paciente.altura}</td>
-        <td>${paciente.estado}</td>
-        <td>${paciente.id_pediatra}</td>
+        <td>${paciente.Id}</td>
+        <td>${paciente.Nombre}</td>
+        <td>${paciente.Apellido}</td>
+        <td>${new Date(paciente.Fecha_nacimiento).toISOString().slice(0, 10)}</td>
+        <td>${paciente.Direccion}</td>
+        <td>${paciente.Genero}</td>
+        <td>${paciente.Peso}</td>
+        <td>${paciente.Altura}</td>
+        <td>${paciente.Estado}</td>
+        <td>${paciente.Id_pediatra}</td>
       `;
 
       // Añade la fila al cuerpo de la tabla
@@ -309,16 +309,16 @@ function consultarTodosPacientes() {
       pacientes.forEach(paciente => {
         var tr = document.createElement('tr');
         tr.innerHTML = `
-        <td>${paciente.id}</td>
-        <td>${paciente.nombre}</td>
-        <td>${paciente.apellido}</td>
-        <td>${new Date(paciente.fecha_nacimiento).toISOString().slice(0, 10)}</td>
-        <td>${paciente.direccion}</td>
-        <td>${paciente.genero}</td>
-        <td>${paciente.peso}</td>
-        <td>${paciente.altura}</td>
-        <td>${paciente.estado}</td>
-        <td>${paciente.id_pediatra}</td>
+        <td>${paciente.Id}</td>
+        <td>${paciente.Nombre}</td>
+        <td>${paciente.Apellido}</td>
+        <td>${new Date(paciente.Fecha_nacimiento).toISOString().slice(0, 10)}</td>
+        <td>${paciente.Direccion}</td>
+        <td>${paciente.Genero}</td>
+        <td>${paciente.Peso}</td>
+        <td>${paciente.Altura}</td>
+        <td>${paciente.Estado}</td>
+        <td>${paciente.Id_pediatra}</td>
       `;
 
         // Añade la fila al cuerpo de la tabla
@@ -330,8 +330,8 @@ function consultarTodosPacientes() {
     });
 }
 
-function eliminarPaciente(id) {
-  fetch(`/api/v1/paciente/${id}`, {
+function eliminarPaciente(Id) {
+  fetch(`/api/v1/paciente/${Id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -353,8 +353,8 @@ function eliminarPaciente(id) {
 };
 
 //Funciones Extras
-function validarID(id) {
-  return fetch(`/api/v1/paciente/${id}`, {
+function validarID(Id) {
+  return fetch(`/api/v1/paciente/${Id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -384,8 +384,8 @@ function validarID(id) {
     });
 }
 
-function validarPediatraID(id) {
-  return fetch(`/api/v1/pediatra/${id}`, {
+function validarPediatraID(Id) {
+  return fetch(`/api/v1/pediatra/${Id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

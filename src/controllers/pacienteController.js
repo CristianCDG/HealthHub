@@ -7,9 +7,9 @@ const loadSiteStructure = (req, res) => {
 };
 
 const getOnePaciente = (req, res) => {
-  const { id } = req.params;
+  const { Id } = req.params;
 
-  db.query('SELECT * FROM Paciente WHERE ID = ?', [id], (err, results) => {
+  db.query('SELECT * FROM Paciente WHERE ID = ?', [Id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -35,11 +35,11 @@ const getAllPacientes = (req, res) => {
 };
 
 const createOnePaciente = (req, res) => {
-  const { id, nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado, id_pediatra } = req.body;
+  const { Id, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra } = req.body;
 
-  const sql = 'INSERT INTO Paciente (id, nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado, id_pediatra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO Paciente (Id, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
-  db.query(sql, [id, nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado, id_pediatra], (err, result) => {
+  db.query(sql, [Id, Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra], (err, result) => {
     if (err) {
       console.error('Error al agregar el paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -51,11 +51,11 @@ const createOnePaciente = (req, res) => {
 
 const updateOnePaciente = (req, res) => {
   const { id } = req.params;
-  const { nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado } = req.body;
+  const { Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado } = req.body;
 
-  const sql = `UPDATE Paciente SET nombre = ?, apellido = ?, fecha_nacimiento = ?, direccion = ?, genero = ?, peso = ?, altura = ?, estado = ? WHERE Id = ${id}`;
+  const sql = `UPDATE Paciente SET Nombre = ?, Apellido = ?, Fecha_nacimiento = ?, Direccion = ?, Genero = ?, Peso = ?, Altura = ?, Estado = ? WHERE Id = ${id}`;
 
-  db.query(sql, [nombre, apellido, fecha_nacimiento, direccion, genero, peso, altura, estado], (err, result) => {
+  db.query(sql, [Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado], (err, result) => {
     if (err) {
       console.error('Error al actualizar el Paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -71,11 +71,11 @@ const updateOnePaciente = (req, res) => {
 
 
 const deleteOnePaciente = (req, res) => {
-  const { id } = req.params;
+  const { Id } = req.params;
 
-  const sql = 'DELETE FROM Paciente WHERE id = ?'
+  const sql = 'DELETE FROM Paciente WHERE Id = ?'
 
-  db.query(sql, [id], (err, result) => {
+  db.query(sql, [Id], (err, result) => {
     if (err) {
       console.error('Error al eliminar el paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
