@@ -1,9 +1,14 @@
 const btnCrearPaciente = document.getElementById("btnCrear");
 const btnActualizar = document.getElementById('btnActualizar')
-const btnConsultar = document.getElementById('btnConsultar')
+
+const btnConsultarUno = document.getElementById('btnConsultar')
+const btnConsultarTodos = document.getElementById('btnConsultarTodos')
+
+const btnEliminar = document.getElementById('btnEliminar')
 
 // Ids unicos
 const idActualizar = document.getElementById("id_actualizar");
+const idConsultar = document.getElementById("id_consultar");
 const idEliminar = document.getElementById("id_eliminar");
 
 // Botones sidebar
@@ -55,6 +60,16 @@ btnActualizar.addEventListener("click", (event) => {
   actualizarPaciente(idActualizar.value, nuevosDatos);
 });
 
+btnConsultarUno.addEventListener('click', (event) => {
+  event.preventDefault();
+  const id = idConsultar.value;
+  consultarUnPaciente(id);
+});
+
+btnConsultarTodos.addEventListener('click', (event) => {
+
+});
+
 // btnEliminar.addEventListener('click', (event) => {
 //   event.preventDefault();
 //   const id = idEliminar.value;
@@ -84,8 +99,6 @@ function crearPaciente() {
     mostrarErrorLongitudId();
     return;
   }
-
-
 
   // Validar si el ID ya existe
   validarID(id)
@@ -166,7 +179,6 @@ function actualizarPaciente(id, nuevosDatos) {
     mostrarErrorCampoVacio();
     return;
   }
-
   // Validar si el ID ya existe
   validarID(id)
     .then((existe) => {
@@ -196,6 +208,68 @@ function actualizarPaciente(id, nuevosDatos) {
     .catch((error) => {
       // Manejar errores, como mostrar un mensaje de error.
       console.error("Error al enviar la solicitud de actualización:", error);
+    });
+}
+
+function consultarUnPaciente(id) {
+  if (!id) {
+    console.log('Todos los campos deben estar llenos');
+    mostrarErrorCampoVacioConsultar();
+    return;
+  }
+
+  fetch(`/api/v1/paciente/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (response.status === 404) {
+        mostrarErrorNoIdPaciente();
+        // Selecciona el cuerpo de la tabla
+        var tbody = document.querySelector('.table-container table tbody');
+
+        // Borra todas las filas
+        tbody.innerHTML = '';
+
+        throw new Error(`Paciente no encontrado: ID ${id}`);
+      }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(paciente => {
+      // Selecciona el cuerpo de la tabla
+      var tbody = document.querySelector('.table-container table tbody');
+
+      tbody.innerHTML = '';
+
+      // Crea una nueva fila
+      var tr = document.createElement('tr');
+
+      // Crea y añade las celdas a la fila
+      tr.innerHTML = `
+        <td>${paciente.id}</td>
+        <td>${paciente.nombre}</td>
+        <td>${paciente.apellido}</td>
+        <td>${new Date(paciente.fecha_nacimiento).toISOString().slice(0, 10)}</td>
+        <td>${paciente.direccion}</td>
+        <td>${paciente.genero}</td>
+        <td>${paciente.peso}</td>
+        <td>${paciente.altura}</td>
+        <td>${paciente.estado}</td>
+        <td>${paciente.id_pediatra}</td>
+      `;
+
+      // Añade la fila al cuerpo de la tabla
+      tbody.appendChild(tr);
+    })
+    .catch((error) => {
+      // Manejar errores de la solicitud HTTP y de la conversión de JSON
+      console.error('Error:', error);
+      output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
     });
 }
 
@@ -332,6 +406,16 @@ function mostrarErrorNoIdPaciente() {
 // ID del pediatra no existe
 function mostrarErrorIdPediatra() {
   var errorMessage = document.getElementById("v-id-no-existe-pediatra");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function mostrarErrorCampoVacioConsultar() {
+  var errorMessage = document.getElementById("v-campo-vacio-consultar");
   errorMessage.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje

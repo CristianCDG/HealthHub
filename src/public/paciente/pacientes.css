@@ -108,7 +108,7 @@ body {
   width: 95%;
   height: 2px;
   border-radius: 10px;
-  background-color: #ededed;
+  background-color: rgba(32, 32, 32, 0.8);
 }
 
 .sidebar .text-box p {
@@ -125,7 +125,7 @@ body {
   width: 100%;
   padding: 1vw;
   font-size: 1.2vw;
-  color: #ededed;
+  color: rgba(32, 32, 32, 0.8);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -135,7 +135,7 @@ body {
 }
 
 .sidebar .btn-container button:hover {
-  color: #007bff;
+  color: rgba(0, 0, 0, 0.8)
 }
 
 .crearPaciente {
@@ -205,8 +205,10 @@ body {
   transition: left 0.5s ease-out;
 }
 
-.input-group {
-  margin-bottom: 10px;
+.consultarPacientes h1 {
+  font-size: 2.5vw;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .input-group input {
@@ -251,10 +253,61 @@ body {
   cursor: pointer;
 }
 
+.input-group-c {
+  float: left;
+}
+
+.input-group-c label {
+  display: block;
+  font-size: .9vw;
+  margin-bottom: .5vw;
+}
+
+.input-group-c input {
+  width: 20vw;
+  text-align: center;
+  height: 2vw;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  transition: .5s;
+}
+
+#btnConsultar,
+#btnConsultarTodos {
+  background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 10px 24px;
+  margin-right: 10px;
+}
+
+#btnConsultar:hover,
+#btnConsultarTodos:hover {
+  background-color: rgba(0, 255, 0, 0.596);
+  cursor: pointer;
+  color: #fff;
+}
+
 /* Estilo de la tabla*/
+
+.table-container {
+  margin-top: 20px;
+  overflow-y: auto;
+  background-color: #ededed;
+  height: 250px;
+  border-radius: 10px;
+}
+
 table {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0;
   border-collapse: collapse;
   background-color: #ededed;
   border-radius: 10px;
@@ -264,6 +317,7 @@ table {
 th,
 td {
   border: 1px solid #ddd;
+  color: #333;
   padding: 10px;
   text-align: center;
 }
@@ -276,6 +330,7 @@ th {
 tbody tr:hover {
   background-color: #ddd;
 }
+
 
 .v-campo-vacio {
   position: absolute;
@@ -295,6 +350,23 @@ tbody tr:hover {
 }
 
 .v-id-existe-paciente {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(179, 0, 0, 0.8);
+  bottom: 1.5vw;
+  left: -100%;
+  width: 35vw;
+  height: 6vw;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: left 0.5s ease-in-out;
+  font-size: .9vw;
+}
+
+.v-campo-vacio-consultar {
   position: absolute;
   display: flex;
   justify-content: center;
