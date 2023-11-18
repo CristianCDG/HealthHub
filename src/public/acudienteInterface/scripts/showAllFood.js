@@ -155,4 +155,32 @@ document.addEventListener("DOMContentLoaded", (event) => {
       alimentosPlanContainer.className = "alimentosPlanContainer mensual";
     }
   });
-});
+
+  document.querySelector("#regPlanBtn").addEventListener("click", function () {
+    var bebeSeleccionado = document.querySelector("#pacienteSelector").value;
+    var [nombreBebe, apellidoBebe] = bebeSeleccionado.split(' '); // Divide el valor seleccionado en nombre y apellido
+    var dias = document.querySelectorAll(".dia");
+    var planAlimentario = Array.from(dias).map((dia) => {
+      var alimentos = Array.from(dia.querySelectorAll("p")).map((p) => p.textContent);
+      return {
+        dia: dia.dataset.dia,
+        alimentos: alimentos,
+      };
+    });
+  
+    fetch("/api/v1/planes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nombreBebe: nombreBebe,
+        apellidoBebe: apellidoBebe,
+        planAlimentario: planAlimentario,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+  });
+})
