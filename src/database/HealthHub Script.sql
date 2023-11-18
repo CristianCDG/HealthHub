@@ -10,17 +10,19 @@ CREATE TABLE Pediatra (
     Contrasena VARCHAR(30) NOT NULL
 );
 
+INSERT INTO Pediatra VALUES ('1', 'Juan', 'Leon', 'juan@mail.com', '123');
+
 CREATE TABLE Paciente (
-	id INT PRIMARY KEY NOT NULL,
-	nombre VARCHAR(40) NOT NULL,
-	apellido VARCHAR(40) NOT NULL,
-	fecha_nacimiento DATE NOT NULL,
-	direccion VARCHAR(40) NOT NULL,
-	genero VARCHAR(20) NOT NULL,
-    peso DOUBLE NOT NULL,
-    altura int NOT NULL,
-	estado VARCHAR(20) NOT NULL,
-	id_pediatra INT NOT NULL,
+	Id INT PRIMARY KEY NOT NULL,
+	Nombre VARCHAR(40) NOT NULL,
+	Apellido VARCHAR(40) NOT NULL,
+	Fecha_nacimiento DATE NOT NULL,
+	Direccion VARCHAR(40) NOT NULL,
+	Genero VARCHAR(20) NOT NULL,
+    Peso DOUBLE NOT NULL,
+    Altura int NOT NULL,
+	Estado VARCHAR(20) NOT NULL,
+	Id_pediatra INT NOT NULL,
     FOREIGN KEY (Id_pediatra) REFERENCES Pediatra(Id)
 );
 
@@ -89,3 +91,5 @@ CREATE TABLE PlanAlimentario (
 
 USE healthhub;
 SELECT * FROM Paciente;
+
+
