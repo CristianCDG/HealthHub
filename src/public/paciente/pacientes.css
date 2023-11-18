@@ -254,13 +254,30 @@ body {
 }
 
 .input-group-c {
-  float: left;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.input-group-c a {
+  margin-left: 5px;
+  color: #fff;
+}
+
+.input-group-c a i {
+  font-size: 2vw;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.input-group-c a i:hover {
+  color: #00abf0;
 }
 
 .input-group-c label {
   display: block;
   font-size: .9vw;
-  margin-bottom: .5vw;
+  margin-right: 10px;
 }
 
 .input-group-c input {
