@@ -42,32 +42,31 @@
         <input type="text" id="id" name="id" placeholder="Identificacion">
       </div>
       <div class="input-group">
-        <input type="text" id="nombre" name="nombre" value="Juan" placeholder="Nombre">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
       </div>
       <div class="input-group">
-        <input type="text" id="apellido" name="apellido" value="Leon" placeholder="Apellido">
+        <input type="text" id="apellido" name="apellido" placeholder="Apellido">
       </div>
       <div class="input-group">
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="2004-03-31"
-          placeholder="Fecha de Nacimiento">
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Fecha de Nacimiento">
       </div>
       <div class="input-group">
-        <input type="text" id="direccion" name="direccion" value="Calle 49" placeholder="Direccion">
+        <input type="text" id="direccion" name="direccion" placeholder="Direccion">
       </div>
       <div class="input-group">
-        <input type="text" id="genero" name="genero" value="M" placeholder="Genero" va>
+        <input type="text" id="genero" name="genero" placeholder="Genero" va>
       </div>
       <div class="input-group">
-        <input type="text" id="peso" name="peso" value="65" placeholder="Peso">
+        <input type="text" id="peso" name="peso" placeholder="Peso">
       </div>
       <div class="input-group">
-        <input type="text" id="altura" name="altura" value="180" placeholder="Altura">
+        <input type="text" id="altura" name="altura" placeholder="Altura">
       </div>
       <div class="input-group">
-        <input type="text" id="estado" name="estado" value="Bien" placeholder="Estado">
+        <input type="text" id="estado" name="estado" placeholder="Estado">
       </div>
       <div class="input-group">
-        <input type="text" id="id_pediatra" name="id_pediatra" value="1" placeholder="ID del Pediatra">
+        <input type="text" id="id_pediatra" name="id_pediatra" placeholder="ID del Pediatra">
       </div>
       <button type="submit" id="btnCrear">Crear Paciente</button>
     </div>
@@ -75,35 +74,148 @@
     <div class="actualizarPaciente">
       <h1>Actualizar</h1>
       <div class="input-group">
-        <input type="text" id="idActualizar" name="idActualizar" placeholder="Identificacion">
+        <input type="text" id="id_actualizar" name="idActualizar" placeholder="Identificacion">
       </div>
       <div class="input-group">
-        <input type="text" id="nombre_a" name="nombre_a" value="Cristian" placeholder="Nombre">
+        <input type="text" id="nombre_a" name="nombre_a" placeholder="Nombre">
       </div>
       <div class="input-group">
-        <input type="text" id="apellido_a" name="apellido_a" value="Camilo" placeholder="Apellido">
+        <input type="text" id="apellido_a" name="apellido_a" placeholder="Apellido">
       </div>
       <div class="input-group">
-        <input type="date" id="fecha_nacimiento_a" name="fecha_nacimiento_a" value="2006-03-20"
-          placeholder="Fecha de Nacimiento">
+        <input type="date" id="fecha_nacimiento_a" name="fecha_nacimiento_a" placeholder="Fecha de Nacimiento">
       </div>
       <div class="input-group">
-        <input type="text" id="direccion_a" name="direccion_a" value="Calle 12" placeholder="Direccion">
+        <input type="text" id="direccion_a" name="direccion_a" placeholder="Direccion">
       </div>
       <div class="input-group">
-        <input type="text" id="genero_a" name="genero_a" value="F" placeholder="Genero" va>
+        <input type="text" id="genero_a" name="genero_a" placeholder="Genero" va>
       </div>
       <div class="input-group">
-        <input type="text" id="peso_a" name="peso_a" value="60" placeholder="Peso">
+        <input type="text" id="peso_a" name="peso_a" placeholder="Peso">
       </div>
       <div class="input-group">
-        <input type="text" id="altura_a" name="altura_a" value="150" placeholder="Altura">
+        <input type="text" id="altura_a" name="altura_a" placeholder="Altura">
       </div>
       <div class="input-group">
-        <input type="text" id="estado_a" name="estado_a" value="Mal" placeholder="Estado">
+        <input type="text" id="estado_a" name="estado_a" placeholder="Estado">
       </div>
 
-      <button type="submit" id="btnActualizar">Crear Paciente</button>
+      <button type="submit" id="btnActualizar">Actualizar Paciente</button>
+    </div>
+
+    <div class="consultarPacientes">
+      <h1>Consultar</h1>
+      <div class="input-group">
+        <input type="text" id="id_consultar" name="idConsultar" placeholder="Identificacion">
+      </div>
+
+      <div class="table-container" style="height: 300px; overflow-y: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Dirección</th>
+              <th>Genero</th>
+              <th>Peso</th>
+              <th>Altura</th>
+              <th>Estado</th>
+              <th>Id Pediatra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr class="filaVacia">
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button type="submit" id="btnConsultar">Consultar Paciente</button>
     </div>
 
     <!--Error messages block-->
@@ -115,6 +227,12 @@
       <h1>Ha ocurrido un error</h1>
       <p>El ID del paciente ya existe, verifique nuevamente</p>
     </div>
+
+    <div class="v-id-no-existe-paciente" id="v-id-no-existe-paciente">
+      <h1>Ha ocurrido un error</h1>
+      <p>El ID del paciente no existe, verifique nuevamente</p>
+    </div>
+
     <div class="v-id-no-existe-pediatra" id="v-id-no-existe-pediatra">
       <h1>Ha ocurrido un error</h1>
       <p>El ID del pediatra no existe, verifique nuevamente</p>
@@ -128,6 +246,11 @@
     <div class="goodRegistration" id="goodRegistration">
       <h1>Todo en orden</h1>
       <p>La cuenta del Paciente ha sido creada correctamente</p>
+    </div>
+
+    <div class="goodUpdate" id="goodUpdate">
+      <h1>Todo en orden</h1>
+      <p>Los datos del Paciente han sido actualizados correctamente</p>
     </div>
   </section>
 

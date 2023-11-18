@@ -124,16 +124,18 @@ body {
 .sidebar .btn-container button {
   width: 100%;
   padding: 1vw;
-  font-size: 1vw;
+  font-size: 1.2vw;
+  color: #ededed;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
+  background: transparent;
+  font-weight: 500;
 }
 
 .sidebar .btn-container button:hover {
-  background-color: #007bff;
-  color: #fff;
+  color: #007bff;
 }
 
 .crearPaciente {
@@ -180,6 +182,29 @@ body {
   transition: left 0.5s ease-out;
 }
 
+.actualizarPaciente h1 {
+  font-size: 2.5vw;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.consultarPacientes {
+  left: -100%;
+  background-color: #00acf09a;
+  margin-top: 7vw;
+  height: 35vw;
+  width: 70vw;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  font-size: .9vw;
+  padding-bottom: 1vw;
+  transition: left 0.5s ease-out;
+}
+
 .input-group {
   margin-bottom: 10px;
 }
@@ -208,6 +233,48 @@ body {
 #btnCrear:hover {
   background-color: rgba(0, 255, 0, 0.596);
   cursor: pointer;
+}
+
+#btnActualizar {
+  width: 20vw;
+  text-align: center;
+  height: 2vw;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  transition: .5s;
+  cursor: pointer;
+}
+
+#btnActualizar:hover {
+  background-color: rgba(0, 255, 0, 0.596);
+  cursor: pointer;
+}
+
+/* Estilo de la tabla*/
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #ededed;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
 }
 
 .v-campo-vacio {
@@ -276,10 +343,43 @@ body {
   border-bottom-right-radius: 20px;
   transition: left 0.5s ease-in-out;
   font-size: .9vw;
+}
 
+.v-id-no-existe-paciente {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(179, 0, 0, 0.8);
+  bottom: 1.5vw;
+  left: -100%;
+  width: 35vw;
+  height: 6vw;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: left 0.5s ease-in-out;
+  font-size: .9vw;
 }
 
 .goodRegistration {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgba(30, 179, 0, 0.8);
+  bottom: 1.5vw;
+  left: -100%;
+  width: 35vw;
+  height: 6vw;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: left 0.5s ease-in-out;
+  font-size: .9vw;
+}
+
+.goodUpdate {
   position: absolute;
   display: flex;
   justify-content: center;

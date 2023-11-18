@@ -1,6 +1,6 @@
 const btnCrearPaciente = document.getElementById("btnCrear");
 const btnActualizar = document.getElementById('btnActualizar')
-const btnEliminar = document.getElementById('btnEliminar')
+const btnConsultar = document.getElementById('btnConsultar')
 
 // Ids unicos
 const idActualizar = document.getElementById("id_actualizar");
@@ -10,14 +10,20 @@ const idEliminar = document.getElementById("id_eliminar");
 document.querySelector(".btnRegisterShow").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "32%";
   document.querySelector(".actualizarPaciente").style.left = "-100%";
+  document.querySelector(".consultarPacientes").style.left = "-100%";
 });
 
 document.querySelector(".btnActualizarShow").addEventListener("click", function () {
-  document.querySelector(".actualizarPaciente").style.left = "32%";
   document.querySelector(".crearPaciente").style.left = "-100%";
+  document.querySelector(".actualizarPaciente").style.left = "32%";
+  document.querySelector(".consultarPacientes").style.left = "-100%";
 });
 
-document.getElementById("btnConsultarShow");
+document.querySelector(".btnConsultarShow").addEventListener("click", function () {
+  document.querySelector(".crearPaciente").style.left = "-100%";
+  document.querySelector(".actualizarPaciente").style.left = "-100%";
+  document.querySelector(".consultarPacientes").style.left = "22%";
+});
 
 btnCrearPaciente.addEventListener("click", (event) => {
   event.preventDefault();
@@ -155,6 +161,22 @@ function crearPaciente() {
 }
 
 function actualizarPaciente(id, nuevosDatos) {
+  if (!id || !nombre || !apellido || !fecha_nacimiento || !direccion || !genero || !peso || !altura || !estado) {
+    console.log('Todos los campos deben estar llenos');
+    mostrarErrorCampoVacio();
+    return;
+  }
+
+  // Validar si el ID ya existe
+  validarID(id)
+    .then((existe) => {
+      if (!existe) {
+        console.log(`El ID ${id} no existe en la base de datos`);
+        mostrarErrorNoIdPaciente();
+        return;
+      }
+    })
+
   fetch(`/api/v1/paciente/${id}`, {
     method: 'PATCH',
     headers: {
@@ -165,14 +187,12 @@ function actualizarPaciente(id, nuevosDatos) {
     if (response.ok) {
       // La actualización fue exitosa, puedes mostrar un mensaje de éxito.
       console.log("Paciente actualizado con éxito");
+      mostrarActualizacionExitosa();
     } else {
       // La actualización no fue exitosa, manejar el error.
       console.error("Error al actualizar el Paciente");
     }
   })
-    .then((data) => {
-      console.log('El paciente se ha actualizado con éxito')
-    })
     .catch((error) => {
       // Manejar errores, como mostrar un mensaje de error.
       console.error("Error al enviar la solicitud de actualización:", error);
@@ -298,6 +318,17 @@ function mostrarErrorIdPaciente() {
   }, 10000); // 3000 milisegundos (3 segundos)
 }
 
+// Id del paciente no existe
+function mostrarErrorNoIdPaciente() {
+  var errorMessage = document.getElementById("v-id-no-existe-paciente");
+  errorMessage.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    errorMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
 // ID del pediatra no existe
 function mostrarErrorIdPediatra() {
   var errorMessage = document.getElementById("v-id-no-existe-pediatra");
@@ -316,5 +347,15 @@ function mostrarRegistroExitoso() {
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
   setTimeout(function () {
     goodMessage.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function mostrarActualizacionExitosa() {
+  var goodUpdate = document.getElementById("goodUpdate");
+  goodUpdate.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    goodUpdate.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }
