@@ -16,18 +16,29 @@ document.querySelector(".btnRegisterShow").addEventListener("click", function ()
   document.querySelector(".crearPaciente").style.left = "32%";
   document.querySelector(".actualizarPaciente").style.left = "-100%";
   document.querySelector(".consultarPacientes").style.left = "-100%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
 });
 
 document.querySelector(".btnActualizarShow").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "-100%";
   document.querySelector(".actualizarPaciente").style.left = "32%";
   document.querySelector(".consultarPacientes").style.left = "-100%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
 });
 
 document.querySelector(".btnConsultarShow").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "-100%";
   document.querySelector(".actualizarPaciente").style.left = "-100%";
   document.querySelector(".consultarPacientes").style.left = "22%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+});
+
+document.querySelector(".btnCrearPlan").addEventListener("click", function () {
+  document.querySelector(".crearPaciente").style.left = "-100%";
+  document.querySelector(".actualizarPaciente").style.left = "-100%";
+  document.querySelector(".consultarPacientes").style.left = "-100%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "28%";
+  document.querySelector(".AlimentosContainer").style.left = "80%";
 });
 
 document.getElementById('borrar').addEventListener('click', function () {
