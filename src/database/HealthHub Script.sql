@@ -91,5 +91,6 @@ CREATE TABLE PlanAlimentario (
 
 USE healthhub;
 SELECT * FROM Paciente;
-
+SELECT * FROM Usuario;
+SELECT * FROM Pediatra;
 
