@@ -33,6 +33,8 @@
             </div>
         </div>
     </div>
+
+    <!--Contenedores del CRUD de alimento-->
     <div class="insertarAlimentoContainer" id="insertarAlimentoContainer">
         <h1>Insertar alimento</h1>
         <input type="text" name="name" id="foodName" placeholder="Nombre del alimento" />
@@ -62,6 +64,14 @@
         <input type="submit" name="submitUpdate" id="submitUpdate" value="Actualizar" />
     </div>
 
+    <!--Contenedores del CRUD de grupo alimenticio-->
+    <div class="insertarGrupoContainer" id="insertarGrupoContainer">
+        <h1>Insertar grupo alimenticio</h1>
+        <input type="text" name="name" id="groupName" placeholder="Nombre del grupo alimenticio" />
+        <input type="text" name="name" id="groupDesc" placeholder="Descripcion del grupo alimenticio" />
+        <input type="submit" name="submit" id="SubmitGroup" value="Registrar grupo alimenticio" />
+    </div>
+
     <!--Zona de mensajes-->
     <div class="emptyFieldsFoodReg" id="emptyFieldsFoodReg">
         <h1>Ha ocurrido un error</h1>
@@ -78,5 +88,6 @@
     <script type="module" src="../adminInterface/scripts/delFood.js"></script>
     <script type="module" src="../adminInterface/scripts/viewAllFood.js"></script>
     <script type="module" src="../adminInterface/scripts/updateFood.js"></script>
+    <script type="module" src="../adminInterface/scripts/foodGroupCreation.js"></script>
 </body>
 </html>

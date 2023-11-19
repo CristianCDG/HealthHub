@@ -28,20 +28,20 @@ const getOneGrupo = (req, res) => {
     });
   };
 
-const createOneGrupo = (req, res) => {
+  const createOneGrupo = (req, res) => {
     const {
-      ID,
       Nombre,
+      Descripcion
     } = req.body;
     
     const sql =
-      'INSERT INTO gruposalimenticios (ID, Nombre) VALUES (?, ?)';
+      'INSERT INTO GrupoAlimentario (Nombre, Descripcion) VALUES (?, ?)';
   
     db.query(
       sql,
       [
-        ID,
         Nombre,
+        Descripcion
       ],
       (err, result) => {
         if (err) {
@@ -52,7 +52,7 @@ const createOneGrupo = (req, res) => {
         }
       }
     );
-  };
+};
 
   const updateOneGrupo = (req, res) => {
     const { id } = req.params;
