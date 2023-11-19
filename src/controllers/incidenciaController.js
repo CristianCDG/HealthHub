@@ -17,6 +17,24 @@ const createIncidencia = (req, res) => {
     );
   };
 
+  const getIncidenciasByPacienteId = (req, res) => {
+    const { Id_paciente } = req.params;
+  
+    db.query(
+      'SELECT * FROM Incidencia WHERE Id_paciente = ?',
+      [Id_paciente],
+      (error, results) => {
+        if (error) {
+          console.log(error);
+          res.status(500).json({ message: 'Error al obtener las incidencias' });
+        } else {
+          res.status(200).json(results);
+        }
+      }
+    );
+};
+
 module.exports = {
-    createIncidencia
+    createIncidencia,
+    getIncidenciasByPacienteId
 }
