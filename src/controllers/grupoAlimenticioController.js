@@ -1,7 +1,7 @@
 const db = require('../database/config');
 
 const getAllGrupos = (req, res) => {
-    db.query('SELECT * FROM gruposalimenticios', (err, results) => {
+    db.query('SELECT * FROM GrupoAlimentario', (err, results) => {
       if (err) {
         console.error('Error al consultar la base de datos:', err);
         res.status(500).json({ error: 'Error en la base de datos' });
@@ -14,7 +14,7 @@ const getAllGrupos = (req, res) => {
 const getOneGrupo = (req, res) => {
     const { id } = req.params;
   
-    db.query('SELECT * FROM gruposalimenticios WHERE ID = ?', [id], (err, results) => {
+    db.query('SELECT * FROM GrupoAlimentario WHERE ID = ?', [id], (err, results) => {
       if (err) {
         console.error('Error al consultar la base de datos:', err);
         res.status(500).json({ error: 'Error en la base de datos' });
@@ -62,7 +62,7 @@ const getOneGrupo = (req, res) => {
     } = req.body;
   
     const sql =
-      'UPDATE gruposalimenticios SET Nombre = ? WHERE ID = ?';
+      'UPDATE GrupoAlimentario SET Nombre = ? WHERE ID = ?';
   
     db.query(
       sql,
@@ -88,7 +88,7 @@ const getOneGrupo = (req, res) => {
   const deleteOneGrupo = (req, res) => {
     const { id } = req.params;
   
-    const sql = 'DELETE FROM gruposalimenticios WHERE ID = ?';
+    const sql = 'DELETE FROM GrupoAlimentario WHERE ID = ?';
   
     db.query(sql, [id], (err, result) => {
       if (err) {

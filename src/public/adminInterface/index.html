@@ -26,7 +26,7 @@
                 <a href="#" id="deleteFoodBtn">Eliminar alimento</a>
                 <a href="#" id="listFoodBtn">Consultar alimentos</a>
                 <a href="#" id="updateFoodBtn">Actualizar alimento</a>
-                <a href="#">Insertar grupo alimenticio</a>
+                <a href="#" id="insertFoodGroupBtn">Insertar grupo alimenticio</a>
                 <a href="#">Modificar grupo alimenticio</a>
                 <a href="#">Eliminar grupo alimenticio</a>
                 <a href="#">Consultar grupo alimenticio</a>
@@ -38,10 +38,12 @@
     <div class="insertarAlimentoContainer" id="insertarAlimentoContainer">
         <h1>Insertar alimento</h1>
         <input type="text" name="name" id="foodName" placeholder="Nombre del alimento" />
-        <input type="text" name="group" id="foodGroup" placeholder="Grupo alimenticio" />
+        <!-- <input type="text" name="group" id="foodGroup" placeholder="Grupo alimenticio" /> -->
+        <select name="" id="foodGroup"></select>
         <input type="text" name="alergenic" id="Alergenic" placeholder="¿Alergenico? true o false" />
         <input type="submit" name="submit" id="Submitfood" value="Registrar alimento" />
     </div>
+
     <div class="deleteAlimentoContainer" id="deleteAlimentoContainer">
         <h1>Eliminar alimento</h1>
         <select name="" id="foodDeletionSelector"></select>

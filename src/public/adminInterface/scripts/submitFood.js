@@ -1,4 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+  fetch('/api/v1/grupo')
+    .then(response => response.json())
+    .then(data => {
+        var select = document.getElementById('foodGroup');
+        data.forEach(function(grupo) {
+            var option = document.createElement('option');
+            option.value = grupo.ID;
+            option.text = grupo.Nombre;
+            select.add(option);
+        });
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
   document
     .getElementById("Submitfood")
     .addEventListener("click", function (event) {
