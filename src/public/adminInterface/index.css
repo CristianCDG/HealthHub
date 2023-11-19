@@ -158,6 +158,17 @@ body {
     margin-top: 1vw;
 }
 
+.deleteAlimentoContainer select {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
 .insertarAlimentoContainer #Submitfood:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
