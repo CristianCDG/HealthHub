@@ -20,4 +20,7 @@ router.patch('/:id', alimentoController.updateOneAlimento);
 // Eliminar un Paciente
 router.delete('/:id', alimentoController.deleteOneAlimento);
 
+// Obtener un solo Alimento por su nombre
+router.get('/name/:name', alimentoController.getAlimentoByName);
+
 module.exports = router;

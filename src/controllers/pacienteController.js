@@ -108,7 +108,7 @@ const getIdForPaciente = (req, res) => {
       return;
     }
 
-    res.json(results[0].ID);
+    res.json({ ID: results[0].ID }); // Wrap the ID in an object
   });
 };
 

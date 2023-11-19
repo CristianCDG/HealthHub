@@ -39,6 +39,25 @@ const getOneAlimento = (req, res) => {
   });
 };
 
+const getAlimentoByName = (req, res) => {
+  const { name } = req.params;
+
+  db.query('SELECT * FROM Alimento WHERE Nombre = ?', [name], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      if (results.length > 0) {
+        res.json(results[0]);
+      } else {
+        res.status(404).json({ error: 'Alimento no encontrado' });
+      }
+    }
+  });
+};
+
+
+
 const createOneAlimento = (req, res) => {
   const { Nombre, Alergenico, Id_GrupoAlimentario } = req.body;
 
@@ -106,4 +125,5 @@ module.exports = {
   deleteOneAlimento,
   loadSiteStructure,
   loadSiteStyles,
+  getAlimentoByName
 };

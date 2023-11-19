@@ -24,7 +24,7 @@
             <div class="sideBarOptions">
                 <a href="#" id="createFoodPlan">Crear plan alimentario</a>
                 <a href="#" id="editFoodPlan">Editor de plan alimentario</a>
-                <a href="#">Registrar incidencia</a>
+                <a href="#" id="regIncidenciaPlan">Registrar incidencia</a>
             </div>
         </div>
     </div>
@@ -46,7 +46,15 @@
       <div class="showActualPlan"></div>
     </div>
 
-    <div class="foodEditorPanel">
+    <div class="regIncidenciaContainer" id="regIncidenciaContainer">
+      <select id="pacienteIncidenciaSelector"></select>
+      <select name="" id="alimentoIncidenciaSelector"></select>
+      <input type="text" id="descIncidencia" placeholder="Descripcion de incidencia">
+
+      <input type="submit" id="regIncidencia" value="Registrar incidencia">
+    </div>
+
+    <div class="foodEditorPanel" id="foodEditorPanel">
       <!-- <input type="text" id="foodAddName" placeholder="Nombre del alimento a añadir"> -->
       <label for="">Selector de alimentos</label>
       <select name="" id="alimentosAvailable"></select>
@@ -75,5 +83,6 @@
     <script type="module" src="../acudienteInterface/scripts/pacienteSelector.js"></script>
     <script type="module" src="../acudienteInterface/scripts/WindowChanger.js"></script>
     <script type="module" src="../acudienteInterface/scripts/planEditor.js"></script>
+    <script type="module" src="../acudienteInterface/scripts/registrarIncidencia.js"></script>
 </body>
 </html>

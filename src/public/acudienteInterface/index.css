@@ -361,7 +361,8 @@ body {
     align-items: center;
     flex-direction: column;
     overflow: auto;
-    left: 70vw;
+    left: -100%;
+    transition: left 0.5s ease-in-out;
 }
 
 .foodEditorPanel select{
@@ -396,6 +397,54 @@ body {
     margin-top: 1vw;
 }
 
+.regIncidenciaContainer{
+    position: absolute;
+    top: 20%;
+    left: -100%;
+    width: 50vw;
+    height: 75vh;
+    background-color: rgba(46, 46, 46, 0.8);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: left 0.5s ease-in-out;
+}
+
+.regIncidenciaContainer input{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    top: 2vw;
+    overflow: hidden;
+    left: 2vw;
+    margin-top: 1vw;
+}
+
+.regIncidenciaContainer select{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    top: 2vw;
+    overflow: hidden;
+    left: 2vw;
+    margin-top: 1vw;
+}
+
+#descIncidencia{
+    width: 30vw;
+    height: 30vw;
+}
+
 .showContainer{ /*Food plan container */
     left: 25%;
 }
@@ -417,4 +466,13 @@ body {
   #addFood:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
+}
+
+#regIncidencia:hover {
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
+.showFoodEditorPanelCont{
+    left: 70vw;
 }
