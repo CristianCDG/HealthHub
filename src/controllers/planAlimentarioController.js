@@ -188,6 +188,42 @@ const deleteOnePlan = (req, res) => {
       }
     });
   };
+
+  const getAlimentosForPlan = (req, res) => {
+    const { id } = req.params;
+  
+    const sql = 'SELECT * FROM PlanAlimentario_Alimento WHERE ID_PlanAlimentario = ?';
+    db.query(sql, [id], (err, results) => {
+      if (err) {
+        console.error('Error al obtener los alimentos del plan alimentario:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+        return;
+      }
+  
+      res.json(results);
+    });
+  };
+
+  const updateAlimentoInPlan = (req, res) => {
+    const { idPlan, idAlimento } = req.params;
+    const { dia } = req.body;
+  
+    const sql = 'UPDATE PlanAlimentario_Alimento SET Dia = ? WHERE ID_PlanAlimentario = ? AND ID_Alimento = ?';
+    db.query(sql, [dia, idPlan, idAlimento], (err, result) => {
+      if (err) {
+        console.error('Error al actualizar el alimento en el plan alimentario:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+      } else {
+        if (result.affectedRows > 0) {
+          res.json({ message: 'Alimento actualizado con éxito en el plan alimentario' });
+        } else {
+          res.status(404).json({ error: 'Alimento no encontrado en el plan alimentario' });
+        }
+      }
+    });
+  };
+
+  
   
 
 module.exports = {
@@ -196,5 +232,7 @@ module.exports = {
     createOnePlan,
     updateOnePlan,
     deleteOnePlan,
-    getPlanesForPaciente
+    getPlanesForPaciente,
+    getAlimentosForPlan,
+    updateAlimentoInPlan
   };

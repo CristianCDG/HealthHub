@@ -23,7 +23,7 @@
             </div>
             <div class="sideBarOptions">
                 <a href="#" id="createFoodPlan">Crear plan alimentario</a>
-                <a href="#">Editor de plan alimentario</a>
+                <a href="#" id="editFoodPlan">Editor de plan alimentario</a>
                 <a href="#">Registrar incidencia</a>
             </div>
         </div>
@@ -35,13 +35,18 @@
           </select>
           <select id="pacienteSelector">
           </select>
-          <div class="alimentosPlanContainer">
-
-          </div>
+          <div class="alimentosPlanContainer"></div>
           <input type="submit" id="regPlanBtn" value="Guardar plan">
     </div>
-    <div class="AlimentosContainer" id="AlimentosContainer">
-            
+    <div class="AlimentosContainer" id="AlimentosContainer">  
+    </div>
+
+    <div class="foodPlanEditorContainer" id="foodPlanEditorContainer">
+      <select id="pacienteSelectorFPE">
+      </select>
+      <select name="" id="planSelector">
+      </select>
+      <div class="showActualPlan"></div>
     </div>
 
     <!--Zona de mensajes-->
@@ -60,5 +65,6 @@
     <script type="module" src="../acudienteInterface/scripts/showAllFood.js"></script>
     <script type="module" src="../acudienteInterface/scripts/pacienteSelector.js"></script>
     <script type="module" src="../acudienteInterface/scripts/WindowChanger.js"></script>
+    <script type="module" src="../acudienteInterface/scripts/planEditor.js"></script>
 </body>
 </html>

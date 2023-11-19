@@ -89,6 +89,21 @@ const deleteOnePaciente = (req, res) => {
   });
 };
 
+const getIdForPaciente = (req, res) => {
+  const { nombre, apellido } = req.params;
+
+  const sql = 'SELECT ID FROM Paciente WHERE Nombre = ? AND Apellido = ?';
+  db.query(sql, [nombre, apellido], (err, results) => {
+    if (err) {
+      console.error('Error al obtener el ID del paciente:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+      return;
+    }
+
+    res.json(results[0].ID);
+  });
+};
+
 module.exports = {
   loadSiteStructure,
   getOnePaciente,
@@ -96,5 +111,6 @@ module.exports = {
   createOnePaciente,
   updateOnePaciente,
   deleteOnePaciente,
-  getAllPacientes
+  getAllPacientes,
+  getIdForPaciente
 };

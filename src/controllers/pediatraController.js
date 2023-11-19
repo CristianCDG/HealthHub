@@ -52,7 +52,7 @@ const createOnePediatra = (req, res) => {
 
   const sql = 'INSERT INTO Pediatra VALUES (?, ?, ?, ?, ?)';
 
-  db.query(sql, [Id, Nombre, Apellido, E_mail, Contrasena], (err, result) => {
+  db.query(sql, [ Id, Nombre, Apellido, E_mail, Contrasena], (err, result) => {
     if (err) {
       console.error('Error al agregar el pediatra:', err);
       res.status(500).json({ error: 'Error en la base de datos' });

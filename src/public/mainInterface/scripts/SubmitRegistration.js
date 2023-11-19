@@ -74,6 +74,24 @@ document.getElementById('submit-regs').addEventListener('click', function (event
           .catch((error) => {
             console.error('Error:', error);
           });
+        }else if (rol == 'Pediatra'){
+          fetch('/api/v1/pediatra', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              Nombre: nombre,
+              Apellido: apellido,
+              E_mail: correo,
+              Contrasena: contrasena,
+            }),
+          })
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch((error) => {
+            console.error('Error:', error);
+          });
         }
     }) 
     .catch((error) => {
