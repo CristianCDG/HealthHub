@@ -22,12 +22,13 @@
                 <h1>Panel</h1>
             </div>
             <div class="sideBarOptions">
-                <a href="#">Crear plan alimentario</a>
+                <a href="#" id="createFoodPlan">Crear plan alimentario</a>
+                <a href="#">Editor de plan alimentario</a>
                 <a href="#">Registrar incidencia</a>
             </div>
         </div>
     </div>
-    <div class="PlanAlimentarioContainer">
+    <div class="PlanAlimentarioContainer" id="PlanAlimentarioContainer">
         <select id="timeSelector">
             <option value="Semanal">Semanal</option>
             <option value="Mensual">Mensual</option>
@@ -39,7 +40,7 @@
           </div>
           <input type="submit" id="regPlanBtn" value="Guardar plan">
     </div>
-    <div class="AlimentosContainer">
+    <div class="AlimentosContainer" id="AlimentosContainer">
             
     </div>
 
@@ -58,5 +59,6 @@
     <script type="module" src="../acudienteInterface/scripts/logOut.js"></script>
     <script type="module" src="../acudienteInterface/scripts/showAllFood.js"></script>
     <script type="module" src="../acudienteInterface/scripts/pacienteSelector.js"></script>
+    <script type="module" src="../acudienteInterface/scripts/WindowChanger.js"></script>
 </body>
 </html>
