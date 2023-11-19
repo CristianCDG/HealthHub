@@ -46,10 +46,17 @@
       <div class="showActualPlan"></div>
     </div>
 
-    <!-- <div class="foodEditorPanel">
-      <input type="text" placeholder="Nombre del alimento a eliminar">
-      <input type="submit" id="delFoodPanel" value="Eliminar alimento">
-    </div> -->
+    <div class="foodEditorPanel">
+      <!-- <input type="text" id="foodAddName" placeholder="Nombre del alimento a añadir"> -->
+      <label for="">Selector de alimentos</label>
+      <select name="" id="alimentosAvailable"></select>
+
+      <!-- <input type="text" id="foodAddDay" placeholder="Nombre del dia (Lunes, Martes... Dia 1, Dia 2...)"> -->
+      <label for="">Selector de dias</label>
+      <select name="" id="dayAvailable"></select>
+
+      <input type="submit" id="addFood" value="Añadir alimento">
+    </div>
 
     <!--Zona de mensajes-->
     <div class="existingPlan" id="existingPlan">

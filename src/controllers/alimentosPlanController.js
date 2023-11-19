@@ -30,8 +30,30 @@ const getAlimentosPlan = (req, res) => {
     });
   };
 
+  const addAlimentoPlan = (req, res) => {
+    const sqlGetId = `SELECT Id FROM Alimento WHERE Nombre = ?`;
+    db.query(sqlGetId, [req.body.nombreAlimento], (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: err });
+      } else {
+        const idAlimento = result[0].Id; // Change this line
+        const sqlInsert = `INSERT INTO PlanAlimentario_Alimento (ID_PlanAlimentario, ID_Alimento, Dia) VALUES (?, ?, ?)`;
+        db.query(sqlInsert, [req.body.idPlan, idAlimento, req.body.diaAlimento], (err, result) => {
+          if (err) {
+            console.error(err);
+            res.status(500).json({ error: err });
+          } else {
+            res.json({ message: 'Alimento added successfully' });
+          }
+        });
+      }
+    });
+};
+
   module.exports = {
     getAlimentosPlan,
     deleteAlimentoPlan,
-    getAlimentoByName
+    getAlimentoByName,
+    addAlimentoPlan
   };

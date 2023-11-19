@@ -364,6 +364,20 @@ body {
     left: 70vw;
 }
 
+.foodEditorPanel select{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    top: 2vw;
+    overflow: hidden;
+    left: 2vw;
+    margin-top: 1vw;
+}
+
 .foodEditorPanel input{
     width: 20vw;
     text-align: center;
@@ -375,6 +389,10 @@ body {
     top: 2vw;
     overflow: hidden;
     left: 2vw;
+    margin-top: 1vw;
+}
+
+.foodEditorPanel label{
     margin-top: 1vw;
 }
 
@@ -396,7 +414,7 @@ body {
     clear: both;
   }
 
-  #delFoodPanel:hover {
+  #addFood:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
