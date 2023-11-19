@@ -38,14 +38,16 @@ document
 
           // Guarda el rol del usuario en el localStorage
           localStorage.setItem("rolUsuario", rol);
-          console.log(rol); // Añade esta línea
+          localStorage.setItem("Id_pediatra", Id_pediatra);
+          console.log(rol);
+          console.log(Id_pediatra);
 
           // Redirige al usuario a la página correspondiente según su rol
           if (rol === "Admin") {
             window.location.href = "../../adminInterface/index.html";
           } else if (rol === "Acudiente") {
             window.location.href = "../../acudienteInterface/index.html";
-          }else if (rol === "Pediatra"){
+          } else if (rol === "Pediatra") {
             window.location.href = "../../pediatraInterface/index.html";
           } else {
             // Redirige a la página por defecto si el rol no es reconocido

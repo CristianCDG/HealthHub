@@ -11,7 +11,6 @@ const idActualizar = document.getElementById("id_actualizar");
 const idConsultar = document.getElementById("id_consultar");
 const idEliminar = document.getElementById("id_eliminar");
 
-
 // Botones sidebar
 document.querySelector(".btnRegisterShow").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "32%";

@@ -9,7 +9,15 @@ const loadSiteStructure = (req, res) => {
 const getOnePaciente = (req, res) => {
   const { id } = req.params;
 
-  db.query('SELECT * FROM Paciente WHERE ID = ?', [id], (err, results) => {
+  // Verifica si el pediatra ha iniciado sesión
+  if (!req.session.pediatra) {
+    res.status(401).json({ error: 'No has iniciado sesión' });
+    return;
+  }
+
+  const Id_pediatra = req.session.pediatra.id;
+
+  db.query('SELECT * FROM Paciente WHERE ID = ? AND Id_pediatra = ?', [id, Id_pediatra], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
