@@ -54,36 +54,37 @@ const getOneGrupo = (req, res) => {
     );
 };
 
-  const updateOneGrupo = (req, res) => {
-    const { id } = req.params;
-    const {
-        ID,
-        Nombre,
-    } = req.body;
-  
-    const sql =
-      'UPDATE GrupoAlimentario SET Nombre = ? WHERE ID = ?';
-  
-    db.query(
-      sql,
-      [
-        ID,
-        Nombre,
-      ],
-      (err, result) => {
-        if (err) {
-          console.error('Error al actualizar el grupo alimenticio:', err);
-          res.status(500).json({ error: 'Error en la base de datos' });
+const updateOneGrupo = (req, res) => {
+  const { id } = req.params;
+  const {
+      Nombre,
+      Descripcion,
+  } = req.body;
+
+  const sql =
+    'UPDATE GrupoAlimentario SET Nombre = ?, Descripcion = ? WHERE ID = ?';
+
+  db.query(
+    sql,
+    [
+      Nombre,
+      Descripcion,
+      id
+    ],
+    (err, result) => {
+      if (err) {
+        console.error('Error al actualizar el grupo alimenticio:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+      } else {
+        if (result.affectedRows > 0) {
+          res.json({ message: 'Grupo alimenticio actualizado con éxito' });
         } else {
-          if (result.affectedRows > 0) {
-            res.json({ message: 'Grupo alimenticio actualizado con éxito' });
-          } else {
-            res.status(404).json({ error: 'Grupo alimenticio no encontrado' });
-          }
+          res.status(404).json({ error: 'Grupo alimenticio no encontrado' });
         }
       }
-    );
-  };
+    }
+  );
+};
 
   const deleteOneGrupo = (req, res) => {
     const { id } = req.params;
