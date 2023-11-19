@@ -40,6 +40,10 @@ document
           localStorage.setItem("rolUsuario", rol);
           console.log(rol);
 
+          var correo = data.user.Correo;
+          localStorage.setItem("correo", correo);
+          console.log(correo);
+
           // Redirige al usuario a la página correspondiente según su rol
           if (rol === "Admin") {
             window.location.href = "../../adminInterface/index.html";

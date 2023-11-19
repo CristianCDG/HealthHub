@@ -14,6 +14,9 @@ router.get('/', pediatraController.getAllPediatras);
 // Obtener un solo pediatra por su ID
 router.get('/:id', pediatraController.getOnePediatra);
 
+// Obtiene un solo pediatra por su Correo
+router.post('/correo', pediatraController.getOnePediatraCorreo);
+
 // Agregar un nuevo pediatra
 router.post('/', pediatraController.createOnePediatra);
 

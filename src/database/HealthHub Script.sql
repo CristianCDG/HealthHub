@@ -85,8 +85,6 @@ CREATE TABLE PlanAlimentario (
     FOREIGN KEY (ID_Paciente) REFERENCES Paciente(Id)
 );
 
-
-
 CREATE TABLE PlanAlimentario_Alimento (
     ID_PlanAlimentario INT,
     ID_Alimento INT,
@@ -95,5 +93,3 @@ CREATE TABLE PlanAlimentario_Alimento (
     FOREIGN KEY (ID_PlanAlimentario) REFERENCES PlanAlimentario(Id),
     FOREIGN KEY (ID_Alimento) REFERENCES Alimento(Id)
 );
-
-

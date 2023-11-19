@@ -9,6 +9,8 @@ router.get('/all', pacienteController.getAllPacientes);
 
 router.get('/:id', pacienteController.getOnePaciente);
 
+router.get('/all/:id', pacienteController.getAllPacientesForId);
+
 router.post('/', pacienteController.createOnePaciente);
 
 router.patch('/:id', pacienteController.updateOnePaciente);

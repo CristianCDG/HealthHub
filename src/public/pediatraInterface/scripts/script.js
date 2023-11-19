@@ -17,6 +17,7 @@ document.querySelector(".btnRegisterShow").addEventListener("click", function ()
   document.querySelector(".actualizarPaciente").style.left = "-100%";
   document.querySelector(".consultarPacientes").style.left = "-100%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+  document.querySelector(".AlimentosContainer").style.left = "-100%";
 });
 
 document.querySelector(".btnActualizarShow").addEventListener("click", function () {
@@ -24,6 +25,7 @@ document.querySelector(".btnActualizarShow").addEventListener("click", function 
   document.querySelector(".actualizarPaciente").style.left = "32%";
   document.querySelector(".consultarPacientes").style.left = "-100%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+  document.querySelector(".AlimentosContainer").style.left = "-100%";
 });
 
 document.querySelector(".btnConsultarShow").addEventListener("click", function () {
@@ -31,6 +33,7 @@ document.querySelector(".btnConsultarShow").addEventListener("click", function (
   document.querySelector(".actualizarPaciente").style.left = "-100%";
   document.querySelector(".consultarPacientes").style.left = "22%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+  document.querySelector(".AlimentosContainer").style.left = "-100%";
 });
 
 document.querySelector(".btnCrearPlan").addEventListener("click", function () {
@@ -108,9 +111,8 @@ function crearPaciente() {
   const Peso = document.getElementById("peso").value;
   const Altura = document.getElementById("altura").value;
   const Estado = document.getElementById("estado").value;
-  const Id_pediatra = document.getElementById("id_pediatra").value;
 
-  if (!Id || !Nombre || !Apellido || !Fecha_nacimiento || !Direccion || !Genero || !Peso || !Altura || !Estado || !Id_pediatra) {
+  if (!Id || !Nombre || !Apellido || !Fecha_nacimiento || !Direccion || !Genero || !Peso || !Altura || !Estado) {
     console.log('Todos los campos deben estar llenos');
     mostrarErrorCampoVacio();
     return;
@@ -131,14 +133,20 @@ function crearPaciente() {
         return;
       }
 
-      // Validar si el ID del pediatra existe
-      validarPediatraID(Id_pediatra)
-        .then((existe) => {
-          if (!existe) {
-            console.log(`El pediatra al que se quiere registrar con ID ${Id_pediatra} no existe`);
-            mostrarErrorIdPediatra();
-            return;
-          }
+      let correo = localStorage.getItem('correo');
+      console.log(correo)
+
+      fetch(`/api/v1/pediatra/correo`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo: correo }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          const Id = data[0].Id;
 
           let paciente = {
             Id: Id,
@@ -150,7 +158,7 @@ function crearPaciente() {
             Peso: Peso,
             Altura: Altura,
             Estado: Estado,
-            Id_pediatra: Id_pediatra
+            Id_pediatra: Id
           };
 
           let pacienteJSON = JSON.stringify(paciente);
@@ -182,13 +190,12 @@ function crearPaciente() {
               document.getElementById('peso').value = '';
               document.getElementById('altura').value = '';
               document.getElementById('estado').value = '';
-              document.getElementById('id_pediatra').value = '';
             })
-            .catch((error) => {
-              console.error('Error:', error);
-              output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
-            });
         })
+        .catch((error) => {
+          console.error('Error:', error);
+          output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
+        });
     })
     .catch((error) => {
       console.error('Error al validar el ID:', error);
@@ -296,46 +303,65 @@ function consultarUnPaciente(Id) {
 }
 
 function consultarTodosPacientes() {
-  fetch(`/api/v1/paciente/all`, {
-    method: 'GET',
+  let correo = localStorage.getItem('correo');
+  console.log(correo)
+
+  fetch(`/api/v1/pediatra/correo`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({ correo: correo }),
   })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      const Id = data[0].Id;
+
+      fetch(`/api/v1/paciente/all/${Id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(pacientes => {
+          // Selecciona el cuerpo de la tabla
+          var tbody = document.querySelector('.table-container table tbody');
+
+          // Borra todas las filas existentes
+          tbody.innerHTML = '';
+
+          // Crea una nueva fila para cada paciente
+          pacientes.forEach(paciente => {
+            var tr = document.createElement('tr');
+            tr.innerHTML = `
+          <td>${paciente.Id}</td>
+          <td>${paciente.Nombre}</td>
+          <td>${paciente.Apellido}</td>
+          <td>${new Date(paciente.Fecha_nacimiento).toISOString().slice(0, 10)}</td>
+          <td>${paciente.Direccion}</td>
+          <td>${paciente.Genero}</td>
+          <td>${paciente.Peso}</td>
+          <td>${paciente.Altura}</td>
+          <td>${paciente.Estado}</td>
+        `;
+
+            // Añade la fila al cuerpo de la tabla
+            tbody.appendChild(tr);
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
     })
-    .then(pacientes => {
-      // Selecciona el cuerpo de la tabla
-      var tbody = document.querySelector('.table-container table tbody');
-
-      // Borra todas las filas existentes
-      tbody.innerHTML = '';
-
-      // Crea una nueva fila para cada paciente
-      pacientes.forEach(paciente => {
-        var tr = document.createElement('tr');
-        tr.innerHTML = `
-        <td>${paciente.Id}</td>
-        <td>${paciente.Nombre}</td>
-        <td>${paciente.Apellido}</td>
-        <td>${new Date(paciente.Fecha_nacimiento).toISOString().slice(0, 10)}</td>
-        <td>${paciente.Direccion}</td>
-        <td>${paciente.Genero}</td>
-        <td>${paciente.Peso}</td>
-        <td>${paciente.Altura}</td>
-        <td>${paciente.Estado}</td>
-        <td>${paciente.Id_pediatra}</td>
-      `;
-
-        // Añade la fila al cuerpo de la tabla
-        tbody.appendChild(tr);
-      });
-    })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error:', error);
     });
 }

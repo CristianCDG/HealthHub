@@ -9,15 +9,7 @@ const loadSiteStructure = (req, res) => {
 const getOnePaciente = (req, res) => {
   const { id } = req.params;
 
-  // Verifica si el pediatra ha iniciado sesión
-  if (!req.session.pediatra) {
-    res.status(401).json({ error: 'No has iniciado sesión' });
-    return;
-  }
-
-  const Id_pediatra = req.session.pediatra.id;
-
-  db.query('SELECT * FROM Paciente WHERE ID = ? AND Id_pediatra = ?', [id, Id_pediatra], (err, results) => {
+  db.query('SELECT * FROM Paciente WHERE ID = ?', [id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -33,6 +25,19 @@ const getOnePaciente = (req, res) => {
 
 const getAllPacientes = (req, res) => {
   db.query('SELECT * FROM Paciente', (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      res.json(results);
+    }
+  });
+};
+
+const getAllPacientesForId = (req, res) => {
+  const { id } = req.params;
+
+  db.query('SELECT * FROM Paciente WHERE Id_pediatra = ?', [id], (err, results) => {
     if (err) {
       console.error('Error al consultar la base de datos:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
@@ -120,6 +125,7 @@ module.exports = {
   loadSiteStructure,
   getOnePaciente,
   getAllPacientes,
+  getAllPacientesForId,
   createOnePaciente,
   updateOnePaciente,
   deleteOnePaciente,
