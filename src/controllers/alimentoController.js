@@ -80,11 +80,11 @@ const createOneAlimento = (req, res) => {
 
 const updateOneAlimento = (req, res) => {
   const { id } = req.params;
-  const { Nombre, Descripcion } = req.body;
+  const { Nombre, Alergenico, Id_GrupoAlimentario } = req.body;
 
-  const sql = 'UPDATE Alimento SET Nombre = ?, Descripcion = ? WHERE ID = ?';
+  const sql = 'UPDATE Alimento SET Nombre = ?, Alergenico = ?, Id_GrupoAlimentario = ? WHERE ID = ?';
 
-  db.query(sql, [Nombre, Descripcion, id], (err, result) => {
+  db.query(sql, [Nombre, Alergenico, Id_GrupoAlimentario, id], (err, result) => {
     if (err) {
       console.error('Error al actualizar el alimento:', err);
       res.status(500).json({ error: 'Error en la base de datos' });

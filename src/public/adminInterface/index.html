@@ -24,8 +24,8 @@
             <div class="sideBarOptions">
                 <a href="#" id="insertFoodBtn">Insertar alimento</a>
                 <a href="#" id="deleteFoodBtn">Eliminar alimento</a>
-                <a href="#">Consultar alimento</a>
-                <a href="#">Actualizar alimento</a>
+                <a href="#" id="listFoodBtn">Consultar alimentos</a>
+                <a href="#" id="updateFoodBtn">Actualizar alimento</a>
                 <a href="#">Insertar grupo alimenticio</a>
                 <a href="#">Modificar grupo alimenticio</a>
                 <a href="#">Eliminar grupo alimenticio</a>
@@ -46,6 +46,22 @@
         <input type="submit" name="submitDel" id="SubmitfoodDeletion" value="Eliminar alimento" />
     </div>
 
+    <div class="viewAlimentoContainer" id="viewAlimentoContainer">
+        <h1>Alimentos</h1>
+        <div class="alimentoVisualizer"></div>
+        <input type="submit" name="submitDel" id="refresh" value="Refrescar" />
+    </div>
+
+
+    <div class="actualizarAlimentoContainer" id="actualizarAlimentoContainer">
+        <h1>Actualizar alimento</h1>
+        <select name="" id="selectFoodToUpdate"></select>
+        <input type="text" name="newName" id="updateNewFoodName" placeholder="Nuevo nombre del alimento" />
+        <input type="text" name="group" id="updateFoodGroup" placeholder="Grupo alimenticio" />
+        <input type="text" name="alergenic" id="updateAlergenic" placeholder="¿Alergenico? true o false" />
+        <input type="submit" name="submitUpdate" id="submitUpdate" value="Actualizar" />
+    </div>
+
     <!--Zona de mensajes-->
     <div class="emptyFieldsFoodReg" id="emptyFieldsFoodReg">
         <h1>Ha ocurrido un error</h1>
@@ -60,5 +76,7 @@
     <script type="module" src="../adminInterface/scripts/logOut.js"></script>
     <script type="module" src="../adminInterface/scripts/AuthenticatedVerification.js"></script>
     <script type="module" src="../adminInterface/scripts/delFood.js"></script>
+    <script type="module" src="../adminInterface/scripts/viewAllFood.js"></script>
+    <script type="module" src="../adminInterface/scripts/updateFood.js"></script>
 </body>
 </html>
