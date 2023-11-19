@@ -10,6 +10,20 @@
 </head>
 
 <body>
+
+  <div class="PlanAlimentarioContainer" id="PlanAlimentarioContainer">
+    <select id="timeSelector">
+        <option value="Semanal">Semanal</option>
+        <option value="Mensual">Mensual</option>
+      </select>
+      <select id="pacienteSelector">
+      </select>
+      <div class="alimentosPlanContainer"></div>
+      <input type="submit" id="regPlanBtn" value="Guardar plan">
+</div>
+<div class="AlimentosContainer" id="AlimentosContainer">  
+</div>
+
   <img class="background" src="/images/Background.jpg" alt="" />
   <header class="header">
     <a href="#" class="logo">HealthHub</a>
@@ -33,6 +47,9 @@
       </div>
       <div class="btn-container">
         <button class="btnConsultarShow">Consultar Pacientes</button>
+      </div>
+      <div class="btn-container">
+        <button class="btnCrearPlan">Crear plan alimentario</button>
       </div>
     </div>
 
@@ -135,6 +152,7 @@
         </table>
       </div>
 
+
       <div class="button-container">
         <button type="submit" id="btnConsultar">Consultar Paciente</button>
         <button type="submit" id="btnConsultarTodos">Consultar Todos</button>
@@ -182,10 +200,22 @@
       <h1>Todo en orden</h1>
       <p>Los datos del Paciente han sido actualizados correctamente</p>
     </div>
+
+    <div class="existingPlan" id="existingPlan">
+      <h1>Ha ocurrido un error</h1>
+      <p>El paciente ya tiene un plan en curso</p>
+    </div>
+
+    <div class="nicePlanCreation" id="nicePlanCreation">
+      <h1>Todo en orden</h1>
+      <p>El plan ha sido creado correctamente</p>
+    </div>
   </section>
 
   <script type="module" src="/pediatraInterface/scripts/script.js"></script>
   <script type="module" src="/pediatraInterface/scripts/AuthenticatedVerification.js"></script>
+  <script type="module" src="../pediatraInterface/scripts/pacienteSelector.js"></script>
+  <script type="module" src="../pediatraInterface/scripts/showAllFood.js"></script>
 
 </body>
 
