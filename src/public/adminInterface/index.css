@@ -185,9 +185,34 @@ body {
     cursor: pointer;
 }
 
+#Submitfood:hover{
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
+#submitUpdate:hover{
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
+#SubmitGroup:hover{
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
 
 
 .insertarAlimentoContainer input {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.insertarAlimentoContainer select {
     width: 20vw;
     text-align: center;
     height: 2vw;
@@ -303,6 +328,73 @@ body {
     transition: .5s;
     margin-top: 1vw;
 }
+
+.insertarGrupoContainer{
+    position: absolute;
+    top: 10vw;
+    left: -100%;
+    width: 50vw;
+    height: 35vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 68, 117, 0.8);
+    border-radius: 20px;
+    transition: left 0.5s ease-in-out;
+}
+
+.insertarGrupoContainer input {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.modificarGrupoContainer{
+    position: absolute;
+    top: 10vw;
+    left: 25%;
+    width: 50vw;
+    height: 35vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 68, 117, 0.8);
+    border-radius: 20px;
+    transition: left 0.5s ease-in-out;
+}
+
+.modificarGrupoContainer input{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.modificarGrupoContainer select{
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+
 
 .show {
     left: 0;
