@@ -1,16 +1,14 @@
 create database HealthHUB;
-#drop database healthhub;
 USE HealthHUB;
 
 CREATE TABLE Pediatra (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR(20) NOT NULL,
     Apellido VARCHAR(20) NOT NULL,
     E_mail VARCHAR(30) NOT NULL,
     Contrasena VARCHAR(30) NOT NULL
 );
 
-INSERT INTO Pediatra VALUES ('1', 'Juan', 'Leon', 'juan@mail.com', '123');
 
 CREATE TABLE Paciente (
 	Id INT PRIMARY KEY NOT NULL,
@@ -55,6 +53,7 @@ CREATE TABLE Usuario (
     Rol VARCHAR(40) NULL
 );
 
+
 CREATE TABLE Notificacion (
 	Id INT PRIMARY KEY NOT NULL,
 	Contenido VARCHAR(100) NOT NULL,
@@ -70,7 +69,7 @@ CREATE TABLE GrupoAlimentario (
 );
 
 CREATE TABLE Alimento (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR(20) NOT NULL,
     Alergenico BOOLEAN NOT NULL,
     Id_GrupoAlimentario INT NOT NULL,
@@ -78,18 +77,23 @@ CREATE TABLE Alimento (
 );
 
 CREATE TABLE PlanAlimentario (
-	Id INT PRIMARY KEY NOT NULL,
+	Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     Fecha_creacion DATE NOT NULL,
     Observaciones VARCHAR(60),
     ID_Paciente INT NOT NULL,
-    ID_Pediatra INT NOT NULL,
-    ID_Alimento INT NOT NULL,
-    FOREIGN KEY (ID_Paciente) REFERENCES Paciente(Id),
-    FOREIGN KEY (ID_Pediatra) REFERENCES Pediatra(Id),
-    FOREIGN KEY (ID_Alimento) REFERENCES Alimento(Id)
+    Tipo VARCHAR(40) NOT NULL,
+    FOREIGN KEY (ID_Paciente) REFERENCES Paciente(Id)
 );
 
-USE healthhub;
-SELECT * FROM Paciente;
+
+
+CREATE TABLE PlanAlimentario_Alimento (
+    ID_PlanAlimentario INT,
+    ID_Alimento INT,
+    Dia VARCHAR(40) NOT NULL,
+    PRIMARY KEY (ID_PlanAlimentario, ID_Alimento, Dia),
+    FOREIGN KEY (ID_PlanAlimentario) REFERENCES PlanAlimentario(Id),
+    FOREIGN KEY (ID_Alimento) REFERENCES Alimento(Id)
+);
 
 
