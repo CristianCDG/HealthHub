@@ -1,10 +1,11 @@
 const router = require('express').Router();
-
 const PlanAlimentarioController = require('../../controllers/planAlimentarioController');
-
 
 // Obtener todos los Pacientes
 router.get('/', PlanAlimentarioController.getAllPlanes);
+
+// Obtener todos los planes alimentarios para un paciente específico
+router.get('/:nombreBebe/:apellidoBebe', PlanAlimentarioController.getPlanesForPaciente);
 
 // Obtener un solo Paciente por su ID
 router.get('/:id', PlanAlimentarioController.getOnePlan);
@@ -17,9 +18,6 @@ router.patch('/:id', PlanAlimentarioController.updateOnePlan);
 
 // Eliminar un Paciente
 router.delete('/:id', PlanAlimentarioController.deleteOnePlan);
-
-// Obtener todos los planes alimentarios para un paciente específico
-router.get('/:nombreBebe/:apellidoBebe', PlanAlimentarioController.getPlanesForPaciente);
 
 // Obtener todos los alimentos para un plan alimentario específico
 router.get('/:id/alimentos', PlanAlimentarioController.getAlimentosForPlan);

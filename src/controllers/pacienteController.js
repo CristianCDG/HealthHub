@@ -108,7 +108,11 @@ const getIdForPaciente = (req, res) => {
       return;
     }
 
-    res.json({ ID: results[0].ID }); // Wrap the ID in an object
+    if (results[0]) {
+      res.json({ ID: results[0].ID }); // Wrap the ID in an object
+    } else {
+      res.status(404).json({ error: 'Paciente no encontrado' });
+    }
   });
 };
 

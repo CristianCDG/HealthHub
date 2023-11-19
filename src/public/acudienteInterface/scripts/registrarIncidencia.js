@@ -47,7 +47,7 @@ document
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                Id_paciente: idPaciente, // Use idPaciente directly
+                Id_paciente: idPaciente.ID, // Use idPaciente.ID instead of idPaciente
                 Id_Alimento: alimento.Id,
                 Descripcion: Descripcion,
               }),

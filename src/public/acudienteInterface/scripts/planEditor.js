@@ -16,6 +16,7 @@ document
           .then((response) => response.json())
           .then((planes) => {
             plan = planes.find((plan) => plan.ID_Paciente === idPaciente);
+            
 
             // Define los días basado en el tipo de plan
             var dias;
@@ -143,6 +144,10 @@ document.querySelector("#addFood").addEventListener("click", function () {
         .then((response) => response.json())
         .then((planes) => {
           plan = planes.find((plan) => plan.ID_Paciente === idPaciente);
+          if (!plan) {
+            console.error('No se encontró ningún plan para el paciente con id:', idPaciente);
+            return;
+          }
           return fetch(`/api/v1/alimentos/${plan.Id}/add`, {
             // Change this line
             method: "POST",
