@@ -38,9 +38,7 @@ document
 
           // Guarda el rol del usuario en el localStorage
           localStorage.setItem("rolUsuario", rol);
-          localStorage.setItem("Id_pediatra", Id_pediatra);
           console.log(rol);
-          console.log(Id_pediatra);
 
           // Redirige al usuario a la página correspondiente según su rol
           if (rol === "Admin") {

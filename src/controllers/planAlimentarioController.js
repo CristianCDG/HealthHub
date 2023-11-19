@@ -77,6 +77,8 @@ const getOnePlan = (req, res) => {
                   });
                 }
               });
+            }).catch((error) => {
+              console.error('Error en una promesa:', error);
             });
           });
         });
@@ -119,7 +121,29 @@ const getOnePlan = (req, res) => {
           return;
         }
   
-        res.json(results);
+        const planes = results;
+        const promises = planes.map(plan => {
+          return new Promise((resolve, reject) => {
+            const sqlGetAlimentos = 'SELECT * FROM PlanAlimentario_Alimento WHERE ID_PlanAlimentario = ?';
+            db.query(sqlGetAlimentos, [plan.ID], (err, results) => {
+              if (err) {
+                console.error('Error al obtener los alimentos del plan alimentario:', err);
+                reject('Error en la base de datos');
+              } else {
+                plan.alimentos = results;
+                resolve();
+              }
+            });
+          });
+        });
+  
+        Promise.all(promises)
+          .then(() => {
+            res.json(planes);
+          })
+          .catch((error) => {
+            res.status(500).json({ error });
+          });
       });
     });
   };
@@ -171,8 +195,12 @@ const deleteOnePlan = (req, res) => {
         console.error('Error al buscar el ID del alimento:', err);
         callback(err);
       } else {
-        const ID_Alimento = result[0].Id; // Cambia 'ID_Alimento' a 'Id'
-        callback(null, ID_Alimento);
+        if (result.length > 0) {
+          const ID_Alimento = result[0].Id; // Cambia 'ID_Alimento' a 'Id'
+          callback(null, ID_Alimento);
+        } else {
+          callback(new Error('Alimento no encontrado'));
+        }
       }
     });
   };
@@ -222,8 +250,6 @@ const deleteOnePlan = (req, res) => {
       }
     });
   };
-
-  
   
 
 module.exports = {

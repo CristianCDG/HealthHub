@@ -17,6 +17,7 @@ const v1DatabaseUserReg = require("./v1/routes/databaseUserCreationRoutes");
 const v1PlanRouter = require("./v1/routes/planAlimentarioRoutes");
 const v1AcudienteReg = require("./v1/routes/acudienteRegistrationRoutes");
 const v1SendEmailRouter = require("./v1/routes/sendEmailRoutes");
+const v1AlimentosPlanRouter = require("./v1/routes/alimentosPlanRoutes");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public", "addPatient")));
@@ -35,6 +36,7 @@ app.use("/api/v1/userlogin", v1DatabaseUserLog)
 app.use("/api/v1/send-email", v1DatabaseUserReg)
 app.use("/api/v1/finishAcudienteReg", v1AcudienteReg);
 app.use("/api/v1/send-email-reg", v1SendEmailRouter);
+app.use("/api/v1/alimentos", v1AlimentosPlanRouter);
 
 app.use(session({
   secret: 'tu secreto aquí',
