@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const session = require('express-session');
 const path = require("path");
 app.use(express.json());
 
@@ -34,6 +35,13 @@ app.use("/api/v1/userlogin", v1DatabaseUserLog)
 app.use("/api/v1/send-email", v1DatabaseUserReg)
 app.use("/api/v1/finishAcudienteReg", v1AcudienteReg);
 app.use("/api/v1/send-email-reg", v1SendEmailRouter);
+
+app.use(session({
+  secret: 'tu secreto aquí',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
 
 app.listen(PORT, () => {
   console.log(`API and Server started on port ${PORT}`);

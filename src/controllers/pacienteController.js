@@ -2,7 +2,7 @@ const db = require('../database/config');
 const path = require('path');
 
 const loadSiteStructure = (req, res) => {
-  const indexPath = path.join(__dirname, '../public/paciente/paciente.html')
+  const indexPath = path.join(__dirname, '../public/pediatraInterface/index.html')
   res.sendFile(indexPath);
 };
 
