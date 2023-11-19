@@ -100,7 +100,7 @@ const deleteOnePaciente = (req, res) => {
 const getIdForPaciente = (req, res) => {
   const { nombre, apellido } = req.params;
 
-  const sql = 'SELECT ID FROM Paciente WHERE Nombre = ? AND Apellido = ?';
+  const sql = 'SELECT Id FROM Paciente WHERE Nombre = ? AND Apellido = ?';
   db.query(sql, [nombre, apellido], (err, results) => {
     if (err) {
       console.error('Error al obtener el ID del paciente:', err);
@@ -109,7 +109,7 @@ const getIdForPaciente = (req, res) => {
     }
 
     if (results[0]) {
-      res.json({ ID: results[0].ID }); // Wrap the ID in an object
+      res.json({ ID: results[0].Id }); // Wrap the ID in an object
     } else {
       res.status(404).json({ error: 'Paciente no encontrado' });
     }

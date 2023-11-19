@@ -12,11 +12,16 @@ document
     )
       .then((response) => response.json())
       .then((idPaciente) => {
+        console.log(idPaciente);
         return fetch(`/api/v1/planes`)
           .then((response) => response.json())
           .then((planes) => {
-            plan = planes.find((plan) => plan.ID_Paciente === idPaciente);
+            plan = planes.find((plan) => plan.ID_Paciente === idPaciente.ID);
             
+            if (!plan) {
+              console.error('No se encontró ningún plan para el paciente con id:', idPaciente);
+              return;
+            }
 
             // Define los días basado en el tipo de plan
             var dias;
@@ -138,12 +143,19 @@ document.querySelector("#addFood").addEventListener("click", function () {
       apellido
     )}`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      console.log('Response status:', response.status);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then((idPaciente) => {
+      console.log(idPaciente);
       return fetch(`/api/v1/planes`)
         .then((response) => response.json())
         .then((planes) => {
-          plan = planes.find((plan) => plan.ID_Paciente === idPaciente);
+          plan = planes.find((plan) => plan.ID_Paciente === idPaciente.ID);
           if (!plan) {
             console.error('No se encontró ningún plan para el paciente con id:', idPaciente);
             return;
