@@ -359,7 +359,7 @@ body {
 .modificarGrupoContainer {
     position: absolute;
     top: 10vw;
-    left: 25%;
+    left: -100%;
     width: 50vw;
     height: 35vw;
     padding: 2vw 10vw;
