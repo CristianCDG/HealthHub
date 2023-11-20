@@ -31,7 +31,7 @@
                 <a href="#" id="insertFoodGroupBtn">Insertar grupo alimenticio</a>
                 <a href="#" id="modificarGrupoBtn">Modificar grupo alimenticio</a>
                 <a href="#" id="eliminarGrupoBtn">Eliminar grupo alimenticio</a>
-                <a href="#" id="consultarGrupoBtn">Consultar grupo alimenticio</a>
+                <a href="#" id="consultarGrupoBtn">Consultar grupos alimenticios</a>
             </div>
         </div>
     </div>
@@ -85,10 +85,16 @@
         <input type="submit" name="submit" id="SubmitGroupUpdate" value="Actualizar grupo alimenticio" />
     </div>
 
-    <div class="deleteAlimentoContainer" id="deleteAlimentoContainer">
-        <h1>Eliminar alimento</h1>
-        <select name="" id="foodDeletionSelector"></select>
-        <input type="submit" name="submitDel" id="SubmitfoodDeletion" value="Eliminar alimento" />
+    <div class="deleteGrupoContainer" id="deleteGrupoContainer">
+        <h1>Eliminar grupo</h1>
+        <select name="" id="groupDeletionSelector"></select>
+        <input type="submit" name="submitDel" id="SubmitgroupDeletion" value="Eliminar grupo" />
+    </div>
+
+    <div class="viewGroupContainer" id="viewGroupContainer">
+        <h1>Grupos</h1>
+        <div class="grupoVisualizer"></div>
+        <input type="submit" name="submitDel" id="refreshGroup" value="Refrescar" />
     </div>
 
 
@@ -110,6 +116,7 @@
     <script type="module" src="../adminInterface/scripts/updateFood.js"></script>
     <script type="module" src="../adminInterface/scripts/foodGroupCreation.js"></script>
     <script type="module" src="../adminInterface/scripts/updateFoodGroup.js"></script>
+    <script type="module" src="../adminInterface/scripts/delGroup.js"></script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@ const router = require('express').Router();
 const pediatraController = require('../../controllers/pediatraController');
 
 // Mostrar Pagina Pediatras
-router.get('/', pediatraController.mostrarPagina);
+//router.get('/', pediatraController.mostrarPagina);
 
 // Mostrar Estilos Pediatras
 router.get('/pediatras.css', pediatraController.mostrarEstilos);

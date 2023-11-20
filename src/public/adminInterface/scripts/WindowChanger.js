@@ -5,47 +5,55 @@ document.addEventListener("DOMContentLoaded", function () {
   var updateFoodBtn = document.getElementById("updateFoodBtn");
   var insertGroupBtn = document.getElementById("insertFoodGroupBtn");
   var modificarGrupoBtn = document.getElementById("modificarGrupoBtn");
+  var deleteGroupBtn = document.getElementById("eliminarGrupoBtn");
 
-  insertFoodBtn.addEventListener('click', function (event) {
+  insertFoodBtn.addEventListener("click", function (event) {
     event.preventDefault();
     // Aquí va tu código para manejar el click
-    console.log('El enlace fue clickeado');
+    console.log("El enlace fue clickeado");
     showInsertFoodWindow();
   });
 
-  delFoodBtn.addEventListener('click', function (event) {
+  delFoodBtn.addEventListener("click", function (event) {
     event.preventDefault();
     // Aquí va tu código para manejar el click
-    console.log('El enlace fue clickeado');
+    console.log("El enlace fue clickeado");
     showDeleteFoodWindow();
   });
 
-  listFoodBtn.addEventListener('click', function (event) {
+  listFoodBtn.addEventListener("click", function (event) {
     event.preventDefault();
     // Aquí va tu código para manejar el click
-    console.log('El enlace fue clickeado');
+    console.log("El enlace fue clickeado");
     showListFoodWindow();
   });
 
-  updateFoodBtn.addEventListener('click', function (event) {
+  updateFoodBtn.addEventListener("click", function (event) {
     event.preventDefault();
     // Aquí va tu código para manejar el click
-    console.log('El enlace fue clickeado');
+    console.log("El enlace fue clickeado");
     showUpdateFoodWindow();
   });
 
-  insertGroupBtn.addEventListener('click', function (event) {
+  insertGroupBtn.addEventListener("click", function (event) {
     event.preventDefault();
     // Aquí va tu código para manejar el click
-    console.log('El enlace fue clickeado');
+    console.log("El enlace fue clickeado");
     showCreateGroupWindow();
   });
 
-  modificarGrupoBtn.addEventListener('click', function (event) {
+  modificarGrupoBtn.addEventListener("click", function (event) {
     event.preventDefault();
     // Aquí va tu código para manejar el click
-    console.log('El enlace fue clickeado');
+    console.log("El enlace fue clickeado");
     showUpdateGroupWindow();
+  });
+
+  deleteGroupBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    // Aquí va tu código para manejar el click
+    console.log("El enlace fue clickeado");
+    showDeleteGroupWindow();
   });
 });
 
@@ -59,6 +67,7 @@ function showInsertFoodWindow() {
   var updateGroupCont = document.getElementById("modificarGrupoContainer");
   var createGroupCont = document.getElementById("insertarGrupoContainer");
   var updateGroupCont = document.getElementById("modificarGrupoContainer");
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
 
   if (delFoodCont.classList.contains("showAlimentoContainer")) {
     delFoodCont.classList.remove("showAlimentoContainer");
@@ -78,6 +87,10 @@ function showInsertFoodWindow() {
 
   if (updateGroupCont.classList.contains("showAlimentoContainer")) {
     updateGroupCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (deleteGroupCont.classList.contains("showAlimentoContainer")) {
+    deleteGroupCont.classList.remove("showAlimentoContainer");
   }
 
   addFoodCont.classList.add("showAlimentoContainer");
@@ -90,6 +103,7 @@ function showDeleteFoodWindow() {
   var updateFoodCont = document.getElementById("actualizarAlimentoContainer");
   var createGroupCont = document.getElementById("insertarGrupoContainer");
   var updateGroupCont = document.getElementById("modificarGrupoContainer");
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
 
   if (addFoodCont.classList.contains("showAlimentoContainer")) {
     addFoodCont.classList.remove("showAlimentoContainer");
@@ -109,6 +123,10 @@ function showDeleteFoodWindow() {
 
   if (updateGroupCont.classList.contains("showAlimentoContainer")) {
     updateGroupCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (deleteGroupCont.classList.contains("showAlimentoContainer")) {
+    deleteGroupCont.classList.remove("showAlimentoContainer");
   }
 
   delFoodCont.classList.add("showAlimentoContainer");
@@ -120,8 +138,8 @@ function showListFoodWindow() {
   var addFoodCont = document.getElementById("insertarAlimentoContainer");
   var updateFoodCont = document.getElementById("actualizarAlimentoContainer");
   var createGroupCont = document.getElementById("insertarGrupoContainer");
-
   var updateGroupCont = document.getElementById("modificarGrupoContainer");
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
 
   if (addFoodCont.classList.contains("showAlimentoContainer")) {
     addFoodCont.classList.remove("showAlimentoContainer");
@@ -141,6 +159,10 @@ function showListFoodWindow() {
 
   if (updateGroupCont.classList.contains("showAlimentoContainer")) {
     updateGroupCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (deleteGroupCont.classList.contains("showAlimentoContainer")) {
+    deleteGroupCont.classList.remove("showAlimentoContainer");
   }
 
   listFoodCont.classList.add("showAlimentoContainer");
@@ -152,8 +174,8 @@ function showUpdateFoodWindow() {
   var delFoodCont = document.getElementById("deleteAlimentoContainer");
   var addFoodCont = document.getElementById("insertarAlimentoContainer");
   var createGroupCont = document.getElementById("insertarGrupoContainer");
-
   var updateGroupCont = document.getElementById("modificarGrupoContainer");
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
 
   if (addFoodCont.classList.contains("showAlimentoContainer")) {
     addFoodCont.classList.remove("showAlimentoContainer");
@@ -175,6 +197,10 @@ function showUpdateFoodWindow() {
     updateGroupCont.classList.remove("showAlimentoContainer");
   }
 
+  if (deleteGroupCont.classList.contains("showAlimentoContainer")) {
+    deleteGroupCont.classList.remove("showAlimentoContainer");
+  }
+
   updateFoodCont.classList.add("showAlimentoContainer");
 }
 
@@ -184,8 +210,8 @@ function showCreateGroupWindow() {
   var listFoodCont = document.getElementById("viewAlimentoContainer");
   var delFoodCont = document.getElementById("deleteAlimentoContainer");
   var addFoodCont = document.getElementById("insertarAlimentoContainer");
-
   var updateGroupCont = document.getElementById("modificarGrupoContainer");
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
 
   if (addFoodCont.classList.contains("showAlimentoContainer")) {
     addFoodCont.classList.remove("showAlimentoContainer");
@@ -205,6 +231,10 @@ function showCreateGroupWindow() {
 
   if (updateGroupCont.classList.contains("showAlimentoContainer")) {
     updateGroupCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (deleteGroupCont.classList.contains("showAlimentoContainer")) {
+    deleteGroupCont.classList.remove("showAlimentoContainer");
   }
 
   createGroupCont.classList.add("showAlimentoContainer");
@@ -217,6 +247,7 @@ function showUpdateGroupWindow() {
   var listFoodCont = document.getElementById("viewAlimentoContainer");
   var delFoodCont = document.getElementById("deleteAlimentoContainer");
   var addFoodCont = document.getElementById("insertarAlimentoContainer");
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
 
   if (addFoodCont.classList.contains("showAlimentoContainer")) {
     addFoodCont.classList.remove("showAlimentoContainer");
@@ -238,5 +269,45 @@ function showUpdateGroupWindow() {
     updateFoodCont.classList.remove("showAlimentoContainer");
   }
 
+  if (deleteGroupCont.classList.contains("showAlimentoContainer")) {
+    deleteGroupCont.classList.remove("showAlimentoContainer");
+  }
+
   updateGroupCont.classList.add("showAlimentoContainer");
+}
+
+function showDeleteGroupWindow() {
+  var deleteGroupCont = document.getElementById("deleteGrupoContainer");
+  var updateGroupCont = document.getElementById("modificarGrupoContainer");
+  var createGroupCont = document.getElementById("insertarGrupoContainer");
+  var updateFoodCont = document.getElementById("actualizarAlimentoContainer");
+  var listFoodCont = document.getElementById("viewAlimentoContainer");
+  var delFoodCont = document.getElementById("deleteAlimentoContainer");
+  var addFoodCont = document.getElementById("insertarAlimentoContainer");
+
+  if (addFoodCont.classList.contains("showAlimentoContainer")) {
+    addFoodCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (createGroupCont.classList.contains("showAlimentoContainer")) {
+    createGroupCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (delFoodCont.classList.contains("showAlimentoContainer")) {
+    delFoodCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (listFoodCont.classList.contains("showAlimentoContainer")) {
+    listFoodCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (updateFoodCont.classList.contains("showAlimentoContainer")) {
+    updateFoodCont.classList.remove("showAlimentoContainer");
+  }
+
+  if (updateGroupCont.classList.contains("showAlimentoContainer")) {
+    updateGroupCont.classList.remove("showAlimentoContainer");
+  }
+
+  deleteGroupCont.classList.add("showAlimentoContainer");
 }
