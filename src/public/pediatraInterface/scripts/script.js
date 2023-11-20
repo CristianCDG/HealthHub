@@ -103,6 +103,7 @@ function crearPaciente() {
   const Peso = document.getElementById("peso").value;
   const Altura = document.getElementById("altura").value;
   const Estado = document.getElementById("estado").value;
+  const Id_acudiente = document.getElementById("selectAcudiente").value;
 
   if (!Nombre || !Apellido || !Fecha_nacimiento || !Direccion || !Genero || !Peso || !Altura || !Estado) {
     console.log('Todos los campos deben estar llenos');
@@ -165,6 +166,34 @@ function crearPaciente() {
           document.getElementById('peso').value = '';
           document.getElementById('altura').value = '';
           document.getElementById('estado').value = '';
+
+          let asignacion = {
+            Id_Acudiente: Id_acudiente,
+            Id_paciente: data.Id, // Asume que tu API devuelve el Id del paciente creado
+            Rol: 'Cuidador' // O cualquier valor que necesites
+          };
+
+          fetch('/api/v1/asignacion_acudiente', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(asignacion),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log('La asignación del acudiente se ha creado con éxito')
+              // Aquí puedes limpiar los campos del formulario si lo deseas
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              output.value = 'Ocurrió un error mientras se añadía la asignación del acudiente, por favor verifique los datos ingresados';
+            });
         })
     })
     .catch((error) => {

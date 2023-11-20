@@ -16,11 +16,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function fillGroupSelector() {
+        var groupSelector = document.getElementById("updateFoodGroup");
+        groupSelector.innerHTML = ""; // Clear the selector
+        fetch("/api/v1/grupo")
+          .then((response) => response.json())
+          .then((grupos) => {
+            for (var grupo of grupos) {
+              var optionElement = document.createElement("option");
+              optionElement.textContent = grupo.Nombre;
+              optionElement.value = grupo.Nombre;
+              groupSelector.appendChild(optionElement);
+            }
+          });
+      }
+      
+
+    document
+    .getElementById("updateFoodBtn")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+      fillUpdateSelector(); // Refill the selector after deleting an item
+      fillGroupSelector();
+    });
+
     submitUpdate.addEventListener('click', function() {
         var selectedFood = selectFoodToUpdate.value;
         var newFoodName = document.getElementById('updateNewFoodName').value;
         var foodGroup = document.getElementById('updateFoodGroup').value;
         var alergenic = document.getElementById('updateAlergenic').value;
+
+        if (!selectedFood || !foodGroup) {
+            console.log('Por favor, selecciona un alimento y un grupo.');
+            // Aquí puedes agregar la función para mostrar un mensaje de error
+            return;
+        }
 
         fetch('/api/v1/alimento/name/' + selectedFood)
         .then(response => response.json())
@@ -47,4 +77,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     fillUpdateSelector(); // Fill the selector on page load
+    fillGroupSelector();
 });
