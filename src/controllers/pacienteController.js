@@ -135,6 +135,19 @@ const getIdForPaciente = (req, res) => {
   });
 };
 
+const getPacientePorNombreApellido = (req, res) => {
+  const { nombre, apellido } = req.params;
+
+  db.query('SELECT * FROM Paciente WHERE Nombre = ? AND Apellido = ?', [nombre, apellido], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      res.json(results);
+    }
+  });
+};
+
 module.exports = {
   loadSiteStructure,
   getOnePaciente,
@@ -145,5 +158,6 @@ module.exports = {
   updateOnePaciente,
   deleteOnePaciente,
   getAllPacientes,
-  getIdForPaciente
+  getIdForPaciente,
+  getPacientePorNombreApellido
 };

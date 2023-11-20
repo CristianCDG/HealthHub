@@ -110,74 +110,53 @@ function crearPaciente() {
     return;
   }
 
-  let correo = localStorage.getItem('correo');
-  console.log(correo)
-
-  fetch(`/api/v1/pediatra/correo`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ correo: correo }),
-  })
+  // Verificar si ya existe un paciente con el mismo nombre y apellido
+  fetch(`/api/v1/paciente/nombre/${Nombre}/apellido/${Apellido}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-      const Id_pediatra = data[0].Id;
+      if (data.length > 0) {
+        duplicatedFirstLastNames();
+        console.log('Ya existe un paciente con ese nombre y apellido');
+        // Mostrar un mensaje de error y terminar la función
+        return;
+      }
 
-      let paciente = {
-        Nombre: Nombre,
-        Apellido: Apellido,
-        Fecha_nacimiento: Fecha_nacimiento,
-        Direccion: Direccion,
-        Genero: Genero,
-        Peso: Peso,
-        Altura: Altura,
-        Estado: Estado,
-        Id_pediatra: Id_pediatra
-      };
+      let correo = localStorage.getItem('correo');
+      console.log(correo)
 
-      let pacienteJSON = JSON.stringify(paciente);
-
-      console.log(pacienteJSON);
-
-      fetch('/api/v1/paciente', {
+      fetch(`/api/v1/pediatra/correo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: pacienteJSON,
+        body: JSON.stringify({ correo: correo }),
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log('El registro se ha creado con éxito')
-          mostrarRegistroExitoso();
-          document.getElementById('nombre').value = '';
-          document.getElementById('apellido').value = '';
-          document.getElementById('fecha_nacimiento').value = '';
-          document.getElementById('direccion').value = '';
-          document.getElementById('genero').value = '';
-          document.getElementById('peso').value = '';
-          document.getElementById('altura').value = '';
-          document.getElementById('estado').value = '';
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          const Id_pediatra = data[0].Id;
 
-          let asignacion = {
-            Id_Acudiente: Id_acudiente,
-            Id_paciente: data.Id, // Asume que tu API devuelve el Id del paciente creado
-            Rol: 'Cuidador' // O cualquier valor que necesites
+          let paciente = {
+            Nombre: Nombre,
+            Apellido: Apellido,
+            Fecha_nacimiento: Fecha_nacimiento,
+            Direccion: Direccion,
+            Genero: Genero,
+            Peso: Peso,
+            Altura: Altura,
+            Estado: Estado,
+            Id_pediatra: Id_pediatra
           };
 
-          fetch('/api/v1/asignacion_acudiente', {
+          let pacienteJSON = JSON.stringify(paciente);
+
+          console.log(pacienteJSON);
+          fetch('/api/v1/paciente', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(asignacion),
+            body: pacienteJSON,
           })
             .then((response) => {
               if (!response.ok) {
@@ -186,20 +165,55 @@ function crearPaciente() {
               return response.json();
             })
             .then((data) => {
-              console.log('La asignación del acudiente se ha creado con éxito')
-              // Aquí puedes limpiar los campos del formulario si lo deseas
+              console.log('El registro se ha creado con éxito')
+              mostrarRegistroExitoso();
+              document.getElementById('nombre').value = '';
+              document.getElementById('apellido').value = '';
+              document.getElementById('fecha_nacimiento').value = '';
+              document.getElementById('direccion').value = '';
+              document.getElementById('genero').value = '';
+              document.getElementById('peso').value = '';
+              document.getElementById('altura').value = '';
+              document.getElementById('estado').value = '';
+
+              let asignacion = {
+                Id_Acudiente: Id_acudiente,
+                Id_paciente: data.Id, // Asume que tu API devuelve el Id del paciente creado
+                Rol: 'Cuidador' // O cualquier valor que necesites
+              };
+
+              fetch('/api/v1/asignacion_acudiente', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(asignacion),
+              })
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                  }
+                  return response.json();
+                })
+                .then((data) => {
+                  console.log('La asignación del acudiente se ha creado con éxito')
+                  // Aquí puedes limpiar los campos del formulario si lo deseas
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                  output.value = 'Ocurrió un error mientras se añadía la asignación del acudiente, por favor verifique los datos ingresados';
+                });
             })
-            .catch((error) => {
-              console.error('Error:', error);
-              output.value = 'Ocurrió un error mientras se añadía la asignación del acudiente, por favor verifique los datos ingresados';
-            });
-        })
+        .catch((error) => {
+          console.error('Error:', error);
+          output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
+        });
     })
     .catch((error) => {
       console.error('Error:', error);
-      output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
+      output.value = 'Ocurrió un error mientras se verificaba el nombre y apellido del paciente';
     });
-}
+})}
 
 function actualizarPaciente(Id, nuevosDatos) {
   if (!Id || !nuevosDatos.Nombre || !nuevosDatos.Apellido || !nuevosDatos.Fecha_nacimiento || !nuevosDatos.Direccion || !nuevosDatos.Genero || !nuevosDatos.Peso || !nuevosDatos.Altura || !nuevosDatos.Estado) {
@@ -444,6 +458,16 @@ function mostrarRegistroExitoso() {
 
 function mostrarActualizacionExitosa() {
   var goodUpdate = document.getElementById("goodUpdate");
+  goodUpdate.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    goodUpdate.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function duplicatedFirstLastNames() {
+  var goodUpdate = document.getElementById("nombresApellidosDuplicados");
   goodUpdate.classList.add("show");
 
   // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
