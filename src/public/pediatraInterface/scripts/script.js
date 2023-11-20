@@ -19,6 +19,7 @@ document.querySelector(".btnRegisterShow").addEventListener("click", function ()
   document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
   document.querySelector('.regIncidenciaContainer').style.left = '-100%';
   document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.foodEditorPanel').style.left = '-100%';
 });
 
 document.querySelector(".btnActualizarShow").addEventListener("click", function () {
@@ -30,28 +31,31 @@ document.querySelector(".btnActualizarShow").addEventListener("click", function 
   document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
   document.querySelector('.regIncidenciaContainer').style.left = '-100%';
   document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.foodEditorPanel').style.left = '-100%';
 });
 
 document.querySelector(".btnConsultarShow").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "-100%";
   document.querySelector(".actualizarPaciente").style.left = "-100%";
-  document.querySelector(".consultarPacientes").style.left = "22%";
+  document.querySelector(".consultarPacientes").style.left = "32%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
   document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
   document.querySelector('.regIncidenciaContainer').style.left = '-100%';
   document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.foodEditorPanel').style.left = '-100%';
 });
 
 document.querySelector(".btnCrearPlan").addEventListener("click", function () {
   document.querySelector(".crearPaciente").style.left = "-100%";
   document.querySelector(".actualizarPaciente").style.left = "-100%";
   document.querySelector(".consultarPacientes").style.left = "-100%";
-  document.querySelector(".PlanAlimentarioContainer").style.left = "28%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "24%";
   document.querySelector(".AlimentosContainer").style.left = "80%";
   document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
   document.querySelector('.regIncidenciaContainer').style.left = '-100%';
   document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.foodEditorPanel').style.left = '-100%';
 });
 
 document.querySelector('.btnEditorPlan').addEventListener("click", function () {
@@ -60,9 +64,10 @@ document.querySelector('.btnEditorPlan').addEventListener("click", function () {
   document.querySelector(".consultarPacientes").style.left = "-100%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
-  document.querySelector('.foodPlanEditorContainer').style.left = '34%';
+  document.querySelector('.foodPlanEditorContainer').style.left = '32%';
   document.querySelector('.regIncidenciaContainer').style.left = '-100%';
   document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.foodEditorPanel').style.left = '70%';
 });
 
 document.querySelector('.btnRegistrarIncidencia').addEventListener("click", function () {
@@ -72,7 +77,9 @@ document.querySelector('.btnRegistrarIncidencia').addEventListener("click", func
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
   document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
-  document.querySelector('.seeIncidenciasContainer').style.left = '34%';
+  document.querySelector('.regIncidenciaContainer').style.left = '32%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.foodEditorPanel').style.left = '-100%';
 });
 
 document.querySelector('.btnIncidencias').addEventListener("click", function () {
@@ -82,8 +89,9 @@ document.querySelector('.btnIncidencias').addEventListener("click", function () 
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
   document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
-  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
-  document.querySelector('.seeIncidenciasContainer').style.left = '34%';
+  document.querySelector('.regIncidenciaContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '32%';
+  document.querySelector('.foodEditorPanel').style.left = '-100%';
 });
 
 document.getElementById('borrar').addEventListener('click', function () {
@@ -248,16 +256,17 @@ function crearPaciente() {
                   output.value = 'Ocurrió un error mientras se añadía la asignación del acudiente, por favor verifique los datos ingresados';
                 });
             })
+            .catch((error) => {
+              console.error('Error:', error);
+              output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
+            });
+        })
         .catch((error) => {
           console.error('Error:', error);
-          output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
+          output.value = 'Ocurrió un error mientras se verificaba el nombre y apellido del paciente';
         });
     })
-    .catch((error) => {
-      console.error('Error:', error);
-      output.value = 'Ocurrió un error mientras se verificaba el nombre y apellido del paciente';
-    });
-})}
+}
 
 function actualizarPaciente(Id, nuevosDatos) {
   if (!Id || !nuevosDatos.Nombre || !nuevosDatos.Apellido || !nuevosDatos.Fecha_nacimiento || !nuevosDatos.Direccion || !nuevosDatos.Genero || !nuevosDatos.Peso || !nuevosDatos.Altura || !nuevosDatos.Estado) {
