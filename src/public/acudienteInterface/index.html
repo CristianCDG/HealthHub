@@ -1,97 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthHub - Acudiente</title>
-    <link rel="stylesheet" href="../acudienteInterface/index.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthHub - Acudiente</title>
+  <link rel="stylesheet" href="../acudienteInterface/index.css" />
 </head>
+
 <body>
-    <img class="background" src="../images/Background.jpg" alt=""/>
-    <header class="header">
-        <a href="#" class="logo">HealthHub</a>
-  
-        <nav class="navbar">
-          <a href="#" class="active">Acudiente Hub</a>
-          <a href="#" id="logOut">Log-out</a>
-        </nav>
-      </header>
-    <div class="sideBar">
-        <div class="sideBarContainer">
-            <div class="sideBarTitle">
-                <h1>Panel</h1>
-            </div>
-            <div class="sideBarOptions">
-                <a href="#" id="createFoodPlan">Crear plan alimentario</a>
-                <a href="#" id="editFoodPlan">Editor de plan alimentario</a>
-                <a href="#" id="regIncidenciaPlan">Registrar incidencia</a>
-                <a href="#" id="visualizarIncidencias">Incidencias</a>
-            </div>
-        </div>
-    </div>
-    <div class="PlanAlimentarioContainer" id="PlanAlimentarioContainer">
-        <select id="timeSelector">
-            <option value="Semanal">Semanal</option>
-            <option value="Mensual">Mensual</option>
-          </select>
-          <select id="pacienteSelector">
-          </select>
-          <div class="alimentosPlanContainer"></div>
-          <input type="submit" id="regPlanBtn" value="Guardar plan">
-    </div>
-    <div class="AlimentosContainer" id="AlimentosContainer">  
-    </div>
+  <img class="background" src="../images/Background.jpg" alt="" />
+  <header class="header">
+    <a href="#" class="logo">HealthHub</a>
 
-    <div class="foodPlanEditorContainer" id="foodPlanEditorContainer">
-      <select id="pacienteSelectorFPE"></select>
-      <div class="showActualPlan"></div>
-    </div>
-
-    <div class="regIncidenciaContainer" id="regIncidenciaContainer">
-      <select id="pacienteIncidenciaSelector"></select>
-      <select name="" id="alimentoIncidenciaSelector"></select>
-      <input type="text" id="descIncidencia" placeholder="Descripcion de incidencia">
-
-      <input type="submit" id="regIncidencia" value="Registrar incidencia">
-    </div>
-
-    <div class="seeIncidenciasContainer" id="seeIncidenciasContainer">
-      <select id="pacienteIncidenciaViewSelector"></select>
-      <div class="incidenciasViewer" id="incidenciasViewer">
-
+    <nav class="navbar">
+      <a href="#" class="active">Acudiente Hub</a>
+      <a href="#" id="logOut">Log-out</a>
+    </nav>
+  </header>
+  <div class="sideBar">
+    <div class="sideBarContainer">
+      <div class="sideBarTitle">
+        <h1>Panel</h1>
+      </div>
+      <div class="sideBarOptions">
+        <a href="#" id="createFoodPlan">Crear plan alimentario</a>
+        <a href="#" id="editFoodPlan">Editor de plan alimentario</a>
+        <a href="#" id="regIncidenciaPlan">Registrar incidencia</a>
+        <a href="#" id="visualizarIncidencias">Incidencias</a>
       </div>
     </div>
+  </div>
+  <div class="PlanAlimentarioContainer" id="PlanAlimentarioContainer">
+    <select id="timeSelector">
+      <option value="Semanal">Semanal</option>
+      <option value="Mensual">Mensual</option>
+    </select>
+    <select id="pacienteSelector">
+    </select>
+    <div class="alimentosPlanContainer"></div>
+    <input type="submit" id="regPlanBtn" value="Guardar plan">
+  </div>
+  <div class="AlimentosContainer" id="AlimentosContainer">
+  </div>
 
-    <div class="foodEditorPanel" id="foodEditorPanel">
-      <!-- <input type="text" id="foodAddName" placeholder="Nombre del alimento a añadir"> -->
-      <label for="">Selector de alimentos</label>
-      <select name="" id="alimentosAvailable"></select>
+  <div class="foodPlanEditorContainer" id="foodPlanEditorContainer">
+    <select id="pacienteSelectorFPE"></select>
+    <div class="showActualPlan"></div>
+  </div>
 
-      <!-- <input type="text" id="foodAddDay" placeholder="Nombre del dia (Lunes, Martes... Dia 1, Dia 2...)"> -->
-      <label for="">Selector de dias</label>
-      <select name="" id="dayAvailable"></select>
+  <div class="regIncidenciaContainer" id="regIncidenciaContainer">
+    <select id="pacienteIncidenciaSelector"></select>
+    <select name="" id="alimentoIncidenciaSelector"></select>
+    <input type="text" id="descIncidencia" placeholder="Descripcion de incidencia">
 
-      <input type="submit" id="addFood" value="Añadir alimento">
+    <input type="submit" id="regIncidencia" value="Registrar incidencia">
+  </div>
+
+  <div class="seeIncidenciasContainer" id="seeIncidenciasContainer">
+    <select id="pacienteIncidenciaViewSelector"></select>
+    <div class="incidenciasViewer" id="incidenciasViewer">
+
     </div>
+  </div>
 
-    <!--Zona de mensajes-->
-    <div class="existingPlan" id="existingPlan">
-        <h1>Ha ocurrido un error</h1>
-        <p>El paciente ya tiene un plan en curso</p>
-      </div>
+  <div class="foodEditorPanel" id="foodEditorPanel">
+    <!-- <input type="text" id="foodAddName" placeholder="Nombre del alimento a añadir"> -->
+    <label for="">Selector de alimentos</label>
+    <select name="" id="alimentosAvailable"></select>
 
-      <div class="nicePlanCreation" id="nicePlanCreation">
-        <h1>Todo en orden</h1>
-        <p>El plan ha sido creado correctamente</p>
-      </div>
+    <!-- <input type="text" id="foodAddDay" placeholder="Nombre del dia (Lunes, Martes... Dia 1, Dia 2...)"> -->
+    <label for="">Selector de dias</label>
+    <select name="" id="dayAvailable"></select>
 
-    <script type="module" src="../acudienteInterface/scripts/AuthenticatedVerification.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/logOut.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/showAllFood.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/pacienteSelector.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/WindowChanger.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/planEditor.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/registrarIncidencia.js"></script>
-    <script type="module" src="../acudienteInterface/scripts/viewIncidencias.js"></script>
+    <input type="submit" id="addFood" value="Añadir alimento">
+  </div>
+
+  <!--Zona de mensajes-->
+  <div class="existingPlan" id="existingPlan">
+    <h1>Ha ocurrido un error</h1>
+    <p>El paciente ya tiene un plan en curso</p>
+  </div>
+
+  <div class="nicePlanCreation" id="nicePlanCreation">
+    <h1>Todo en orden</h1>
+    <p>El plan ha sido creado correctamente</p>
+  </div>
+
+  <script type="module" src="../acudienteInterface/scripts/AuthenticatedVerification.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/logOut.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/showAllFood.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/pediatraSelector.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/WindowChanger.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/planEditor.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/registrarIncidencia.js"></script>
+  <script type="module" src="../acudienteInterface/scripts/viewIncidencias.js"></script>
 </body>
+
 </html>
