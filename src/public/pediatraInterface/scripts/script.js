@@ -240,68 +240,6 @@ function actualizarPaciente(Id, nuevosDatos) {
     });
 }
 
-function consultarUnPaciente(Id) {
-  if (!Id) {
-    console.log('Todos los campos deben estar llenos');
-    mostrarErrorCampoVacioConsultar();
-    return;
-  }
-
-  fetch(`/api/v1/paciente/${Id}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => {
-      if (response.status === 404) {
-        mostrarErrorNoIdPaciente();
-        // Selecciona el cuerpo de la tabla
-        var tbody = document.querySelector('.table-container table tbody');
-
-        // Borra todas las filas
-        tbody.innerHTML = '';
-
-        throw new Error(`Paciente no encontrado: ID ${Id}`);
-      }
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(paciente => {
-      // Selecciona el cuerpo de la tabla
-      var tbody = document.querySelector('.table-container table tbody');
-
-      tbody.innerHTML = '';
-
-      // Crea una nueva fila
-      var tr = document.createElement('tr');
-
-      // Crea y añade las celdas a la fila
-      tr.innerHTML = `
-        <td>${paciente.Id}</td>
-        <td>${paciente.Nombre}</td>
-        <td>${paciente.Apellido}</td>
-        <td>${new Date(paciente.Fecha_nacimiento).toISOString().slice(0, 10)}</td>
-        <td>${paciente.Direccion}</td>
-        <td>${paciente.Genero}</td>
-        <td>${paciente.Peso}</td>
-        <td>${paciente.Altura}</td>
-        <td>${paciente.Estado}</td>
-        <td>${paciente.Id_pediatra}</td>
-      `;
-
-      // Añade la fila al cuerpo de la tabla
-      tbody.appendChild(tr);
-    })
-    .catch((error) => {
-      // Manejar errores de la solicitud HTTP y de la conversión de JSON
-      console.error('Error:', error);
-      output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
-    });
-}
-
 function consultarTodosPacientes() {
   let correo = localStorage.getItem('correo');
   console.log(correo)
