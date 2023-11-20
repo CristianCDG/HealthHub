@@ -48,6 +48,7 @@
       <div class="input-group">
         <input type="text" id="apellido" name="apellido" placeholder="Apellido">
       </div>
+      <label for="">Fecha de nacimiento</label>
       <div class="input-group">
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Fecha de Nacimiento">
       </div>
@@ -65,6 +66,10 @@
       </div>
       <div class="input-group">
         <input type="text" id="estado" name="estado" placeholder="Estado">
+      </div>
+      <label for="">Seleccionar cuidador</label>
+      <div class="acudiente-group">
+        <select name="" id="selectAcudiente"></select>
       </div>
       <button type="submit" id="btnCrear">Crear Paciente</button>
     </div>
@@ -184,7 +189,7 @@
     <!--Successful messages block-->
     <div class="goodRegistration" id="goodRegistration">
       <h1>Todo en orden</h1>
-      <p>La cuenta del Paciente ha sido creada correctamente</p>
+      <p>El paciente ha sido creado y asignado correctamente</p>
     </div>
 
     <div class="goodUpdate" id="goodUpdate">
@@ -207,6 +212,7 @@
   <script type="module" src="/pediatraInterface/scripts/AuthenticatedVerification.js"></script>
   <script type="module" src="../pediatraInterface/scripts/pacienteSelector.js"></script>
   <script type="module" src="../pediatraInterface/scripts/showAllFood.js"></script>
+  <script type="module" src="../pediatraInterface/scripts/acudienteSelector.js"></script>
 
 </body>
 

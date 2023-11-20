@@ -173,6 +173,7 @@ const updateAcudienteByEmail = (req, res) => {
   );
 };
 
+
 module.exports = {
   getAllAcudientes,
   getOneAcudiente,
@@ -180,5 +181,5 @@ module.exports = {
   updateOneAcudiente,
   deleteOneAcudiente,
   getAcudienteByEmail,
-  updateAcudienteByEmail, 
+  updateAcudienteByEmail
 };

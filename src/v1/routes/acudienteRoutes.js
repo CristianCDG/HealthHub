@@ -23,4 +23,6 @@ router.patch('/email/:email', AcudienteController.updateAcudienteByEmail);
 // Eliminar un Acudiente
 router.delete('/:id', AcudienteController.deleteOneAcudiente);
 
+
+
 module.exports = router;

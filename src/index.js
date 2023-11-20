@@ -19,6 +19,7 @@ const v1AcudienteReg = require("./v1/routes/acudienteRegistrationRoutes");
 const v1SendEmailRouter = require("./v1/routes/sendEmailRoutes");
 const v1AlimentosPlanRouter = require("./v1/routes/alimentosPlanRoutes");
 const v1IncidenciaRouter = require("./v1/routes/incidenciaRoutes");
+const v1AsignacionRouter = require("./v1/routes/asignacionAcudientePacienteRoutes");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public", "addPatient")));
@@ -39,6 +40,7 @@ app.use("/api/v1/finishAcudienteReg", v1AcudienteReg);
 app.use("/api/v1/send-email-reg", v1SendEmailRouter);
 app.use("/api/v1/alimentos", v1AlimentosPlanRouter);
 app.use("/api/v1/incidencia", v1IncidenciaRouter);
+app.use("/api/v1/asignacion_acudiente", v1AsignacionRouter);
 
 app.use(session({
   secret: 'tu secreto aquí',

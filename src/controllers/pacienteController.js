@@ -57,7 +57,7 @@ const createOnePaciente = (req, res) => {
       console.error('Error al agregar el paciente:', err);
       res.status(500).json({ error: 'Error en la base de datos' });
     } else {
-      res.json({ message: 'Paciente agregado con éxito' });
+      res.json({ message: 'Paciente agregado con éxito', Id: result.insertId });
     }
   });
 };

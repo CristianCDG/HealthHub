@@ -122,6 +122,23 @@ const updateOneGrupo = (req, res) => {
       }
     });
   };
+
+  const getGroupByName = (req, res) => {
+    const { name } = req.params;
+  
+    db.query('SELECT * FROM GrupoAlimentario WHERE Nombre = ?', [name], (err, results) => {
+      if (err) {
+        console.error('Error al consultar la base de datos:', err);
+        res.status(500).json({ error: 'Error en la base de datos' });
+      } else {
+        if (results.length > 0) {
+          res.json(results[0]);
+        } else {
+          res.status(404).json({ error: 'Grupo no encontrado' });
+        }
+      }
+    });
+  };
   
   module.exports = {
     getAllGrupos,
@@ -129,5 +146,6 @@ const updateOneGrupo = (req, res) => {
     createOneGrupo,
     updateOneGrupo,
     deleteOneGrupo,
-    getGrupoIdByName
+    getGrupoIdByName,
+    getGroupByName
   };
