@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var select = document.getElementById('foodGroup');
         data.forEach(function(grupo) {
             var option = document.createElement('option');
-            option.value = grupo.ID;
+            option.value = grupo.Nombre;
             option.text = grupo.Nombre;
             select.add(option);
         });
@@ -21,56 +21,76 @@ document.addEventListener("DOMContentLoaded", function() {
       event.preventDefault();
   
       var nombre = document.getElementById('foodName').value;
-      var grupo = document.getElementById('foodGroup').value;
+      var grupoNombre = document.getElementById('foodGroup').value;
       var alergenico = document.getElementById('Alergenic').value;
   
-      if (!nombre || !grupo || !alergenico) {
+      if (!nombre || !grupoNombre || !alergenico) {
           console.log("Todos los campos deben estar llenos");
           showErrorMessageEmptyFields();
           return;
         }
-  
-      // Primero, verifica si ya existe un alimento con el mismo nombre
-      fetch(`/api/v1/alimento/name/${nombre}`)
+
+      fetch(`/api/v1/grupo/nombre/${grupoNombre}`)
         .then(response => {
-          if (!response.ok) {
-            // Si la respuesta es 404, significa que el alimento no existe y podemos continuar
-            if (response.status === 404) {
-              return;
-            }
-            // Para cualquier otro error, lanzamos un error
-            throw new Error(`HTTP error! status: ${response.status}`);
+          console.log('Response:', response);
+          if (!response.ok || response.status === 204) {
+            throw new Error('Grupo no encontrado');
           }
-          // Si la respuesta es OK, significa que el alimento existe y lanzamos un error
-          duplicatedFoodErr();
-          throw new Error('Ya existe un alimento con este nombre');
+          return response.text();
         })
-        // Si el alimento no existe, procede a crearlo
-        .then(() => {
-          return fetch("/api/v1/alimento", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ Nombre: nombre, Alergenico: alergenico, Id_GrupoAlimentario: grupo }),
-          });
-        })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        .then(text => {
+          console.log('Response text:', text);
+          if (text.length === 0) {
+            throw new Error('Grupo no encontrado');
           }
-          return response.json();
+          return text;
         })
-        .then((data) => {
-          if (data.message) {
-            console.log("Se ha creado el alimento correctamente");
-            showGoodFoodReg();  
+        .then(grupoId => {
+
+          if (!grupoId) {
+            throw new Error('Id de grupo no encontrado');
           }
+
+          fetch(`/api/v1/alimento/name/${nombre}`)
+            .then(response => {
+              if (!response.ok) {
+                if (response.status === 404) {
+                  return;
+                }
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              duplicatedFoodErr();
+              throw new Error('Ya existe un alimento con este nombre');
+            })
+            .then(() => {
+              return fetch("/api/v1/alimento", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ Nombre: nombre, Alergenico: alergenico, Id_GrupoAlimentario: grupoId }),
+              });
+            })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data.message) {
+                console.log("Se ha creado el alimento correctamente");
+                showGoodFoodReg();  
+              }
+            })
+            .catch((error) => {
+              console.log(
+                "There was a problem with the fetch operation: " + error.message
+              );
+            });
         })
-        .catch((error) => {
-          console.log(
-            "There was a problem with the fetch operation: " + error.message
-          );
+        .catch(error => {
+          console.error('Error:', error);
         });
     });
 });

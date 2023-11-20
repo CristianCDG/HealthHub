@@ -31,13 +31,13 @@ const getOneGrupo = (req, res) => {
   const getGrupoIdByName = (req, res) => {
     const { Nombre } = req.params;
 
-    db.query('SELECT ID FROM GrupoAlimentario WHERE Nombre = ?', [Nombre], (err, results) => {
+    db.query('SELECT Id FROM GrupoAlimentario WHERE Nombre = ?', [Nombre], (err, results) => {
         if (err) {
             console.error('Error al consultar la base de datos:', err);
             res.status(500).json({ error: 'Error en la base de datos' });
         } else {
             if (results.length > 0) {
-                res.json(results[0].ID);
+                res.json(results[0].Id);
             } else {
                 res.status(404).json({ error: 'Grupo alimenticio no encontrado' });
             }
