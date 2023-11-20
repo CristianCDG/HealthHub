@@ -88,12 +88,6 @@ btnConsultarTodos.addEventListener('click', (event) => {
   consultarTodosPacientes();
 });
 
-// btnEliminar.addEventListener('click', (event) => {
-//   event.preventDefault();
-//   const id = idEliminar.value;
-//   eliminarPaciente(id);
-// });
-
 function crearPaciente() {
   const Nombre = document.getElementById("nombre").value;
   const Apellido = document.getElementById("apellido").value;
