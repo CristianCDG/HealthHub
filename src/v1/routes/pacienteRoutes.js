@@ -26,4 +26,6 @@ router.delete('/:id', pacienteController.deleteOnePaciente);
 // Obtener el ID de un paciente por su nombre y apellido
 router.get('/id/:nombre/:apellido', pacienteController.getIdForPaciente);
 
+router.get('/nombre/:nombre/apellido/:apellido', pacienteController.getPacientePorNombreApellido);
+
 module.exports = router;

@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!selectedFood || !foodGroup || !newFoodName || !alergenic) {
             console.log('Por favor, selecciona un alimento y un grupo.');
+            wonrgUpdateEmptyFields();
             // Aquí puedes agregar la función para mostrar un mensaje de error
             return;
         }
@@ -78,6 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(data);
                 showNiceUpdate();
                 fillUpdateSelector(); // Refill the selector after updating an item
+                document.getElementById('updateNewFoodName').value = '';
+                document.getElementById('updateAlergenic').value = '';
+                
             })
             .catch(error => console.error('Error:', error));
         })
@@ -90,6 +94,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showNiceUpdate() {
     var errorMessage = document.getElementById("niceFoodUpdate");
+    errorMessage.classList.add("show");
+  
+    // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+    setTimeout(function () {
+      errorMessage.classList.remove("show");
+    }, 10000); // 3000 milisegundos (3 segundos)
+  }
+
+  function wonrgUpdateEmptyFields() {
+    var errorMessage = document.getElementById("emptyFieldsFoodUpdate");
     errorMessage.classList.add("show");
   
     // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje

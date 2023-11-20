@@ -154,7 +154,7 @@ body {
   margin-top: 7vw;
   height: 35vw;
   width: 35vw;
-  left: 32%;
+  left: -100%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -742,6 +742,23 @@ tbody tr:hover {
 }
 
 .v-id-no-existe-paciente {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(179, 0, 0, 0.8);
+  bottom: 1.5vw;
+  left: -100%;
+  width: 35vw;
+  height: 6vw;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: left 0.5s ease-in-out;
+  font-size: .9vw;
+}
+
+.nombresApellidosDuplicados {
   position: absolute;
   display: flex;
   justify-content: center;

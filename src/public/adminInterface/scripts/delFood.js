@@ -60,3 +60,4 @@ function niceFoodDeletion() {
     Message.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
 }
+

@@ -1,5 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+  function updateGroupSelector() {
+    var select = document.getElementById('foodGroup');
+    select.innerHTML = ''; // Clear the selector
+    fetch('/api/v1/grupo')
+      .then(response => response.json())
+      .then(data => {
+          data.forEach(function(grupo) {
+              var option = document.createElement('option');
+              option.value = grupo.Nombre;
+              option.text = grupo.Nombre;
+              select.add(option);
+          });
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+  }
+
+  document.getElementById("insertFoodBtn").addEventListener("click", function (event) {
+    event.preventDefault();
+    updateGroupSelector();
+  });
+
   fetch('/api/v1/grupo')
     .then(response => response.json())
     .then(data => {
