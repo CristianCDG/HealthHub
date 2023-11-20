@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           }
           return response.json();
         })
-        .then((data) => {
+        .then(data => {
           data.forEach((paciente) => {
             var pacienteOption = document.createElement("option");
             pacienteOption.value = paciente.Nombre + ' ' + paciente.Apellido; // Asume que el objeto paciente tiene una propiedad Apellido
@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
           }
           return response.json();
         })
-        .then((data) => {
-          data.forEach((paciente) => {
+        .then((pacientes) => {
+          pacientes.forEach((paciente) => {
             var pacienteOption = document.createElement("option");
             pacienteOption.value = paciente.Nombre + ' ' + paciente.Apellido; // Asume que el objeto paciente tiene una propiedad Apellido
             pacienteOption.textContent = paciente.Nombre + ' ' + paciente.Apellido;
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .catch((error) => console.error("Error:", error));
 
   var pacienteSelectorInc = document.querySelector("#pacienteIncidenciaSelector");
-  fetch(`/api/v1/acudiente/correo`, {
+  fetch(`/api/v1/pediatra/correo`, {
     method: 'POST',
     body: JSON.stringify({ correo: correo }),
     headers: { 'Content-Type': 'application/json' },
@@ -84,10 +84,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .then((response) => response.json())
     .then((data) => {
       const Id = data[0].Id;
-      fetch(`/api/v1/paciente/acu/${Id}`, {
-        method: 'POST',
+      fetch(`/api/v1/paciente/all/${Id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-        .then((response) => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((pacientes) => {
           pacientes.forEach((paciente) => {
             var pacienteOption = document.createElement("option");
@@ -100,7 +108,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .catch((error) => console.error("Error:", error));
 
   var pacienteSelectorViewInc = document.querySelector("#pacienteIncidenciaViewSelector");
-  fetch(`/api/v1/acudiente/correo`, {
+  fetch(`/api/v1/pediatra/correo`, {
     method: 'POST',
     body: JSON.stringify({ correo: correo }),
     headers: { 'Content-Type': 'application/json' },
@@ -108,10 +116,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .then((response) => response.json())
     .then((data) => {
       const Id = data[0].Id;
-      fetch(`/api/v1/paciente/acu/${Id}`, {
-        method: 'POST',
+      fetch(`/api/v1/paciente/all/${Id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-        .then((response) => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((pacientes) => {
           pacientes.forEach((paciente) => {
             var pacienteOption = document.createElement("option");
@@ -122,31 +138,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
         })
     })
     .catch((error) => console.error("Error:", error));
-
-  var pacienteIncidenciaSelector = document.querySelector("#pacienteIncidenciaSelector");
-  fetch("/api/v1/paciente/all")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((paciente) => {
-        var pacienteOption = document.createElement("option");
-        pacienteOption.value = paciente.Nombre + ' ' + paciente.Apellido; // Asume que el objeto paciente tiene una propiedad Apellido
-        pacienteOption.textContent = paciente.Nombre + ' ' + paciente.Apellido;
-        pacienteIncidenciaSelector.appendChild(pacienteOption);
-      });
-    })
-    .catch((error) => console.error("Error:", error));
-
-
-    var pacienteIncidenciaViewSelector = document.querySelector("#pacienteIncidenciaViewSelector");
-    fetch("/api/v1/paciente/all")
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((paciente) => {
-          var pacienteOption = document.createElement("option");
-          pacienteOption.value = paciente.Nombre + ' ' + paciente.Apellido; // Asume que el objeto paciente tiene una propiedad Apellido
-          pacienteOption.textContent = paciente.Nombre + ' ' + paciente.Apellido;
-          pacienteIncidenciaViewSelector.appendChild(pacienteOption);
-        });
-      })
-      .catch((error) => console.error("Error:", error));
 });
