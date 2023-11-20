@@ -102,7 +102,6 @@ btnConsultarTodos.addEventListener('click', (event) => {
 // });
 
 function crearPaciente() {
-  const Id = document.getElementById("id").value;
   const Nombre = document.getElementById("nombre").value;
   const Apellido = document.getElementById("apellido").value;
   const Fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
@@ -112,93 +111,72 @@ function crearPaciente() {
   const Altura = document.getElementById("altura").value;
   const Estado = document.getElementById("estado").value;
 
-  if (!Id || !Nombre || !Apellido || !Fecha_nacimiento || !Direccion || !Genero || !Peso || !Altura || !Estado) {
+  if (!Nombre || !Apellido || !Fecha_nacimiento || !Direccion || !Genero || !Peso || !Altura || !Estado) {
     console.log('Todos los campos deben estar llenos');
     mostrarErrorCampoVacio();
     return;
   }
 
-  if (Id.length > 12) {
-    console.log('El ID no puede exceder los 12 caracteres');
-    mostrarErrorLongitudId();
-    return;
-  }
+  let correo = localStorage.getItem('correo');
+  console.log(correo)
 
-  // Validar si el ID ya existe
-  validarID(Id)
-    .then((existe) => {
-      if (existe) {
-        console.log(`El ID ${Id} ya existe en la base de datos`);
-        mostrarErrorIdPaciente();
-        return;
-      }
+  fetch(`/api/v1/pediatra/correo`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ correo: correo }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      const Id_pediatra = data[0].Id;
 
-      let correo = localStorage.getItem('correo');
-      console.log(correo)
+      let paciente = {
+        Nombre: Nombre,
+        Apellido: Apellido,
+        Fecha_nacimiento: Fecha_nacimiento,
+        Direccion: Direccion,
+        Genero: Genero,
+        Peso: Peso,
+        Altura: Altura,
+        Estado: Estado,
+        Id_pediatra: Id_pediatra
+      };
 
-      fetch(`/api/v1/pediatra/correo`, {
+      let pacienteJSON = JSON.stringify(paciente);
+
+      console.log(pacienteJSON);
+
+      fetch('/api/v1/paciente', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ correo: correo }),
+        body: pacienteJSON,
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          const Id_pediatra = data[0].Id;
-
-          let paciente = {
-            Id: Id,
-            Nombre: Nombre,
-            Apellido: Apellido,
-            Fecha_nacimiento: Fecha_nacimiento,
-            Direccion: Direccion,
-            Genero: Genero,
-            Peso: Peso,
-            Altura: Altura,
-            Estado: Estado,
-            Id_pediatra: Id_pediatra
-          };
-
-          let pacienteJSON = JSON.stringify(paciente);
-
-          console.log(pacienteJSON);
-
-          fetch('/api/v1/paciente', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: pacienteJSON,
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then((data) => {
-              console.log('El registro se ha creado con éxito')
-              mostrarRegistroExitoso();
-              document.getElementById('id').value = '';
-              document.getElementById('nombre').value = '';
-              document.getElementById('apellido').value = '';
-              document.getElementById('fecha_nacimiento').value = '';
-              document.getElementById('direccion').value = '';
-              document.getElementById('genero').value = '';
-              document.getElementById('peso').value = '';
-              document.getElementById('altura').value = '';
-              document.getElementById('estado').value = '';
-            })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
         })
-        .catch((error) => {
-          console.error('Error:', error);
-          output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
-        });
+        .then((data) => {
+          console.log('El registro se ha creado con éxito')
+          mostrarRegistroExitoso();
+          document.getElementById('nombre').value = '';
+          document.getElementById('apellido').value = '';
+          document.getElementById('fecha_nacimiento').value = '';
+          document.getElementById('direccion').value = '';
+          document.getElementById('genero').value = '';
+          document.getElementById('peso').value = '';
+          document.getElementById('altura').value = '';
+          document.getElementById('estado').value = '';
+        })
     })
     .catch((error) => {
-      console.error('Error al validar el ID:', error);
+      console.error('Error:', error);
+      output.value = 'Ocurrió un error mientras se añadía el paciente, por favor verifique los datos ingresados';
     });
 }
 
