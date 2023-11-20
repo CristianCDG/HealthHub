@@ -15,6 +15,12 @@ document.getElementById('submit-regs').addEventListener('click', function (event
     return;
   }
 
+  if (!validateEmail(correo)) {
+    console.log('El correo no es válido');
+    showErrorMessageInvalidEmail(); // Asegúrate de tener una función para mostrar este mensaje de error
+    return;
+  }
+
   if (contrasenaConf != contrasena) {
     console.log('Las contraseñas no coinciden');
     showErrorMessageCoin()
@@ -28,7 +34,7 @@ document.getElementById('submit-regs').addEventListener('click', function (event
     .then(data => {
       if (data.Correo) {
         console.log('El correo ya existe');
-        showErrorMessageExistingMail()
+        showErrorMessageExistingMail();
         return;
       }
 
@@ -143,4 +149,19 @@ function showGoodRegistration() {
   setTimeout(function () {
     Message.classList.remove("show");
   }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function showErrorMessageInvalidEmail() {
+  var Message = document.getElementById("invalidMail");
+  Message.classList.add("show");
+
+  // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+  setTimeout(function () {
+    Message.classList.remove("show");
+  }, 10000); // 3000 milisegundos (3 segundos)
+}
+
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
