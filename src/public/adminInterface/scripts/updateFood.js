@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                showNiceUpdate();
                 fillUpdateSelector(); // Refill the selector after updating an item
             })
             .catch(error => console.error('Error:', error));
@@ -86,3 +87,13 @@ document.addEventListener('DOMContentLoaded', function() {
     fillUpdateSelector(); // Fill the selector on page load
     fillGroupSelector();
 });
+
+function showNiceUpdate() {
+    var errorMessage = document.getElementById("niceFoodUpdate");
+    errorMessage.classList.add("show");
+  
+    // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+    setTimeout(function () {
+      errorMessage.classList.remove("show");
+    }, 10000); // 3000 milisegundos (3 segundos)
+  }
