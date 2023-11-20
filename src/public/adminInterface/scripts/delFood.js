@@ -24,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   submitButton.addEventListener("click", function () {
     var selectedFood = document.getElementById("foodDeletionSelector").value;
+    if (!selectedFood) {
+        console.log('Por favor, selecciona un alimento.');
+        // Aquí puedes agregar la función para mostrar un mensaje de error
+        return;
+    }
+    
     fetch("/api/v1/alimento/name/" + selectedFood)
       .then((response) => response.json())
       .then((data) => {

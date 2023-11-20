@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var foodGroup = document.getElementById('updateFoodGroup').value;
         var alergenic = document.getElementById('updateAlergenic').value;
 
-        if (!selectedFood || !foodGroup) {
+        if (!selectedFood || !foodGroup || !newFoodName || !alergenic) {
             console.log('Por favor, selecciona un alimento y un grupo.');
             // Aquí puedes agregar la función para mostrar un mensaje de error
             return;
