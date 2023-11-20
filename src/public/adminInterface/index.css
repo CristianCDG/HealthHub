@@ -257,6 +257,11 @@ body {
     cursor: pointer;
 }
 
+#SubmitGroupUpdate:hover {
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
 .emptyFieldsFoodReg {
     position: absolute;
     display: flex;

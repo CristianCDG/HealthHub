@@ -2,19 +2,22 @@ const router = require('express').Router();
 
 const grupoController = require('../../controllers/grupoAlimenticioController');
 
-// Obtener todos los Pacientes
+// Obtener todos los grupos
 router.get('/', grupoController.getAllGrupos);
 
-// Obtener un solo Paciente por su ID
+// Obtener un solo grupo por su ID
 router.get('/:id', grupoController.getOneGrupo);
 
-// Agregar un nuevo Paciente
+// Obtener el ID de un grupo por su nombre
+router.get('/nombre/:Nombre', grupoController.getGrupoIdByName);
+
+// Agregar un nuevo grupo
 router.post('/', grupoController.createOneGrupo);
 
-// Actualizar un Paciente
+// Actualizar un grupo
 router.patch('/:id', grupoController.updateOneGrupo);
 
-// Eliminar un Paciente
+// Eliminar un grupo
 router.delete('/:id', grupoController.deleteOneGrupo);
 
 module.exports = router;
