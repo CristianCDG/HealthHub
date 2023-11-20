@@ -113,6 +113,7 @@ body {
     background-color: rgba(0, 68, 117, 0.8);
     border-radius: 20px;
     transition: left 0.5s ease-in-out;
+    font-size: .8vw;
 }
 
 .deleteAlimentoContainer {
@@ -129,6 +130,7 @@ body {
     background-color: rgba(0, 68, 117, 0.8);
     border-radius: 20px;
     transition: left 0.5s ease-in-out;
+    font-size: .8vw;
 }
 
 .viewAlimentoContainer {
@@ -146,6 +148,55 @@ body {
     border-radius: 20px;
     transition: left 0.5s ease-in-out;
 }
+
+.viewGroupContainer {
+    position: absolute;
+    top: 10vw;
+    left: 25%;
+    width: 50vw;
+    height: 35vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 68, 117, 0.8);
+    border-radius: 20px;
+    transition: left 0.5s ease-in-out;
+}
+
+.grupoVisualizer {
+    position: absolute;
+    top: 20%;
+    width: 26vw;
+    height: 50vh;
+    background-color: rgba(211, 211, 211, 0.5);
+    border-radius: 20px;
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    padding-top: 1vw;
+}
+
+.viewGroupContainer h1 {
+    position: absolute;
+    top: 3vw;
+}
+
+.viewGroupContainer input {
+    position: absolute;
+    top: 31.5vw;
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
 
 .viewAlimentoContainer h1 {
     position: absolute;
@@ -262,6 +313,11 @@ body {
     cursor: pointer;
 }
 
+#SubmitgroupDeletion:hover{
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
 
 
 .emptyFieldsFoodReg {
@@ -312,6 +368,7 @@ body {
     background-color: rgba(0, 68, 117, 0.8);
     border-radius: 20px;
     transition: left 0.5s ease-in-out;
+    font-size: .8vw;
 }
 
 .actualizarAlimentoContainer input {
@@ -350,6 +407,7 @@ body {
     background-color: rgba(0, 68, 117, 0.8);
     border-radius: 20px;
     transition: left 0.5s ease-in-out;
+    font-size: .8vw;
 }
 
 .insertarGrupoContainer input {
@@ -377,6 +435,7 @@ body {
     background-color: rgba(0, 68, 117, 0.8);
     border-radius: 20px;
     transition: left 0.5s ease-in-out;
+    font-size: .8vw;
 }
 
 .modificarGrupoContainer input {
@@ -391,6 +450,45 @@ body {
 }
 
 .modificarGrupoContainer select {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.deleteGrupoContainer{
+    position: absolute;
+    top: 10vw;
+    left: -100%;
+    width: 50vw;
+    height: 35vw;
+    padding: 2vw 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 68, 117, 0.8);
+    border-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .8vw;
+}
+
+.deleteGrupoContainer input {
+    width: 20vw;
+    text-align: center;
+    height: 2vw;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-top: 1vw;
+}
+
+.deleteGrupoContainer select {
     width: 20vw;
     text-align: center;
     height: 2vw;
