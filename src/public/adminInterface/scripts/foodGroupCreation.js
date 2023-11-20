@@ -4,6 +4,11 @@ document.getElementById('SubmitGroup').addEventListener('click', function(event)
     var groupName = document.getElementById('groupName').value;
     var groupDesc = document.getElementById('groupDesc').value;
 
+    if (!groupDesc || !groupName) {
+        console.log("Todos los campos deben estar llenos");
+        return;
+      }
+
     fetch('/api/v1/grupo', {
         method: 'POST',
         headers: {

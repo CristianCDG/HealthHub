@@ -685,6 +685,16 @@ tbody tr:hover {
   font-size: .9vw;
 }
 
+#selectAcudiente {
+  width: 20vw;
+  text-align: center;
+  height: 2vw;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  transition: .5s;
+}
+
 .show {
   left: 0;
   /* Desplazamiento hacia la posición inicial (0) */
