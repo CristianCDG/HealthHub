@@ -1,4 +1,4 @@
-document.getElementById('SubmitGroup').addEventListener('click', function(event) {
+document.getElementById('SubmitGroup').addEventListener('click', async function(event) {
     event.preventDefault();
 
     var groupName = document.getElementById('groupName').value;
@@ -7,23 +7,35 @@ document.getElementById('SubmitGroup').addEventListener('click', function(event)
     if (!groupDesc || !groupName) {
         console.log("Todos los campos deben estar llenos");
         return;
-      }
+    }
 
-    fetch('/api/v1/grupo', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            Nombre: groupName,
-            Descripcion: groupDesc
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
+    try {
+        // Primero, verifica si ya existe un grupo con el mismo nombre
+        let response = await fetch(`/api/v1/grupo/name/${encodeURIComponent(groupName)}`)
+        if (response.ok) {
+            // Si la respuesta es OK, significa que el grupo existe y lanzamos un error
+            throw new Error('Ya existe un grupo con este nombre');
+        } else if (response.status !== 404) {
+            // Para cualquier otro error, lanzamos un error
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Si el grupo no existe, procede a crearlo
+        response = await fetch("/api/v1/grupo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ Nombre: groupName, Descripcion: groupDesc }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Success:", data);
+    } catch (error) {
         console.error('Error:', error);
-    });
+    }
 });

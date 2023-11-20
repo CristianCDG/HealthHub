@@ -11,7 +11,7 @@ router.get('/:id', grupoController.getOneGrupo);
 // Obtener el ID de un grupo por su nombre
 router.get('/nombre/:Nombre', grupoController.getGrupoIdByName);
 
-router.get('/name/:nombre', grupoController.getGroupByName);
+router.get('/name/:Nombre', grupoController.getGroupByName);
 
 // Agregar un nuevo grupo
 router.post('/', grupoController.createOneGrupo);

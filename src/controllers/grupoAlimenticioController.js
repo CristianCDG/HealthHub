@@ -124,9 +124,9 @@ const updateOneGrupo = (req, res) => {
   };
 
   const getGroupByName = (req, res) => {
-    const { name } = req.params;
+    const { Nombre } = req.params;
   
-    db.query('SELECT * FROM GrupoAlimentario WHERE Nombre = ?', [name], (err, results) => {
+    db.query('SELECT * FROM GrupoAlimentario WHERE Nombre = ?', [Nombre], (err, results) => {
       if (err) {
         console.error('Error al consultar la base de datos:', err);
         res.status(500).json({ error: 'Error en la base de datos' });
