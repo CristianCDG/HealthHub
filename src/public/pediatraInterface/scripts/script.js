@@ -146,7 +146,7 @@ function crearPaciente() {
         .then(response => response.json())
         .then(data => {
           console.log(data)
-          const Id = data[0].Id;
+          const Id_pediatra = data[0].Id;
 
           let paciente = {
             Id: Id,
@@ -158,7 +158,7 @@ function crearPaciente() {
             Peso: Peso,
             Altura: Altura,
             Estado: Estado,
-            Id_pediatra: Id
+            Id_pediatra: Id_pediatra
           };
 
           let pacienteJSON = JSON.stringify(paciente);
