@@ -4,4 +4,6 @@ const AsignacionController = require('../../controllers/asignacionAcudientePacie
 
 router.post('/', AsignacionController.createAsignacion);
 
+// router.post('/:id', AsignacionController.getPacientesPorAcudiente);
+
 module.exports = router;

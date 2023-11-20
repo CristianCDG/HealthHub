@@ -11,6 +11,9 @@ router.get('/email/:email', AcudienteController.getAcudienteByEmail);
 // Obtener un solo Acudiente por su ID
 router.get('/:id', AcudienteController.getOneAcudiente);
 
+// Obtiene un solo Acudiente por su Correo
+router.post('/correo', AcudienteController.getOneAcudienteCorreo);
+
 // Agregar un nuevo Acudiente
 router.post('/', AcudienteController.createOneAcudiente);
 

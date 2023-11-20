@@ -28,6 +28,22 @@ const getOneAcudiente = (req, res) => {
   });
 };
 
+const getOneAcudienteCorreo = (req, res) => {
+  const { correo } = req.body;
+
+  const sql = 'SELECT Id FROM Acudiente WHERE E_mail = ?';
+
+  db.query(sql, [correo], (err, result) => {
+    if (err) {
+      console.error('Error al obtener el id del pediatra:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      console.log(result);
+      res.json(result);
+    }
+  });
+};
+
 const createOneAcudiente = (req, res) => {
   const {
     Nombre,
@@ -48,14 +64,14 @@ const createOneAcudiente = (req, res) => {
   db.query(
     sql,
     [
-        ID,
-        Nombre,
-        Apellido,
-        E_mail,
-        Contrasena,
-        Telefono,
-        Direccion,
-        Fecha_nacimiento,
+      ID,
+      Nombre,
+      Apellido,
+      E_mail,
+      Contrasena,
+      Telefono,
+      Direccion,
+      Fecha_nacimiento,
     ],
     (err, result) => {
       if (err) {
@@ -83,10 +99,10 @@ const updateOneAcudiente = (req, res) => {
   db.query(
     sql,
     [
-        ID,
-        Nombre,
-        Apellido,
-        PacienteID,
+      ID,
+      Nombre,
+      Apellido,
+      PacienteID,
     ],
     (err, result) => {
       if (err) {
@@ -153,10 +169,10 @@ const updateAcudienteByEmail = (req, res) => {
   db.query(
     sql,
     [
-        Direccion,
-        Telefono,
-        Fecha_nacimiento,
-        email,
+      Direccion,
+      Telefono,
+      Fecha_nacimiento,
+      email,
     ],
     (err, result) => {
       if (err) {
@@ -177,6 +193,7 @@ const updateAcudienteByEmail = (req, res) => {
 module.exports = {
   getAllAcudientes,
   getOneAcudiente,
+  getOneAcudienteCorreo,
   createOneAcudiente,
   updateOneAcudiente,
   deleteOneAcudiente,

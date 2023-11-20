@@ -11,6 +11,9 @@ router.get('/:id', pacienteController.getOnePaciente);
 
 router.get('/all/:id', pacienteController.getAllPacientesForId);
 
+// Obtener los pacientes por el ID del acudiente
+router.post('/acu/:id', pacienteController.getPacientesPorAcudiente);
+
 router.post('/', pacienteController.createOnePaciente);
 
 router.patch('/:id', pacienteController.updateOnePaciente);

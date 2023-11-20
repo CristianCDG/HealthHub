@@ -47,6 +47,20 @@ const getAllPacientesForId = (req, res) => {
   });
 };
 
+// Obtengo todos los ids de los pacientes de un pediatra
+const getPacientesPorAcudiente = (req, res) => {
+  const { id } = req.params;
+
+  db.query('SELECT Paciente.* FROM Paciente JOIN Asignacion_acudiente ON Paciente.Id = Asignacion_acudiente.Id_paciente WHERE Asignacion_acudiente.Id_Acudiente = ?', [id], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.status(500).json({ error: 'Error en la base de datos' });
+    } else {
+      res.json(results);
+    }
+  });
+};
+
 const createOnePaciente = (req, res) => {
   const { Nombre, Apellido, Fecha_nacimiento, Direccion, Genero, Peso, Altura, Estado, Id_pediatra } = req.body;
 
@@ -126,6 +140,7 @@ module.exports = {
   getOnePaciente,
   getAllPacientes,
   getAllPacientesForId,
+  getPacientesPorAcudiente,
   createOnePaciente,
   updateOnePaciente,
   deleteOnePaciente,
