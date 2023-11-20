@@ -52,19 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('/api/v1/alimento/name/' + selectedFood)
-        .then(response => response.json())
-        .then(data => {
-            fetch('/api/v1/alimento/' + data.Id, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    Nombre: newFoodName,
-                    Id_GrupoAlimentario: foodGroup,
-                    Alergenico: alergenic === 'true'
-                }),
+        fetch('/api/v1/grupo/nombre/' + foodGroup)
+        .then(response => response.text())
+        .then(grupoId => {
+            if (!grupoId) {
+                throw new Error('Id de grupo no encontrado');
+            }
+            return fetch('/api/v1/alimento/name/' + selectedFood)
+            .then(response => response.json())
+            .then(data => {
+                return fetch('/api/v1/alimento/' + data.Id, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Nombre: newFoodName,
+                        Id_GrupoAlimentario: grupoId,
+                        Alergenico: alergenic === 'true'
+                    }),
+                })
             })
             .then(response => response.json())
             .then(data => {
