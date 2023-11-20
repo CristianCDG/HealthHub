@@ -1,7 +1,6 @@
 const btnCrearPaciente = document.getElementById("btnCrear");
 const btnActualizar = document.getElementById('btnActualizar')
 
-const btnConsultarUno = document.getElementById('btnConsultar')
 const btnConsultarTodos = document.getElementById('btnConsultarTodos')
 
 const btnEliminar = document.getElementById('btnEliminar')
@@ -82,12 +81,6 @@ btnActualizar.addEventListener("click", (event) => {
   };
 
   actualizarPaciente(idActualizar.value, nuevosDatos);
-});
-
-btnConsultarUno.addEventListener('click', (event) => {
-  event.preventDefault();
-  const id = idConsultar.value;
-  consultarUnPaciente(id);
 });
 
 btnConsultarTodos.addEventListener('click', (event) => {
