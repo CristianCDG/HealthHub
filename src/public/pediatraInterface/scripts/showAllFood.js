@@ -107,6 +107,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
           var alimentoElement = alimentoElements.find(
             (element) => element.textContent === nombreAlimento
           );
+
+          var alimentosAlergenicos = Array.from(diaAlimentosContainer.querySelectorAll(".alergenico"));
+          if (alimentosAlergenicos.length >= 2) {
+            alert("No puedes agregar más de dos alimentos alergénicos por día.");
+            return;
+          }
+
           if (alimentoElement) {
             alimentoElement.parentNode.removeChild(alimentoElement);
           }
@@ -261,7 +268,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         alimentosPlanContainer.appendChild(diaElement);
       });
 
-      
+
 
     }
   });
@@ -269,7 +276,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector("#regPlanBtn").addEventListener("click", function () {
     var bebeSeleccionado = document.querySelector("#pacienteSelector").value;
     var [nombreBebe, apellidoBebe] = bebeSeleccionado.split(" ");
-  
+
     // Fetch existing plans for the selected patient
     fetch(`/api/v1/planes/${nombreBebe}/${apellidoBebe}`)
       .then((response) => response.json())
@@ -279,7 +286,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           var lastPlan = data[data.length - 1];
           var planDate = new Date(lastPlan.Fecha_creacion);
           var now = new Date();
-  
+
           // Check if the plan is too recent
           if (
             (lastPlan.Tipo === "Semanal" && now - planDate < 6 * 24 * 60 * 60 * 1000) ||
@@ -289,8 +296,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             return;
           }
         }
-  
-        
+
+
         var dias = document.querySelectorAll(".dia");
         var planAlimentario = Array.from(dias).map((dia) => {
           var alimentos = Array.from(dia.querySelectorAll("p")).map(
@@ -301,10 +308,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             alimentos: alimentos,
           };
         });
-  
+
         // Get the selected plan type
         var tipoPlan = document.querySelector("#timeSelector").value;
-  
+
         fetch("/api/v1/planes", {
           method: "POST",
           headers: {
@@ -315,14 +322,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
             apellidoBebe: apellidoBebe,
             planAlimentario: planAlimentario,
             tipo: tipoPlan
-          }), 
+          }),
         })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          showNicePlan();
-        })
-        .catch((error) => console.error("Error:", error));
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            showNicePlan();
+          })
+          .catch((error) => console.error("Error:", error));
       });
   });
 });
