@@ -318,6 +318,11 @@ body {
     cursor: pointer;
 }
 
+#refreshGroup:hover{
+    background-color: rgba(0, 255, 0, 0.596);
+    cursor: pointer;
+}
+
 
 
 .emptyFieldsFoodReg {
@@ -354,9 +359,162 @@ body {
     font-size: .9vw;
 }
 
+.emptyFieldsFoodUpdate {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.duplicatedGroupName {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.emptyFieldsGroupCreation {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.emptyFieldsGroupUpdate {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.anotherGroupGroupUpdate {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(179, 0, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
 
 
 .goodFoodReg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(30, 179, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.niceGroupUpdate {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(30, 179, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.niceGroupDeletion {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(30, 179, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.noGroupToDelete {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(197, 128, 0, 0.8);
+    bottom: 1.5vw;
+    left: -100%;
+    width: 35vw;
+    height: 6vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: left 0.5s ease-in-out;
+    font-size: .9vw;
+}
+
+.niceGroupCreation {
     position: absolute;
     display: flex;
     justify-content: center;
