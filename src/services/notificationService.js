@@ -1389,7 +1389,7 @@ const sendEmail = (toEmail, role) => {
               // Extrae el nombre de usuario
               const usernameSent = results[0].Username; // Asegúrate de ajustar esto según tu tabla de usuarios
               // Puedes utilizar HTML para dar formato al cuerpo del correo
-              subject = "¡Bienvenido a HealthHub como Pediatra!";
+              subject = "¡Bienvenido a HealthHub, su registro se ha completado!";
               htmlContent = `<!DOCTYPE html>
 			  <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
 			  
