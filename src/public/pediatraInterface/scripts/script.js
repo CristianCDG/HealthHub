@@ -16,6 +16,9 @@ document.querySelector(".btnRegisterShow").addEventListener("click", function ()
   document.querySelector(".consultarPacientes").style.left = "-100%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
+  document.querySelector('.regIncidenciaContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
 });
 
 document.querySelector(".btnActualizarShow").addEventListener("click", function () {
@@ -24,6 +27,9 @@ document.querySelector(".btnActualizarShow").addEventListener("click", function 
   document.querySelector(".consultarPacientes").style.left = "-100%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
+  document.querySelector('.regIncidenciaContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
 });
 
 document.querySelector(".btnConsultarShow").addEventListener("click", function () {
@@ -32,6 +38,9 @@ document.querySelector(".btnConsultarShow").addEventListener("click", function (
   document.querySelector(".consultarPacientes").style.left = "22%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
   document.querySelector(".AlimentosContainer").style.left = "-100%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
+  document.querySelector('.regIncidenciaContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
 });
 
 document.querySelector(".btnCrearPlan").addEventListener("click", function () {
@@ -40,6 +49,41 @@ document.querySelector(".btnCrearPlan").addEventListener("click", function () {
   document.querySelector(".consultarPacientes").style.left = "-100%";
   document.querySelector(".PlanAlimentarioContainer").style.left = "28%";
   document.querySelector(".AlimentosContainer").style.left = "80%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
+  document.querySelector('.regIncidenciaContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+});
+
+document.querySelector('.btnEditorPlan').addEventListener("click", function () {
+  document.querySelector(".crearPaciente").style.left = "-100%";
+  document.querySelector(".actualizarPaciente").style.left = "-100%";
+  document.querySelector(".consultarPacientes").style.left = "-100%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+  document.querySelector(".AlimentosContainer").style.left = "-100%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '34%';
+  document.querySelector('.regIncidenciaContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+});
+
+document.querySelector('.btnRegistrarIncidencia').addEventListener("click", function () {
+  document.querySelector(".crearPaciente").style.left = "-100%";
+  document.querySelector(".actualizarPaciente").style.left = "-100%";
+  document.querySelector(".consultarPacientes").style.left = "-100%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+  document.querySelector(".AlimentosContainer").style.left = "-100%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '34%';
+});
+
+document.querySelector('.btnIncidencias').addEventListener("click", function () {
+  document.querySelector(".crearPaciente").style.left = "-100%";
+  document.querySelector(".actualizarPaciente").style.left = "-100%";
+  document.querySelector(".consultarPacientes").style.left = "-100%";
+  document.querySelector(".PlanAlimentarioContainer").style.left = "-100%";
+  document.querySelector(".AlimentosContainer").style.left = "-100%";
+  document.querySelector('.foodPlanEditorContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '-100%';
+  document.querySelector('.seeIncidenciasContainer').style.left = '34%';
 });
 
 document.getElementById('borrar').addEventListener('click', function () {
@@ -323,37 +367,6 @@ function validarID(Id) {
     })
     .then((data) => {
       // Si se encuentra un paciente con el ID, retornar true
-      if (data === false) {
-        return;
-      }
-      return data ? true : false;
-    })
-    .catch((error) => {
-      // Manejar errores de la solicitud HTTP y de la conversión de JSON
-      console.error('Error:', error);
-      output.value = 'Ocurrió un error mientras se añadía el Paciente, por favor verifique los datos ingresados';
-    });
-}
-
-function validarPediatraID(Id) {
-  return fetch(`/api/v1/pediatra/${Id}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => {
-      if (response.status === 404) {
-        // El pediatra no existe, retornar false
-        return false;
-      }
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return true; // El pediatra existe, retornar true 
-    })
-    .then((data) => {
-      // Si se encuentra un pediatra con el ID, retornar true
       if (data === false) {
         return;
       }

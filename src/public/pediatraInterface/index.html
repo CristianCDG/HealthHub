@@ -37,6 +37,15 @@
       <div class="btn-container">
         <button class="btnCrearPlan">Crear plan alimentario</button>
       </div>
+      <div class="btn-container">
+        <button class="btnEditorPlan">Editor de plan</button>
+      </div>
+      <div class="btn-container">
+        <button class="btnRegistrarIncidencia">Registrar incidencia</button>
+      </div>
+      <div class="btn-container">
+        <button class="btnIncidencias">Incidencias</button>
+      </div>
     </div>
 
     <div class="crearPaciente">
@@ -152,7 +161,28 @@
       <div class="alimentosPlanContainer"></div>
       <input type="submit" id="regPlanBtn" value="Guardar plan">
     </div>
+
     <div class="AlimentosContainer" id="AlimentosContainer">
+    </div>
+
+    <div class="foodPlanEditorContainer" id="foodPlanEditorContainer">
+      <select id="pacienteSelectorFPE"></select>
+      <div class="showActualPlan"></div>
+    </div>
+
+    <div class="regIncidenciaContainer" id="regIncidenciaContainer">
+      <select id="pacienteIncidenciaSelector"></select>
+      <select name="" id="alimentoIncidenciaSelector"></select>
+      <input type="text" id="descIncidencia" placeholder="Descripcion de incidencia">
+
+      <input type="submit" id="regIncidencia" value="Registrar incidencia">
+    </div>
+
+    <div class="seeIncidenciasContainer" id="seeIncidenciasContainer">
+      <select id="pacienteIncidenciaViewSelector"></select>
+      <div class="incidenciasViewer" id="incidenciasViewer">
+
+      </div>
     </div>
 
     <!--Error messages block-->

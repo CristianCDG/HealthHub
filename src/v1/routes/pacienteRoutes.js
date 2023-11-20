@@ -11,6 +11,9 @@ router.get('/:id', pacienteController.getOnePaciente);
 
 router.get('/all/:id', pacienteController.getAllPacientesForId);
 
+// Validar si un paciente existe por nombre y apellido
+router.get('/validar', pacienteController.validarNombreApellido);
+
 // Obtener los pacientes por el ID del acudiente
 router.post('/acu/:id', pacienteController.getPacientesPorAcudiente);
 
