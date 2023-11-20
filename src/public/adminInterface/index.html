@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration</title>
     <link rel="stylesheet" href="../adminInterface/index.css">
 </head>
+
 <body>
-    <img class="background" src="../images/Background.jpg" alt=""/>
+    <img class="background" src="../images/Background.jpg" alt="" />
     <header class="header">
         <a href="#" class="logo">HealthHub</a>
-  
+
         <nav class="navbar">
-          <a href="#" class="active">Administracion</a>
-          <a href="#" id="logOut">Log-out</a>
+            <a href="#" class="active">Administracion</a>
+            <a href="#" id="logOut">Log-out</a>
         </nav>
-      </header>
+    </header>
     <div class="sideBar">
         <div class="sideBarContainer">
             <div class="sideBarTitle">
@@ -27,9 +29,9 @@
                 <a href="#" id="listFoodBtn">Consultar alimentos</a>
                 <a href="#" id="updateFoodBtn">Actualizar alimento</a>
                 <a href="#" id="insertFoodGroupBtn">Insertar grupo alimenticio</a>
-                <a href="#">Modificar grupo alimenticio</a>
-                <a href="#">Eliminar grupo alimenticio</a>
-                <a href="#">Consultar grupo alimenticio</a>
+                <a href="#" id="modificarGrupoBtn">Modificar grupo alimenticio</a>
+                <a href="#" id="eliminarGrupoBtn">Eliminar grupo alimenticio</a>
+                <a href="#" id="consultarGrupoBtn">Consultar grupo alimenticio</a>
             </div>
         </div>
     </div>
@@ -88,11 +90,11 @@
     <div class="emptyFieldsFoodReg" id="emptyFieldsFoodReg">
         <h1>Ha ocurrido un error</h1>
         <p>Ninguno de los campos puede estar vacio</p>
-      </div>
-      <div class="goodFoodReg" id="goodFoodReg">
+    </div>
+    <div class="goodFoodReg" id="goodFoodReg">
         <h1>Todo en orden</h1>
         <p>El alimento se ha creado con exito</p>
-      </div>
+    </div>
     <script type="module" src="../adminInterface/scripts/submitFood.js"></script>
     <script type="module" src="../adminInterface/scripts/WindowChanger.js"></script>
     <script type="module" src="../adminInterface/scripts/logOut.js"></script>
@@ -103,4 +105,5 @@
     <script type="module" src="../adminInterface/scripts/foodGroupCreation.js"></script>
     <script type="module" src="../adminInterface/scripts/updateFoodGroup.js"></script>
 </body>
+
 </html>

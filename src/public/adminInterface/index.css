@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
-    font-family: 'Poppins', 'sans-serif';  
+    font-family: 'Poppins', 'sans-serif';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,7 +12,7 @@ body {
     color: #ededed;
 }
 
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 25%;
@@ -27,14 +27,14 @@ body {
     border-bottom-right-radius: 40px;
 }
 
-.logo{
+.logo {
     font-size: 2vw;
     color: #ededed;
     text-decoration: none;
     font-weight: 600;
 }
 
-.navbar a{
+.navbar a {
     font-size: 1vw;
     color: #ededed;
     text-decoration: none;
@@ -48,7 +48,7 @@ body {
     color: #f00000;
 }
 
-.background{
+.background {
     object-fit: cover;
     opacity: 0.3;
     width: 100%;
@@ -56,7 +56,7 @@ body {
     height: 100%;
 }
 
-.sideBar{
+.sideBar {
     position: absolute;
     left: 0;
     height: 100%;
@@ -71,7 +71,7 @@ body {
     font-size: 1vw;
 }
 
-.sideBarTitle{
+.sideBarTitle {
     border-bottom: 2px solid black;
     display: flex;
     align-items: center;
@@ -79,7 +79,7 @@ body {
     margin-bottom: 2vw;
 }
 
-.sideBarOptions{
+.sideBarOptions {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,7 +87,7 @@ body {
     text-decoration: none;
 }
 
-.sideBarOptions a{
+.sideBarOptions a {
     margin-bottom: 1vw;
     text-decoration: none;
     font-size: 1.2vw;
@@ -95,11 +95,11 @@ body {
     transition: .5s;
 }
 
-.sideBarOptions a:hover{
+.sideBarOptions a:hover {
     color: rgba(0, 0, 0, 0.8);
 }
 
-.insertarAlimentoContainer{
+.insertarAlimentoContainer {
     position: absolute;
     top: 10vw;
     left: -100%;
@@ -115,7 +115,7 @@ body {
     transition: left 0.5s ease-in-out;
 }
 
-.deleteAlimentoContainer{
+.deleteAlimentoContainer {
     position: absolute;
     top: 10vw;
     left: -100%;
@@ -131,7 +131,7 @@ body {
     transition: left 0.5s ease-in-out;
 }
 
-.viewAlimentoContainer{
+.viewAlimentoContainer {
     position: absolute;
     top: 10vw;
     left: -100%;
@@ -147,12 +147,12 @@ body {
     transition: left 0.5s ease-in-out;
 }
 
-.viewAlimentoContainer h1{
+.viewAlimentoContainer h1 {
     position: absolute;
     top: 3vw;
 }
 
-.viewAlimentoContainer input{
+.viewAlimentoContainer input {
     position: absolute;
     top: 31.5vw;
     width: 20vw;
@@ -166,7 +166,7 @@ body {
 }
 
 
-.alimentoVisualizer{
+.alimentoVisualizer {
     position: absolute;
     top: 20%;
     width: 26vw;
@@ -185,17 +185,17 @@ body {
     cursor: pointer;
 }
 
-#Submitfood:hover{
+#Submitfood:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
 
-#submitUpdate:hover{
+#submitUpdate:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
 
-#SubmitGroup:hover{
+#SubmitGroup:hover {
     background-color: rgba(0, 255, 0, 0.596);
     cursor: pointer;
 }
@@ -291,7 +291,7 @@ body {
     font-size: .9vw;
 }
 
-.actualizarAlimentoContainer{
+.actualizarAlimentoContainer {
     position: absolute;
     top: 10vw;
     left: -100%;
@@ -329,7 +329,7 @@ body {
     margin-top: 1vw;
 }
 
-.insertarGrupoContainer{
+.insertarGrupoContainer {
     position: absolute;
     top: 10vw;
     left: -100%;
@@ -356,7 +356,7 @@ body {
     margin-top: 1vw;
 }
 
-.modificarGrupoContainer{
+.modificarGrupoContainer {
     position: absolute;
     top: 10vw;
     left: 25%;
@@ -372,7 +372,7 @@ body {
     transition: left 0.5s ease-in-out;
 }
 
-.modificarGrupoContainer input{
+.modificarGrupoContainer input {
     width: 20vw;
     text-align: center;
     height: 2vw;
@@ -383,7 +383,7 @@ body {
     margin-top: 1vw;
 }
 
-.modificarGrupoContainer select{
+.modificarGrupoContainer select {
     width: 20vw;
     text-align: center;
     height: 2vw;
@@ -407,6 +407,6 @@ body {
     justify-content: center;
 }
 
-.showAlimentoContainer{
+.showAlimentoContainer {
     left: 25%;
 }
