@@ -63,7 +63,8 @@
         <h1>Actualizar alimento</h1>
         <select name="" id="selectFoodToUpdate"></select>
         <input type="text" name="newName" id="updateNewFoodName" placeholder="Nuevo nombre del alimento" />
-        <input type="text" name="group" id="updateFoodGroup" placeholder="Grupo alimenticio" />
+        <!-- <input type="text" name="group" id="updateFoodGroup" placeholder="Grupo alimenticio" /> -->
+        <select name="" id="updateFoodGroup"></select>
         <input type="text" name="alergenic" id="updateAlergenic" placeholder="¿Alergenico? true o false" />
         <input type="submit" name="submitUpdate" id="submitUpdate" value="Actualizar" />
     </div>
@@ -113,6 +114,17 @@
         <h1>Todo en orden</h1>
         <p>El alimento se ha creado con exito</p>
     </div>
+
+    <div class="niceFoodDeletion" id="niceFoodDeletion">
+        <h1>Todo en orden</h1>
+        <p>El alimento ha sido eliminado correctamente</p>
+    </div>
+
+    <div class="niceFoodUpdate" id="niceFoodUpdate">
+        <h1>Todo en orden</h1>
+        <p>El alimento ha sido actualizado correctamente</p>
+    </div>
+
     <script type="module" src="../adminInterface/scripts/submitFood.js"></script>
     <script type="module" src="../adminInterface/scripts/WindowChanger.js"></script>
     <script type="module" src="../adminInterface/scripts/logOut.js"></script>

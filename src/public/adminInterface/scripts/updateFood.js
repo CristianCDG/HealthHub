@@ -16,29 +16,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function fillGroupSelector() {
+        var groupSelector = document.getElementById("updateFoodGroup");
+        groupSelector.innerHTML = ""; // Clear the selector
+        fetch("/api/v1/grupo")
+          .then((response) => response.json())
+          .then((grupos) => {
+            for (var grupo of grupos) {
+              var optionElement = document.createElement("option");
+              optionElement.textContent = grupo.Nombre;
+              optionElement.value = grupo.Nombre;
+              groupSelector.appendChild(optionElement);
+            }
+          });
+      }
+      
+
+    document
+    .getElementById("updateFoodBtn")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+      fillUpdateSelector(); // Refill the selector after deleting an item
+      fillGroupSelector();
+    });
+
     submitUpdate.addEventListener('click', function() {
         var selectedFood = selectFoodToUpdate.value;
         var newFoodName = document.getElementById('updateNewFoodName').value;
         var foodGroup = document.getElementById('updateFoodGroup').value;
         var alergenic = document.getElementById('updateAlergenic').value;
 
-        fetch('/api/v1/alimento/name/' + selectedFood)
-        .then(response => response.json())
-        .then(data => {
-            fetch('/api/v1/alimento/' + data.Id, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    Nombre: newFoodName,
-                    Id_GrupoAlimentario: foodGroup,
-                    Alergenico: alergenic === 'true'
-                }),
+        if (!selectedFood || !foodGroup || !newFoodName || !alergenic) {
+            console.log('Por favor, selecciona un alimento y un grupo.');
+            // Aquí puedes agregar la función para mostrar un mensaje de error
+            return;
+        }
+
+        fetch('/api/v1/grupo/nombre/' + foodGroup)
+        .then(response => response.text())
+        .then(grupoId => {
+            if (!grupoId) {
+                throw new Error('Id de grupo no encontrado');
+            }
+            return fetch('/api/v1/alimento/name/' + selectedFood)
+            .then(response => response.json())
+            .then(data => {
+                return fetch('/api/v1/alimento/' + data.Id, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        Nombre: newFoodName,
+                        Id_GrupoAlimentario: grupoId,
+                        Alergenico: alergenic === 'true'
+                    }),
+                })
             })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                showNiceUpdate();
                 fillUpdateSelector(); // Refill the selector after updating an item
             })
             .catch(error => console.error('Error:', error));
@@ -47,4 +85,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     fillUpdateSelector(); // Fill the selector on page load
+    fillGroupSelector();
 });
+
+function showNiceUpdate() {
+    var errorMessage = document.getElementById("niceFoodUpdate");
+    errorMessage.classList.add("show");
+  
+    // Después de un tiempo (por ejemplo, 3 segundos), oculta el mensaje
+    setTimeout(function () {
+      errorMessage.classList.remove("show");
+    }, 10000); // 3000 milisegundos (3 segundos)
+  }
